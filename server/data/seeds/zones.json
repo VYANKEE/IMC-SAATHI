@@ -1,0 +1,595 @@
+[
+  {
+    "zoneNumber": 1,
+    "name": {
+      "en": "Dr. Hedgewar (Kila Maidan) Zone",
+      "hi": "डॉ. हेडगेवार (किला मैदान)"
+    },
+    "wards": [
+      7,
+      9,
+      10,
+      16
+    ],
+    "officePhone": "0731-2410120",
+    "zonalOfficer": {
+      "name": "Mr. Vinod Agrawal",
+      "mobile": null
+    },
+    "csiHealth": {
+      "mobile": "7440443421"
+    },
+    "asstRevenueOfficer": {
+      "name": "Dinesh Yadav",
+      "mobile": "8878403914"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 2,
+    "name": {
+      "en": "Lal Bahadur Shastri (Rajmohalla) Zone",
+      "hi": "लाल बहादुर शास्त्री (राजमोहल्ला)"
+    },
+    "wards": [
+      67,
+      68,
+      69,
+      70
+    ],
+    "officePhone": "0731-2410512",
+    "zonalOfficer": {
+      "name": "Rajesh Chauhan",
+      "mobile": "7999733328"
+    },
+    "csiHealth": {
+      "mobile": "7440443422"
+    },
+    "asstRevenueOfficer": {
+      "name": "Akhilesh Malviya",
+      "mobile": "9977278070"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 3,
+    "name": {
+      "en": "Shaheed Bhagat Singh (Nagar Nigam) Zone",
+      "hi": "शहीद भगत सिंह (नगर निगम)"
+    },
+    "wards": [
+      56,
+      57,
+      58
+    ],
+    "officePhone": "7440440068",
+    "zonalOfficer": {
+      "name": "Raj Thakur",
+      "mobile": "9713311636"
+    },
+    "csiHealth": {
+      "mobile": "7440443423"
+    },
+    "asstRevenueOfficer": {
+      "name": "Anil Nikam",
+      "mobile": "9826140680"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 4,
+    "name": {
+      "en": "Maharana Pratap (Sangam Nagar) Zone",
+      "hi": "महाराणा प्रताप (संगम नगर)"
+    },
+    "wards": [
+      11,
+      12,
+      13,
+      17
+    ],
+    "officePhone": "0731-4986512",
+    "zonalOfficer": {
+      "name": "Anand Raidas",
+      "mobile": "7440441763"
+    },
+    "csiHealth": {
+      "mobile": "7440443424"
+    },
+    "asstRevenueOfficer": {
+      "name": "Tarun Joshi",
+      "mobile": "9589075474"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 5,
+    "name": {
+      "en": "Chandragupta Maurya (Sukhaliya) Zone",
+      "hi": "चंद्रगुप्त मौर्य (सुखलिया)"
+    },
+    "wards": [
+      20,
+      23,
+      27
+    ],
+    "officePhone": "0731-4984586",
+    "zonalOfficer": {
+      "name": "Ashish Rathore",
+      "mobile": "7440442066"
+    },
+    "csiHealth": {
+      "mobile": "7440443425"
+    },
+    "asstRevenueOfficer": {
+      "name": "Gaurav Banchodiya",
+      "mobile": "7440443565"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 6,
+    "name": {
+      "en": "Subhash Chandra Bose (Subhash Nagar) Zone",
+      "hi": "सुभाष चंद्र बोस (सुभाष नगर)"
+    },
+    "wards": [
+      22,
+      24,
+      25
+    ],
+    "officePhone": "0731-2532161",
+    "zonalOfficer": {
+      "name": "Lokesh Sharma",
+      "mobile": "9753187411"
+    },
+    "csiHealth": {
+      "mobile": "7440443426"
+    },
+    "asstRevenueOfficer": {
+      "name": "Mr. Jitendra Pande",
+      "mobile": null
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 7,
+    "name": {
+      "en": "Atal Bihari Vajpayee (Scheme No. 54) Zone",
+      "hi": "अटल बिहारी वाजपेयी (स्कीम नं. 54)"
+    },
+    "wards": [
+      29,
+      32,
+      33,
+      34
+    ],
+    "officePhone": "0731-2551310",
+    "zonalOfficer": {
+      "name": "Sunil Jadon",
+      "mobile": "7440441764"
+    },
+    "csiHealth": {
+      "mobile": "7440443427"
+    },
+    "asstRevenueOfficer": {
+      "name": "Abhay Tripathi",
+      "mobile": "7400780656"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 8,
+    "name": {
+      "en": "Chandrashekhar Azad (Vijay Nagar) Zone",
+      "hi": "चंद्रशेखर आज़ाद (विजय नगर)"
+    },
+    "wards": [
+      28,
+      30,
+      37
+    ],
+    "officePhone": "0731-2573355",
+    "zonalOfficer": {
+      "name": "Prakash Nagar",
+      "mobile": "7440441767"
+    },
+    "csiHealth": {
+      "mobile": "7440443428"
+    },
+    "asstRevenueOfficer": {
+      "name": "Rishi Dubey",
+      "mobile": "9752690945"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 9,
+    "name": {
+      "en": "Dr. Bhimrao Ambedkar (Pancham ki Fel) Zone",
+      "hi": "डॉ. भीमराव अंबेडकर (पंचम की फेल)"
+    },
+    "wards": [
+      26,
+      44,
+      45,
+      46,
+      47
+    ],
+    "officePhone": "0731-4986513",
+    "zonalOfficer": {
+      "name": "Mr. Abhishek Singh",
+      "mobile": null
+    },
+    "csiHealth": {
+      "mobile": "7440443429"
+    },
+    "asstRevenueOfficer": {
+      "name": "Prashant Patel",
+      "mobile": "8770360504"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 10,
+    "name": {
+      "en": "Dr. Shyamaprasad Mukherjee (Saket Nagar) Zone",
+      "hi": "डॉ. श्यामाप्रसाद मुखर्जी (साकेत नगर)"
+    },
+    "wards": [
+      39,
+      40,
+      42,
+      43,
+      49
+    ],
+    "officePhone": "0771-2497422",
+    "zonalOfficer": {
+      "name": "Mohit Mishra",
+      "mobile": "7440445069"
+    },
+    "csiHealth": {
+      "mobile": "7440443430"
+    },
+    "asstRevenueOfficer": {
+      "name": "Mayank Jain",
+      "mobile": "8962550908"
+    },
+    "verified": false,
+    "verificationNote": "STD code 0771 is not Indore (0731) — suspected typo in source document",
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 11,
+    "name": {
+      "en": "Rajmata Scindia (Stadium) Zone",
+      "hi": "राजमाता सिंधिया (स्टेडियम)"
+    },
+    "wards": [
+      48,
+      54,
+      55,
+      60
+    ],
+    "officePhone": "7440443514",
+    "zonalOfficer": {
+      "name": "Gitesh Tiwari",
+      "mobile": "7440440783"
+    },
+    "csiHealth": {
+      "mobile": "7440443431"
+    },
+    "asstRevenueOfficer": {
+      "name": "Shailesh Kumar",
+      "mobile": "8818884691"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 12,
+    "name": {
+      "en": "Harsiddhi Zone",
+      "hi": "हरसिद्धि"
+    },
+    "wards": [
+      59,
+      61,
+      62,
+      65,
+      66
+    ],
+    "officePhone": "0731-4947526",
+    "zonalOfficer": {
+      "name": "Rahul Suryavanshi",
+      "mobile": "7440441755"
+    },
+    "csiHealth": {
+      "mobile": "7440443432"
+    },
+    "asstRevenueOfficer": {
+      "name": "Pratik Bhindoriya",
+      "mobile": "8827153050"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 13,
+    "name": {
+      "en": "Pt. Deendayal Upadhyay (Bilawali) Zone",
+      "hi": "पं. दीनदयाल उपाध्याय (बिलावली)"
+    },
+    "wards": [
+      74,
+      75,
+      77,
+      78
+    ],
+    "officePhone": "0731-360201",
+    "zonalOfficer": {
+      "name": "Tanmay Singh Chauhan",
+      "mobile": "7440441751"
+    },
+    "csiHealth": {
+      "mobile": "7440443433"
+    },
+    "asstRevenueOfficer": {
+      "name": "Vaibhav Dagi",
+      "mobile": "8989121336"
+    },
+    "verified": false,
+    "verificationNote": "landline has 6 digits after STD code; Indore numbers have 7-8 — suspected typo in source",
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 14,
+    "name": {
+      "en": "Rajendra Dharkar (Hawa Bungalow) Zone",
+      "hi": "राजेंद्र धारकर (हवा बंगला)"
+    },
+    "wards": [
+      82,
+      84,
+      85
+    ],
+    "officePhone": "0731-4986346",
+    "zonalOfficer": {
+      "name": "Nitesh Singh",
+      "mobile": "7440441874"
+    },
+    "csiHealth": {
+      "mobile": "7440443434"
+    },
+    "asstRevenueOfficer": {
+      "name": "Manish Hariyale",
+      "mobile": "9630954841"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 15,
+    "name": {
+      "en": "Laxman Singh Gaud (David Nagar) Zone",
+      "hi": "लक्ष्मण सिंह गौड़ (डेविड नगर)"
+    },
+    "wards": [
+      2,
+      71,
+      72,
+      83
+    ],
+    "officePhone": "0731-4984585",
+    "zonalOfficer": {
+      "name": "Nadeem Khan",
+      "mobile": "7440443358"
+    },
+    "csiHealth": {
+      "mobile": "7440443435"
+    },
+    "asstRevenueOfficer": {
+      "name": "Surendra Khare",
+      "mobile": "9977746941"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 16,
+    "name": {
+      "en": "Kushabhau Thackeray (Aerodrome Road) Zone",
+      "hi": "कुशाभाऊ ठाकरे (एयरोड्रम रोड)"
+    },
+    "wards": [
+      1,
+      3,
+      14,
+      15
+    ],
+    "officePhone": "0731-2411833",
+    "zonalOfficer": {
+      "name": "Nirmata Hindoliya",
+      "mobile": "7440441878"
+    },
+    "csiHealth": {
+      "mobile": "7440443436"
+    },
+    "asstRevenueOfficer": {
+      "name": "Manohar Vishwakarma",
+      "mobile": "7440410065"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 17,
+    "name": {
+      "en": "Mahatma Gandhi (Narwal) Zone",
+      "hi": "महात्मा गांधी (नरवल)"
+    },
+    "wards": [
+      18,
+      19,
+      21
+    ],
+    "officePhone": "0731-4400027",
+    "zonalOfficer": {
+      "name": "Narendra Kuril",
+      "mobile": "7440443350"
+    },
+    "csiHealth": {
+      "mobile": "7440443437"
+    },
+    "asstRevenueOfficer": {
+      "name": "Sanjay Panwar",
+      "mobile": "9893586489"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 18,
+    "name": {
+      "en": "Chhatrapati Shivaji (Krishi Vihar) Zone",
+      "hi": "छत्रपति शिवाजी (कृषि विहार)"
+    },
+    "wards": [
+      51,
+      52,
+      63,
+      64
+    ],
+    "officePhone": "7440443518",
+    "zonalOfficer": {
+      "name": "Atik Khan",
+      "mobile": "7440443532"
+    },
+    "csiHealth": {
+      "mobile": "7440443438"
+    },
+    "asstRevenueOfficer": {
+      "name": "Anurag Dubey",
+      "mobile": "9131527109"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 19,
+    "name": {
+      "en": "Sardar Vallabhbhai Patel (Scheme No. 94) Zone",
+      "hi": "सरदार वल्लभभाई पटेल (स्कीम नं. 94)"
+    },
+    "wards": [
+      38,
+      41,
+      50,
+      53,
+      76
+    ],
+    "officePhone": "7440441832",
+    "zonalOfficer": {
+      "name": "Dhirendra Bias",
+      "mobile": "7440443540"
+    },
+    "csiHealth": {
+      "mobile": "7440443439"
+    },
+    "asstRevenueOfficer": {
+      "name": "Pratik Singh Gaud",
+      "mobile": "8839971998"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 20,
+    "name": {
+      "en": "Rajmata Jeejabai (Ramganj Jinsi) Zone",
+      "hi": "राजमाता जीजाबाई (रामगंज जिंसी)"
+    },
+    "wards": [
+      4,
+      5,
+      6,
+      8
+    ],
+    "officePhone": "9826667333",
+    "zonalOfficer": {
+      "name": "Pallavi Pal",
+      "mobile": "9826667333"
+    },
+    "csiHealth": {
+      "mobile": "7440445099"
+    },
+    "asstRevenueOfficer": {
+      "name": "Sachiin Rawat",
+      "mobile": "9669187266"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 21,
+    "name": {
+      "en": "Veer Savarkar (Pragati Nagar) Zone",
+      "hi": "वीर सावरकर (प्रगति नगर)"
+    },
+    "wards": [
+      73,
+      79,
+      80,
+      81
+    ],
+    "officePhone": "7440443492",
+    "zonalOfficer": {
+      "name": "Hemant Mishra",
+      "mobile": "7440443492"
+    },
+    "csiHealth": {
+      "mobile": "7440442251"
+    },
+    "asstRevenueOfficer": {
+      "name": "Salman Khan",
+      "mobile": "8962345969"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  },
+  {
+    "zoneNumber": 22,
+    "name": {
+      "en": "Gen. Harisingh Nalwa (Bombay Hospital Water Tank) Zone",
+      "hi": "जनरल हरिसिंह नलवा (बॉम्बे हॉस्पिटल वाटर टैंक)"
+    },
+    "wards": [
+      31,
+      35,
+      36
+    ],
+    "officePhone": "7440441758",
+    "zonalOfficer": {
+      "name": "Khumeshwari Marathe",
+      "mobile": null
+    },
+    "csiHealth": {
+      "mobile": "7440447399"
+    },
+    "asstRevenueOfficer": {
+      "name": "Abir Rewal",
+      "mobile": "9644068993"
+    },
+    "verified": true,
+    "sourceDocument": "Zonal_Offices(Ward_Wise)_and_Contact_Details.docx"
+  }
+]

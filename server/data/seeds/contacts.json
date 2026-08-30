@@ -1,0 +1,606 @@
+[
+  {
+    "departmentCode": "ESTABLISHMENT",
+    "scope": "department",
+    "name": "Mr. Keshav Singh Sagar",
+    "designation": "Deputy Commissioner",
+    "mobile": "9926860955",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "LEASE",
+    "scope": "department",
+    "name": "Mr. Keshav Singh Sagar",
+    "designation": "Deputy Commissioner",
+    "mobile": "9926860955",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "HEALTH",
+    "scope": "department",
+    "name": "Mr. Keshav Singh Sagar",
+    "designation": "Deputy Commissioner",
+    "mobile": "9926860955",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CENTRAL_STORE",
+    "scope": "department",
+    "name": "Mr. Keshav Singh Sagar",
+    "designation": "Deputy Commissioner",
+    "mobile": "9926860955",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BIRTH_DEATH",
+    "scope": "department",
+    "name": "Mr. Pradeep Kumar Jain",
+    "designation": "Deputy Commissioner",
+    "mobile": "9425893677",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "IT",
+    "scope": "department",
+    "name": "Mr. Pradeep Kumar Jain",
+    "designation": "Deputy Commissioner",
+    "mobile": "9425893677",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CONTROL_ROOM",
+    "scope": "department",
+    "name": "Mr. Pradeep Kumar Jain",
+    "designation": "Deputy Commissioner",
+    "mobile": "9425893677",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "UPA_NULM",
+    "scope": "department",
+    "name": "Mr. Chandrashekhar Nigam",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": true,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "SHELTER_KITCHEN",
+    "scope": "department",
+    "name": "Mr. Chandrashekhar Nigam",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "ENCROACHMENT",
+    "scope": "department",
+    "name": "Mr. Chandrashekhar Nigam",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CENSUS",
+    "scope": "department",
+    "name": "Mr. Chandrashekhar Nigam",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "HEALTH",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": true,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "MARKET_LICENSE",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CENTRAL_STORE",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "ELECTION",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "VIDHANSABHA",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "GRIEVANCE_NODAL",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "REVENUE",
+    "scope": "department",
+    "name": "Ms. Garima Patidar",
+    "designation": "Deputy Commissioner",
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "ELECTRICAL",
+    "scope": "department",
+    "name": "Mr. Ashwin Janvade",
+    "designation": "In-Charge Executive Engineer",
+    "mobile": "7440440005",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "SANITATION",
+    "scope": "department",
+    "name": "Mr. Ashwin Janvade",
+    "designation": "In-Charge Executive Engineer",
+    "mobile": "7440440005",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "TRAFFIC",
+    "scope": "department",
+    "name": "Mr. Ashwin Janvade",
+    "designation": "In-Charge Executive Engineer",
+    "mobile": "7440440005",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Ashwin Janvade",
+    "designation": "In-Charge Executive Engineer",
+    "mobile": "7440440005",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "AICTSL",
+    "scope": "department",
+    "name": "Mr. Jitendra Jamidar",
+    "designation": "Executive Engineer",
+    "mobile": "9425065552",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "GRIEVANCE_NODAL",
+    "scope": "department",
+    "name": "Mr. Jitendra Jamidar",
+    "designation": "Executive Engineer",
+    "mobile": "9425065552",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "PROTOCOL",
+    "scope": "department",
+    "name": "Mr. Pawan Pataudi",
+    "designation": null,
+    "mobile": "7440443384",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "SECRETARY_PRO",
+    "scope": "department",
+    "name": "Mr. Rajendra Garothiya",
+    "designation": "Secretary / PRO",
+    "mobile": "7440443079",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "FIRE",
+    "scope": "department",
+    "name": "Mr. Vinod Mishra",
+    "designation": "Fire Officer In-Charge",
+    "mobile": "7440440187",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "ZOO",
+    "scope": "department",
+    "name": "Dr. Uttam Yadav",
+    "designation": "Officer in Charge",
+    "mobile": "7440443322",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "ANIMAL_CONTROL",
+    "scope": "department",
+    "name": "Dr. Uttam Yadav",
+    "designation": "Officer in Charge",
+    "mobile": "7440443322",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "MEAT_UNIT",
+    "scope": "department",
+    "name": "Dr. Uttam Yadav",
+    "designation": "Officer in Charge",
+    "mobile": "7440443322",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "WORKSHOP",
+    "scope": "department",
+    "name": "Mr. Manish Pandey",
+    "designation": "Officer In-Charge",
+    "mobile": "7440443560",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "TRENCHING_GROUND",
+    "scope": "department",
+    "name": "Mr. Yogendra Gangarade",
+    "designation": "Sub Engineer",
+    "mobile": "7440442122",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": null,
+    "scope": "department",
+    "name": "Mr. Neeraj Anand Likhar",
+    "designation": "Chief City Engineer",
+    "mobile": "9179089333",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "LAW",
+    "scope": "department",
+    "name": "Mr. Govind Kaushal",
+    "designation": "In-Charge Officer",
+    "mobile": "7440445158",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "PMAY",
+    "scope": "department",
+    "name": "Mr. Govind Kaushal",
+    "designation": "In-Charge Officer",
+    "mobile": "7440445158",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CTPT",
+    "scope": "department",
+    "name": "Mr. Sumeet Asthana",
+    "designation": "Prabhari Sahayak Yantri",
+    "mobile": "7440443349",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "SANITATION",
+    "scope": "department",
+    "name": "Mr. Sumeet Asthana",
+    "designation": "Prabhari Sahayak Yantri",
+    "mobile": "7440443349",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "STADIUM",
+    "scope": "department",
+    "name": "Mr. Virendra Upadhyay",
+    "designation": "Prabhari Sahayk Aayukt",
+    "mobile": "7440443367",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CONTROL_ROOM",
+    "scope": "department",
+    "name": "Mr. Virendra Upadhyay",
+    "designation": "Prabhari Sahayk Aayukt",
+    "mobile": "7440443367",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BIRTH_DEATH",
+    "scope": "department",
+    "name": "Mr. Virendra Upadhyay",
+    "designation": "Prabhari Sahayk Aayukt",
+    "mobile": "7440443367",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "PLANNING",
+    "scope": "department",
+    "name": "Mr. Naresh Jaiswal",
+    "designation": "Assistant Engineer in charge",
+    "mobile": "7440443356",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "COMMISSIONER_OFFICE",
+    "scope": "department",
+    "name": "Mr. Sanjay Raghuvanshi",
+    "designation": "PA to Commissioner",
+    "mobile": null,
+    "isPrimary": true,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CTPT",
+    "scope": "department",
+    "name": "Mr. P.R. Aroliya",
+    "designation": "Assistant Engineer",
+    "mobile": "7440446077",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "PWD",
+    "scope": "department",
+    "name": "Mr. Srikant Kate",
+    "designation": "Executive Engineer",
+    "mobile": "7974162847",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CTPT",
+    "scope": "department",
+    "name": "Mr. Srikant Kate",
+    "designation": "Executive Engineer",
+    "mobile": "7974162847",
+    "isPrimary": false,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "CONTROL_ROOM",
+    "scope": "department",
+    "name": "Mr. Sandeep Patodi",
+    "designation": "In-Charge Chief Health Officer",
+    "mobile": "7440443324",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Vaibhav Devlase",
+    "designation": "Assistant Engineer",
+    "mobile": "7440443304",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mrs. Tina Sissodiya",
+    "designation": null,
+    "mobile": "7224888889",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Ashish Rathore",
+    "designation": null,
+    "mobile": "7440442066",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Satyendra Singh Rajput",
+    "designation": "Sub Engineer",
+    "mobile": "7440441766",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Gitesh Tiwari",
+    "designation": null,
+    "mobile": "7440440783",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Anand Raidas",
+    "designation": null,
+    "mobile": "7440441763",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Sunil Jadon",
+    "designation": null,
+    "mobile": "7440441764",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Vishal Rathore",
+    "designation": null,
+    "mobile": "7440441751",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Abhishek Singh",
+    "designation": null,
+    "mobile": "7440441754",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "TRAFFIC",
+    "scope": "department",
+    "name": "Mr. P. S. Kushwaha",
+    "designation": null,
+    "mobile": "7440443337",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "WATER_WORKS",
+    "scope": "department",
+    "name": "Mr. Shantilal Yadav",
+    "designation": null,
+    "mobile": "7440443332",
+    "isPrimary": true,
+    "verified": true,
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "SEWERAGE",
+    "scope": "department",
+    "name": "Mr. Prabhat Tiwari",
+    "designation": null,
+    "mobile": null,
+    "isPrimary": true,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "BUILDING_PERMISSION",
+    "scope": "department",
+    "name": "Mr. Prabhat Tiwari",
+    "designation": null,
+    "mobile": null,
+    "isPrimary": false,
+    "verified": false,
+    "verificationNote": "No mobile number listed in the source document",
+    "sourceDocument": "Department_Head_Contact_Details.docx"
+  }
+]

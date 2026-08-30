@@ -1,0 +1,287 @@
+[
+  {
+    "key": "DISCOM_ELECTRICITY",
+    "name": {
+      "en": "MPPKVVCL / West Discom",
+      "hi": "म.प्र. पश्चिम क्षेत्र विद्युत वितरण कंपनी"
+    },
+    "handles": [
+      "power cut",
+      "bijli chali gayi",
+      "light nahi aa rahi ghar mein",
+      "live wire",
+      "electricity meter",
+      "electricity bill",
+      "transformer",
+      "household power supply"
+    ],
+    "phone": "1912",
+    "altPhone": "0731-2421414",
+    "note": {
+      "en": "Household electricity supply is NOT an IMC function. IMC's Electrical & Mechanical department handles street lights and municipal electrical infrastructure only. Power cuts, meters and electricity bills go to the Discom.",
+      "hi": "घरेलू बिजली आपूर्ति नगर निगम का कार्य नहीं है। नगर निगम का विद्युत एवं यांत्रिकी विभाग केवल स्ट्रीट लाइट एवं नगरीय विद्युत अवसंरचना देखता है। बिजली कटौती, मीटर एवं बिल हेतु विद्युत वितरण कंपनी से संपर्क करें।"
+    },
+    "sourceDocument": "Electrical_and_mechanical_dept_final.docx"
+  },
+  {
+    "key": "FOOD_CIVIL_SUPPLIES",
+    "name": {
+      "en": "MP Food & Civil Supplies / NFSA",
+      "hi": "म.प्र. खाद्य एवं नागरिक आपूर्ति / एन.एफ.एस.ए."
+    },
+    "handles": [
+      "ration card",
+      "ration card e-KYC",
+      "ONORC",
+      "fair price shop",
+      "BPL card",
+      "food grain entitlement"
+    ],
+    "phone": null,
+    "altPhone": null,
+    "note": {
+      "en": "Ration cards and public distribution are handled by the Madhya Pradesh Food & Civil Supplies department through the NFSA portal, not by IMC.",
+      "hi": "राशन कार्ड एवं सार्वजनिक वितरण प्रणाली मध्य प्रदेश खाद्य एवं नागरिक आपूर्ति विभाग द्वारा एन.एफ.एस.ए. पोर्टल के माध्यम से देखी जाती है, नगर निगम द्वारा नहीं।"
+    },
+    "sourceDocument": "Housing_and_Rental.docx"
+  },
+  {
+    "key": "CM_HELPLINE",
+    "name": {
+      "en": "CM Helpline, Government of Madhya Pradesh",
+      "hi": "मुख्यमंत्री हेल्पलाइन, मध्य प्रदेश शासन"
+    },
+    "handles": [
+      "escalation",
+      "complaint pending",
+      "grievance not resolved",
+      "IMC not responding"
+    ],
+    "phone": "181",
+    "altPhone": null,
+    "note": {
+      "en": "State-level escalation route when an IMC complaint remains unresolved beyond its normal timeline.",
+      "hi": "जब नगर निगम की शिकायत सामान्य समय-सीमा में हल न हो, तब राज्य स्तरीय एस्केलेशन मार्ग।"
+    },
+    "sourceDocument": "complaint_procedure.docx"
+  },
+  {
+    "key": "POLICE",
+    "name": {
+      "en": "Police",
+      "hi": "पुलिस"
+    },
+    "handles": [
+      "police",
+      "crime",
+      "theft",
+      "emergency"
+    ],
+    "phone": "100",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "FIRE_EMERGENCY",
+    "name": {
+      "en": "Fire Station",
+      "hi": "अग्निशमन केंद्र"
+    },
+    "handles": [
+      "fire",
+      "aag",
+      "fire emergency"
+    ],
+    "phone": "101",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "AMBULANCE",
+    "name": {
+      "en": "Ambulance",
+      "hi": "एम्बुलेंस"
+    },
+    "handles": [
+      "ambulance",
+      "medical emergency"
+    ],
+    "phone": "108",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "WOMEN",
+    "name": {
+      "en": "Women Helpline",
+      "hi": "महिला हेल्पलाइन"
+    },
+    "handles": [
+      "women safety",
+      "harassment"
+    ],
+    "phone": "1091",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "CHILDREN",
+    "name": {
+      "en": "Children Helpline",
+      "hi": "चाइल्ड हेल्पलाइन"
+    },
+    "handles": [
+      "child",
+      "child safety"
+    ],
+    "phone": "1098",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "SENIOR_CITIZEN",
+    "name": {
+      "en": "Senior Citizen Helpline",
+      "hi": "वरिष्ठ नागरिक हेल्पलाइन"
+    },
+    "handles": [
+      "senior citizen",
+      "elderly"
+    ],
+    "phone": "07312510308",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "ELECTION_HELPLINE",
+    "name": {
+      "en": "Election Helpline",
+      "hi": "निर्वाचन हेल्पलाइन"
+    },
+    "handles": [
+      "voter",
+      "election",
+      "voter id"
+    ],
+    "phone": "1950",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "SAFAI_MITRA",
+    "name": {
+      "en": "Safai Mitra Suraksha",
+      "hi": "सफाई मित्र सुरक्षा"
+    },
+    "handles": [
+      "sanitation worker safety",
+      "sewer cleaning safety",
+      "manhole"
+    ],
+    "phone": "14420",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "SNAKE_PICKER",
+    "name": {
+      "en": "Snake Picker",
+      "hi": "सर्प पकड़ने वाला"
+    },
+    "handles": [
+      "snake",
+      "saanp"
+    ],
+    "phone": "9179137698",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "DEAD_ANIMAL",
+    "name": {
+      "en": "Dead Animal Removal",
+      "hi": "मृत पशु निष्कासन"
+    },
+    "handles": [
+      "dead animal",
+      "mrit pashu"
+    ],
+    "phone": "07312535555",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "HOSPITAL",
+    "name": {
+      "en": "Hospital",
+      "hi": "अस्पताल"
+    },
+    "handles": [
+      "hospital"
+    ],
+    "phone": "07312438100",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  },
+  {
+    "key": "PM_HELPLINE",
+    "name": {
+      "en": "PM Helpline",
+      "hi": "प्रधानमंत्री हेल्पलाइन"
+    },
+    "handles": [
+      "pm helpline"
+    ],
+    "phone": "01123386447",
+    "altPhone": null,
+    "note": {
+      "en": "Emergency / helpline number listed in IMC's citizen helpline sheet.",
+      "hi": "नगर निगम की नागरिक हेल्पलाइन सूची में दर्ज आपातकालीन / हेल्पलाइन नंबर।"
+    },
+    "sourceDocument": "Helpline_numbers.docx"
+  }
+]

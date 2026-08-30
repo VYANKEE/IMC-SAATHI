@@ -1,0 +1,29 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.workingDirectories": [
+    {
+      "directory": "server",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "client",
+      "changeProcessCWD": true
+    }
+  ],
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/package-lock.json": true
+  },
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true
+}

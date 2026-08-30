@@ -1,0 +1,800 @@
+[
+  {
+    "code": "ELECTRICAL",
+    "slug": "electrical-mechanical",
+    "name": {
+      "en": "Electrical & Mechanical",
+      "hi": "विद्युत एवं यांत्रिकी विभाग"
+    },
+    "description": {
+      "en": "Maintains municipal electrical infrastructure — street lights, high mast lights, pumps and motors, municipal building wiring, festival lighting and public fountains.",
+      "hi": "नगरीय विद्युत अवसंरचना का रखरखाव — स्ट्रीट लाइट, हाई मास्ट लाइट, पंप एवं मोटर, नगर निगम भवनों की वायरिंग, त्यौहारों की सजावटी रोशनी और सार्वजनिक फव्वारे।"
+    },
+    "responsibilities": {
+      "en": [
+        "Street light maintenance",
+        "High mast light maintenance",
+        "Electrical maintenance of municipal buildings",
+        "Pumps and motors",
+        "Decorative lighting during festivals",
+        "Electrical safety in municipal infrastructure",
+        "Traffic signal support",
+        "Maintenance of public fountains"
+      ],
+      "hi": [
+        "स्ट्रीट लाइट रखरखाव",
+        "हाई मास्ट लाइट रखरखाव",
+        "नगर निगम भवनों का विद्युत रखरखाव",
+        "पंप एवं मोटर",
+        "त्यौहारों पर सजावटी रोशनी",
+        "नगरीय अवसंरचना में विद्युत सुरक्षा",
+        "ट्रैफिक सिग्नल सहयोग",
+        "सार्वजनिक फव्वारों का रखरखाव"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "officeTiming": {
+      "days": "Monday to Friday",
+      "from": "10:00",
+      "to": "18:00"
+    },
+    "displayOrder": 10,
+    "isActive": true,
+    "sourceDocuments": [
+      "Electrical_and_mechanical_dept_final.docx",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "PWD",
+    "slug": "public-works",
+    "name": {
+      "en": "Public Works Department (PWD)",
+      "hi": "लोक निर्माण विभाग"
+    },
+    "description": {
+      "en": "Municipal roads and public civil works — construction, repair and restoration of roads under IMC jurisdiction.",
+      "hi": "नगरीय सड़कें एवं सार्वजनिक सिविल कार्य — नगर निगम क्षेत्राधिकार की सड़कों का निर्माण, मरम्मत एवं पुनर्स्थापन।"
+    },
+    "responsibilities": {
+      "en": [
+        "Road construction and reconstruction",
+        "Road repair and pothole filling",
+        "Restoration of excavated roads",
+        "Public civil infrastructure works",
+        "Bridge cell"
+      ],
+      "hi": [
+        "सड़क निर्माण एवं पुनर्निर्माण",
+        "सड़क मरम्मत एवं गड्ढे भरना",
+        "खुदी हुई सड़कों की पुनर्स्थापना",
+        "सार्वजनिक सिविल अवसंरचना कार्य",
+        "ब्रिज सेल"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 20,
+    "isActive": true,
+    "sourceDocuments": [
+      "IMC_PWD_Revenue_Chatbot_FAQ_Knowledge_Base.pdf",
+      "IMC_PWD_Revenue_Chatbot_FAQ_Dataset_Updated.numbers",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "REVENUE",
+    "slug": "revenue",
+    "name": {
+      "en": "Revenue Department",
+      "hi": "राजस्व विभाग"
+    },
+    "description": {
+      "en": "Property tax, water tax and water charges, property survey, and preparation and correction of municipal property records.",
+      "hi": "संपत्ति कर, जल कर एवं जल शुल्क, संपत्ति सर्वेक्षण, तथा नगरीय संपत्ति अभिलेखों की तैयारी एवं सुधार।"
+    },
+    "responsibilities": {
+      "en": [
+        "Property tax assessment and collection",
+        "Water tax and water charges",
+        "Property survey",
+        "Property data preparation and correction",
+        "Solid Waste Management user charge"
+      ],
+      "hi": [
+        "संपत्ति कर निर्धारण एवं वसूली",
+        "जल कर एवं जल शुल्क",
+        "संपत्ति सर्वेक्षण",
+        "संपत्ति डेटा तैयारी एवं सुधार",
+        "ठोस अपशिष्ट प्रबंधन शुल्क"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 30,
+    "isActive": true,
+    "sourceDocuments": [
+      "IMC_PWD_Revenue_Chatbot_FAQ_Knowledge_Base.pdf",
+      "IMC_PWD_Revenue_Chatbot_FAQ_Dataset_Updated.numbers",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "WATER_WORKS",
+    "slug": "water-works",
+    "name": {
+      "en": "Water Works (Jal Pradaya Vibhag)",
+      "hi": "जल प्रदाय विभाग"
+    },
+    "description": {
+      "en": "Municipal water supply — no-supply and low-pressure complaints, irregular timing, billing corrections, and new water connections.",
+      "hi": "नगरीय जल प्रदाय — पानी न आना, कम प्रेशर, अनियमित समय, बिल सुधार तथा नए जल कनेक्शन।"
+    },
+    "responsibilities": {
+      "en": [
+        "No water supply complaints",
+        "Low pressure complaints",
+        "Irregular supply timing",
+        "Water billing correction",
+        "New water connection applications"
+      ],
+      "hi": [
+        "जल आपूर्ति न होने की शिकायत",
+        "कम प्रेशर की शिकायत",
+        "अनियमित आपूर्ति समय",
+        "जल बिल सुधार",
+        "नए जल कनेक्शन आवेदन"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 40,
+    "isActive": true,
+    "sourceDocuments": [
+      "water_supply.docx",
+      "water_supply.csv"
+    ]
+  },
+  {
+    "code": "SEWERAGE",
+    "slug": "sewerage-drainage",
+    "name": {
+      "en": "Sewerage & Drainage",
+      "hi": "मल-जल एवं निकास विभाग"
+    },
+    "description": {
+      "en": "Sewer overflow, drain blockage and seasonal waterlogging, including pre-monsoon desilting.",
+      "hi": "सीवर ओवरफ्लो, नाली अवरोध एवं मौसमी जलभराव, जिसमें मानसून-पूर्व गाद निकासी शामिल है।"
+    },
+    "responsibilities": {
+      "en": [
+        "Sewer overflow complaints",
+        "Drain blockage",
+        "Monsoon waterlogging",
+        "Pre-monsoon desilting"
+      ],
+      "hi": [
+        "सीवर ओवरफ्लो शिकायत",
+        "नाली अवरोध",
+        "मानसून जलभराव",
+        "मानसून-पूर्व गाद निकासी"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 50,
+    "isActive": true,
+    "sourceDocuments": [
+      "water_supply.docx",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "SANITATION",
+    "slug": "sanitation-swachhata",
+    "name": {
+      "en": "Sanitation / Swachhata (Solid Waste)",
+      "hi": "स्वच्छता विभाग (ठोस अपशिष्ट)"
+    },
+    "description": {
+      "en": "Door-to-door garbage collection, black-spot removal, public toilet maintenance, and Swachh Bharat Mission activities.",
+      "hi": "घर-घर कचरा संग्रहण, ब्लैक स्पॉट हटाना, सार्वजनिक शौचालय रखरखाव तथा स्वच्छ भारत मिशन गतिविधियाँ।"
+    },
+    "responsibilities": {
+      "en": [
+        "Door-to-door garbage collection",
+        "Open dump / black spot removal",
+        "Public toilet maintenance",
+        "Garbage collection user charge disputes",
+        "Swachh Bharat Mission"
+      ],
+      "hi": [
+        "घर-घर कचरा संग्रहण",
+        "खुला कचरा / ब्लैक स्पॉट हटाना",
+        "सार्वजनिक शौचालय रखरखाव",
+        "कचरा संग्रहण शुल्क संबंधी शिकायत",
+        "स्वच्छ भारत मिशन"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 60,
+    "isActive": true,
+    "sourceDocuments": [
+      "IMC_Saath_sanitation1.docx",
+      "IMC_Saathi_sanitation1.csv",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "FIRE",
+    "slug": "fire",
+    "name": {
+      "en": "Fire Department",
+      "hi": "अग्निशमन विभाग"
+    },
+    "description": {
+      "en": "Fire NOC issuance and renewal for qualifying buildings, and fire-safety compliance complaints.",
+      "hi": "पात्र भवनों हेतु अग्नि अनापत्ति प्रमाण पत्र (NOC) जारी करना एवं नवीनीकरण, तथा अग्नि सुरक्षा अनुपालन शिकायतें।"
+    },
+    "responsibilities": {
+      "en": [
+        "Fire NOC application",
+        "Fire NOC renewal",
+        "Fire safety inspection",
+        "Fire safety compliance complaints"
+      ],
+      "hi": [
+        "अग्नि NOC आवेदन",
+        "अग्नि NOC नवीनीकरण",
+        "अग्नि सुरक्षा निरीक्षण",
+        "अग्नि सुरक्षा अनुपालन शिकायत"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 70,
+    "isActive": true,
+    "sourceDocuments": [
+      "Fire_NOC.docx",
+      "Fire_NOC.csv",
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "HOUSING",
+    "slug": "housing-property-services",
+    "name": {
+      "en": "Housing & Property Services",
+      "hi": "आवास एवं संपत्ति सेवाएँ"
+    },
+    "description": {
+      "en": "Online property tax payment, new property registration, property transfer, application tracking and shop rent payment.",
+      "hi": "ऑनलाइन संपत्ति कर भुगतान, नई संपत्ति पंजीयन, संपत्ति हस्तांतरण, आवेदन ट्रैकिंग तथा दुकान किराया भुगतान।"
+    },
+    "responsibilities": {
+      "en": [
+        "Online property tax payment",
+        "New property registration",
+        "Property transfer",
+        "Application status tracking",
+        "Shop rent payment"
+      ],
+      "hi": [
+        "ऑनलाइन संपत्ति कर भुगतान",
+        "नई संपत्ति पंजीयन",
+        "संपत्ति हस्तांतरण",
+        "आवेदन स्थिति ट्रैकिंग",
+        "दुकान किराया भुगतान"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": true,
+    "displayOrder": 80,
+    "isActive": true,
+    "sourceDocuments": [
+      "Housing_and_Rental.docx",
+      "Housing_and_Rental_(2).csv"
+    ]
+  },
+  {
+    "code": "COMPLAINT_PROCEDURE",
+    "slug": "complaint-procedure",
+    "name": {
+      "en": "Complaint Procedure (general)",
+      "hi": "शिकायत प्रक्रिया (सामान्य)"
+    },
+    "description": {
+      "en": "Cross-cutting guidance: how to file a complaint, what happens next, how to track it, and how to escalate. Not a department a citizen selects.",
+      "hi": "सभी विभागों पर लागू मार्गदर्शन: शिकायत कैसे दर्ज करें, आगे क्या होता है, ट्रैक कैसे करें और एस्केलेट कैसे करें। यह चुनने योग्य विभाग नहीं है।"
+    },
+    "responsibilities": {
+      "en": [
+        "Filing routes (Indore 311, helpline, ward office)",
+        "Complaint tracking",
+        "Escalation ladder",
+        "Reopening a closed complaint"
+      ],
+      "hi": [
+        "शिकायत दर्ज करने के माध्यम (इंदौर 311, हेल्पलाइन, वार्ड कार्यालय)",
+        "शिकायत ट्रैकिंग",
+        "एस्केलेशन प्रक्रिया",
+        "बंद शिकायत को पुनः खोलना"
+      ]
+    },
+    "coverageTier": "A",
+    "isSelectable": false,
+    "displayOrder": 999,
+    "isActive": true,
+    "sourceDocuments": [
+      "complaint_procedure.docx",
+      "complaint_procedure.csv"
+    ]
+  },
+  {
+    "code": "AICTSL",
+    "slug": "aictsl",
+    "name": {
+      "en": "AICTSL (City Transport)",
+      "hi": "ए.आई.सी.टी.एस.एल. (शहरी परिवहन)"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "ANIMAL_CONTROL",
+    "slug": "animal-control",
+    "name": {
+      "en": "Dog Eradication / Animal Control",
+      "hi": "श्वान नियंत्रण"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "BIRTH_DEATH",
+    "slug": "birth-death",
+    "name": {
+      "en": "Birth, Death & Marriage Registration",
+      "hi": "जन्म, मृत्यु एवं विवाह पंजीयन"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "BUILDING_PERMISSION",
+    "slug": "building-permission",
+    "name": {
+      "en": "Building Permission (Zone-wise Building Officers)",
+      "hi": "भवन अनुज्ञा (ज़ोनवार भवन अधिकारी)"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "CENSUS",
+    "slug": "census",
+    "name": {
+      "en": "Census",
+      "hi": "जनगणना"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "CENTRAL_STORE",
+    "slug": "central-store",
+    "name": {
+      "en": "Central Store",
+      "hi": "केंद्रीय भंडार"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "COMMISSIONER_OFFICE",
+    "slug": "commissioner-office",
+    "name": {
+      "en": "Commissioner's Office",
+      "hi": "आयुक्त कार्यालय"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "CONTROL_ROOM",
+    "slug": "control-room",
+    "name": {
+      "en": "Nigam Control Room",
+      "hi": "निगम कंट्रोल रूम"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "CTPT",
+    "slug": "ctpt",
+    "name": {
+      "en": "Community & Public Toilets (CT/PT)",
+      "hi": "सामुदायिक एवं सार्वजनिक शौचालय"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "ELECTION",
+    "slug": "election",
+    "name": {
+      "en": "Election Cell",
+      "hi": "निर्वाचन प्रकोष्ठ"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "ENCROACHMENT",
+    "slug": "encroachment",
+    "name": {
+      "en": "Removal (Encroachment) Department",
+      "hi": "अतिक्रमण निष्कासन विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "ESTABLISHMENT",
+    "slug": "establishment",
+    "name": {
+      "en": "Establishment Department",
+      "hi": "स्थापना विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "GRIEVANCE_NODAL",
+    "slug": "grievance-nodal",
+    "name": {
+      "en": "Grievance Nodal Cell (CM Helpline / 311 / Mayor Helpline / Collector Jansunvayi)",
+      "hi": "शिकायत नोडल प्रकोष्ठ (सीएम हेल्पलाइन / 311 / महापौर हेल्पलाइन / कलेक्टर जनसुनवाई)"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "HEALTH",
+    "slug": "health",
+    "name": {
+      "en": "Health Department",
+      "hi": "स्वास्थ्य विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "IT",
+    "slug": "it",
+    "name": {
+      "en": "Information & Technology Department",
+      "hi": "सूचना एवं प्रौद्योगिकी विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "LAW",
+    "slug": "law",
+    "name": {
+      "en": "Law Department",
+      "hi": "विधि विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "LEASE",
+    "slug": "lease",
+    "name": {
+      "en": "Lease Department",
+      "hi": "लीज विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "MARKET_LICENSE",
+    "slug": "market-license",
+    "name": {
+      "en": "Market & License Department",
+      "hi": "बाजार एवं लाइसेंस विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "MEAT_UNIT",
+    "slug": "meat-unit",
+    "name": {
+      "en": "Meat Unit",
+      "hi": "मांस इकाई"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "PLANNING",
+    "slug": "planning",
+    "name": {
+      "en": "Planning Department",
+      "hi": "नियोजन विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "PMAY",
+    "slug": "pmay",
+    "name": {
+      "en": "PMAY (Pradhan Mantri Awas Yojana)",
+      "hi": "प्रधानमंत्री आवास योजना"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "PROTOCOL",
+    "slug": "protocol",
+    "name": {
+      "en": "Programme Officer & Protocol",
+      "hi": "कार्यक्रम अधिकारी एवं प्रोटोकॉल"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "SECRETARY_PRO",
+    "slug": "secretary-pro",
+    "name": {
+      "en": "Council Secretary & PRO",
+      "hi": "परिषद सचिव एवं जनसंपर्क अधिकारी"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "SHELTER_KITCHEN",
+    "slug": "shelter-kitchen",
+    "name": {
+      "en": "Deendayal Antyodaya Kitchen / Rain Basera",
+      "hi": "दीनदयाल अंत्योदय रसोई / रैन बसेरा"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "STADIUM",
+    "slug": "stadium",
+    "name": {
+      "en": "Nehru Stadium",
+      "hi": "नेहरू स्टेडियम"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "TRAFFIC",
+    "slug": "traffic",
+    "name": {
+      "en": "Traffic Department",
+      "hi": "यातायात विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "TRENCHING_GROUND",
+    "slug": "trenching-ground",
+    "name": {
+      "en": "Trenching Ground",
+      "hi": "ट्रेंचिंग ग्राउंड"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "UPA_NULM",
+    "slug": "upa-nulm",
+    "name": {
+      "en": "Urban Poverty Alleviation Cell / NULM",
+      "hi": "शहरी गरीबी उपशमन प्रकोष्ठ / एन.यू.एल.एम."
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "VIDHANSABHA",
+    "slug": "vidhansabha",
+    "name": {
+      "en": "Vidhansabha Prakoshth",
+      "hi": "विधानसभा प्रकोष्ठ"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "WORKSHOP",
+    "slug": "workshop",
+    "name": {
+      "en": "Workshop Department",
+      "hi": "वर्कशॉप विभाग"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  },
+  {
+    "code": "ZOO",
+    "slug": "zoo",
+    "name": {
+      "en": "Zoo",
+      "hi": "चिड़ियाघर"
+    },
+    "coverageTier": "B",
+    "isSelectable": false,
+    "displayOrder": 500,
+    "isActive": true,
+    "sourceDocuments": [
+      "Department_Head_Contact_Details.docx"
+    ]
+  }
+]

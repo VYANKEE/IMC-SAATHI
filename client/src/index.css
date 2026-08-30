@@ -1,0 +1,103 @@
+/* Phase 1 only. Tailwind and the real design system arrive in Phase 9. */
+:root {
+  --ink: #151d28;
+  --muted: #6b7683;
+  --line: #e0ded6;
+  --paper: #faf9f5;
+  --navy: #1e3a5f;
+  --good: #0d6b5e;
+  --bad: #9e3625;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+}
+.sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.card {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.card h2 {
+  margin: 0 0 14px;
+  font-size: 15px;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 6px 16px;
+  margin: 0;
+  font-size: 14px;
+}
+dt {
+  color: var(--muted);
+}
+dd {
+  margin: 0;
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.good {
+  color: var(--good);
+  font-weight: 600;
+}
+.bad {
+  color: var(--bad);
+}
+.muted {
+  color: var(--muted);
+}
+
+code {
+  font-family: ui-monospace, Menlo, monospace;
+  background: #f2f1ec;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.footnote {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted);
+}
