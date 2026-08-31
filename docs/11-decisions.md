@@ -674,3 +674,83 @@ fetchable (e.g. a static/SSR version, or someone visits in person and
 confirms), replace the Contact row's `verified: false` /
 `verificationNote` with a real confirmation and `sourceDocument` update —
 this is meant to be provisional, not a permanent shrug.
+
+---
+
+### D19 — "About Indore" general-knowledge slice, plus a general-mode suggestions endpoint
+
+Follow-on to D18: the citizen also wants ward count, mayor's name, which
+state, why Indore is famous, and a short history — general civic-trivia
+content, not IMC service-procedure content. Same reminder as D18: no
+training step exists here, so "train it for Indore" means the same thing
+it always means in this project — add real, sourced facts.
+
+**Sourcing, fact by fact:**
+
+- **85 wards, 22 zones** — the highest-confidence fact in this set, because
+  it's not from the web at all: it's this project's OWN `zones.json` seed,
+  already cross-checked by `seed.js` ("22 zones cover wards 1-85, no gaps,
+  no duplicates") and independently corroborated by two public sources
+  (bharatlas.com, ctpaindore.com both say 85 wards). The whole existing
+  ward→zone→contact multi-hop feature already depends on this number being
+  right.
+- **Mayor: Pushyamitra Bhargav (BJP), elected 2022** — confirmed via
+  Wikipedia. This is the one genuinely time-sensitive fact here (an elected
+  position, unlike a geographic fact) — the answer text itself says so
+  explicitly ("may have changed, confirm if it really matters") rather than
+  quietly going stale like a normal fact would. Deliberately did NOT add
+  the Municipal Commissioner's name (unlike the Mayor) — Commissioner is an
+  administrative appointment that has already turned over once THIS YEAR
+  in this same research (Dilip Kumar Yadav → Kshitij Singhal, Jan 2026,
+  after a contaminated-water incident) and is evidently far more volatile
+  than an elected mayoral term; not worth the staleness risk for a "fun
+  fact" nobody in the golden-set's real question sample has ever asked.
+- **State: Madhya Pradesh, NOT the capital (Bhopal is)** — worth calling
+  out because a first WebFetch summarization pass on Indore's Wikipedia
+  page incorrectly stated Indore _is_ the state capital. Caught by
+  independent verification before writing anything down — exactly the
+  discipline this whole project is built around, applied to my own
+  research this time instead of the LLM's generation.
+- **Cleanest city (Swachh Survekshan), education hub, commercial hub,
+  street food** — corroborated across multiple news sources; the cleanest-
+  city count is hedged to a specific cited survey ("2024-25 survey, 8th
+  time") rather than asserted as the single current record, since more
+  recent 2025/2026 reporting was inconsistent across sources (some say
+  Indore retained #1, at least one says Ahmedabad took it) and guessing
+  wrong on a "we're #1" claim would be worse than citing the last clearly-
+  confirmed result.
+- **History (Holkar dynasty, Ahilyabai Holkar, 1818 British paramountcy,
+  1947 into Madhya Pradesh)** — well-established, low-controversy history;
+  kept to the broad strokes rather than more granular claims (exact
+  founding year, etc.) that had less consistent corroboration.
+
+**Changes:**
+
+1. `data/raw/about_indore.csv` (new, 5 rows) + `topicMap.js` entry →
+   `COMPLAINT_PROCEDURE` (same home as D18's `general_info`, new category
+   `about_indore`), not `needsReview`.
+2. `knowledgeChunk.repository.js`'s `findPrimaryChunksForDepartment` now
+   takes an optional `{ category }` filter (was previously
+   department-only) — needed so `about_indore`'s 5 rows can be surfaced on
+   their own rather than getting crowded out by
+   `COMPLAINT_PROCEDURE`'s other 17 complaint-filing rows when picking the
+   first N chunks. Threaded through
+   `suggestedQuestions.service.js`'s `getSuggestedQuestions` and
+   `department.service.js`'s `getSuggestedQuestionsForDepartment` down to
+   `GET /api/departments/:slug/suggested-questions?category=...` (new
+   optional query param, additive — no existing caller passes it, so
+   nothing else changes behaviour).
+3. `demo.js`: the general/no-department screen (picking "Pata nahi / kuch
+   aur", or typing straight into the free-text box) previously showed only
+   a back button and nothing to click. Now also shows a
+   "Indore ke baare mein" suggestion row fetched from
+   `/api/departments/complaint-procedure/suggested-questions?category=about_indore`
+   — real, corpus-grounded questions, same principle as every other
+   suggestion chip in this demo.
+4. `api.test.js`: one new test asserting the `?category=` query param
+   reaches the repository call.
+
+**Would change my mind:** if the mayoral term changes (2027 election, or a
+resignation), the Q&A row's text needs a manual update — there is no
+mechanism in this project that would catch that on its own, same caveat as
+every other seeded political/appointee fact.

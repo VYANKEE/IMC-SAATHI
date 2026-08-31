@@ -44,10 +44,10 @@ export function countKnowledgeChunks() {
  * `text` is identical to its parent's (see this model's own header
  * comment), so including variants would just duplicate the same question.
  */
-export function findPrimaryChunksForDepartment(departmentCode, limit = 40) {
-  return KnowledgeChunk.find({ department: departmentCode, status: 'active', isVariant: false })
-    .limit(limit)
-    .lean();
+export function findPrimaryChunksForDepartment(departmentCode, { category, limit = 40 } = {}) {
+  const filter = { department: departmentCode, status: 'active', isVariant: false };
+  if (category) filter.category = category;
+  return KnowledgeChunk.find(filter).limit(limit).lean();
 }
 
 /**

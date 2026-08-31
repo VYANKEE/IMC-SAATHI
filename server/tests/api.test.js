@@ -198,6 +198,19 @@ describe('GET /api/departments/:slug/suggested-questions', () => {
     expect(res.body.code).toBe('DEPARTMENT_NOT_FOUND');
     expect(chunkRepo.findPrimaryChunksForDepartment).not.toHaveBeenCalled();
   });
+
+  it('passes a ?category filter through to the repository (D19: about_indore slice)', async () => {
+    deptRepo.findDepartmentBySlug.mockResolvedValue(ELECTRICAL);
+    chunkRepo.findPrimaryChunksForDepartment.mockResolvedValue([]);
+
+    await request(app).get(
+      '/api/departments/electrical-mechanical/suggested-questions?category=about_indore'
+    );
+
+    expect(chunkRepo.findPrimaryChunksForDepartment).toHaveBeenCalledWith('ELECTRICAL', {
+      category: 'about_indore',
+    });
+  });
 });
 
 describe('error handling', () => {

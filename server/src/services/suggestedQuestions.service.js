@@ -51,7 +51,7 @@ export function pickSuggestedQuestions(chunks, limit = 5) {
   return questions;
 }
 
-export async function getSuggestedQuestions(departmentCode, limit = 5) {
-  const chunks = await findPrimaryChunksForDepartment(departmentCode);
+export async function getSuggestedQuestions(departmentCode, limit = 5, { category } = {}) {
+  const chunks = await findPrimaryChunksForDepartment(departmentCode, { category });
   return pickSuggestedQuestions(chunks, limit);
 }

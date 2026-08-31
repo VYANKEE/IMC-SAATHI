@@ -32,10 +32,14 @@
  *   answer, so the UI should say so up front rather than let the citizen
  *   find out after typing a question. See docs/11-decisions.md D17.
  *
- * GET /api/departments/:slug/suggested-questions?limit=5
+ * GET /api/departments/:slug/suggested-questions?limit=5&category=<optional>
  *   -> { success: true, data: { departmentId, slug, questions: string[] } }
  *   Real questions extracted from that department's actual knowledge base
  *   content (services/suggestedQuestions.service.js) -- not hand-written.
+ *   `category` narrows to one KnowledgeChunk category within the
+ *   department -- used here for complaint-procedure's "about_indore"
+ *   civic-trivia slice (D19) so it doesn't get crowded out by the other 17
+ *   complaint-filing questions in that same department.
  *
  * POST /api/chat   body: { "query": "<citizen text, 2-1000 chars>" }
  *   Response envelope (always): { success: boolean, data?: {...}, code?,
@@ -219,6 +223,22 @@ function renderChatArea() {
     backBtn.textContent = '← Vibhaag chunein';
     backBtn.addEventListener('click', resetToPicker);
     chatFlowEl.appendChild(backBtn);
+
+    // No specific department picked (either "Pata nahi / kuch aur" or a
+    // citizen who typed straight into the free-text box) -- surface a
+    // small set of real, corpus-grounded "about Indore" questions (D19)
+    // instead of leaving this screen with nothing to click.
+    const label3 = document.createElement('p');
+    label3.className = 'suggested-label';
+    label3.textContent = 'Indore ke baare mein';
+    chatFlowEl.appendChild(label3);
+
+    const generalChipsWrap = document.createElement('div');
+    generalChipsWrap.className = 'chips';
+    generalChipsWrap.id = 'general-chips';
+    generalChipsWrap.innerHTML = '<span class="chip loading">Load ho raha hai…</span>';
+    chatFlowEl.appendChild(generalChipsWrap);
+    loadGeneralInfoSuggestions();
   }
 
   messagesEl = document.createElement('div');
@@ -256,6 +276,36 @@ async function loadSuggestedQuestions(slug) {
     });
   } catch {
     if (wrap) wrap.innerHTML = '<span class="chip loading">Suggestions load nahi ho paaye.</span>';
+  }
+}
+
+/** "About Indore" civic-trivia questions (wards, mayor, state, history --
+ *  D19) for the general/no-department screen. These live under the
+ *  COMPLAINT_PROCEDURE department's "about_indore" category, so this reuses
+ *  the same suggested-questions endpoint with a category filter rather than
+ *  being a separate API. */
+async function loadGeneralInfoSuggestions() {
+  const wrap = document.getElementById('general-chips');
+  try {
+    const res = await fetch(
+      '/api/departments/complaint-procedure/suggested-questions?category=about_indore&limit=5'
+    );
+    const body = await res.json();
+    if (!res.ok || !body.success) throw new Error(body.message || 'Failed to load suggestions');
+    const questions = body.data.questions;
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    if (questions.length === 0) return; // no chips, no big deal -- free text still works
+    questions.forEach((q) => {
+      const chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.type = 'button';
+      chip.textContent = q;
+      chip.addEventListener('click', () => sendQuery(q));
+      wrap.appendChild(chip);
+    });
+  } catch {
+    if (wrap) wrap.innerHTML = '';
   }
 }
 

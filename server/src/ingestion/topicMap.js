@@ -129,6 +129,22 @@ export const TOPICS = {
     category: 'general_info',
   },
 
+  // "Tell me about Indore" civic trivia (wards, mayor, state, history, why
+  // it's famous) -- explicitly requested (D18 follow-up) so general/civic
+  // questions get a real grounded answer instead of the fallback. Same
+  // COMPLAINT_PROCEDURE home and same sourcing discipline as general_info:
+  // the ward count is corroborated by this project's OWN already-validated
+  // zones.json (22 zones, wards 1-85, cross-checked by seed.js), the
+  // highest-confidence fact in this whole set; the mayor's name is a
+  // time-sensitive political fact and is phrased with an explicit
+  // "may have changed" hedge in the answer text itself rather than stated
+  // as a flat, unqualified fact. See docs/11-decisions.md D19.
+  about_indore: {
+    kind: 'structured_qa',
+    department: 'COMPLAINT_PROCEDURE',
+    category: 'about_indore',
+  },
+
   imc_pwd_revenue_chatbot_faq_dataset_updated: {
     kind: 'wide_dataset',
     // department/category come from each row's own columns, not from here.
