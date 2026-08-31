@@ -754,3 +754,69 @@ it always means in this project — add real, sourced facts.
 resignation), the Q&A row's text needs a manual update — there is no
 mechanism in this project that would catch that on its own, same caveat as
 every other seeded political/appointee fact.
+
+---
+
+### D20 — Retrieval falls back to unfiltered search when the classified department has zero content; classifier prompt no longer defaults general Indore questions to out-of-scope
+
+**Two real bugs from testing D18/D19's new content, both about robustness,
+not the new content itself:**
+
+1. "nagar nigam kaha par located hai indore ka?" classified confidently
+   into `COMMISSIONER_OFFICE` (tier B) instead of `COMPLAINT_PROCEDURE`
+   (where D18's address content actually lives). `retrieve.js`'s
+   department filter then searched _only_ `COMMISSIONER_OFFICE`'s chunks —
+   which is zero, by design, for every tier B department — so retrieval
+   came back empty and the citizen got the generic fallback despite the
+   real answer sitting right there in the corpus under a different
+   department.
+2. "Indore ke mayor kaun hain?" and "Indore kis state mein hai" (the exact
+   text of two of D19's own suggested-question chips) were classified
+   `isOutOfScope: true` instead of routed to `COMPLAINT_PROCEDURE` at all —
+   `classify.department.md` v1 only ever framed the department list around
+   "civic issues/complaints", so a pure city-trivia question had nothing
+   in the prompt telling the classifier it was in scope.
+
+Both are the same underlying pattern: this system added genuinely
+general-knowledge content (D18/D19) into a classifier and retrieval
+pipeline that was designed and prompted around _complaint/service_
+queries, and neither layer knew that had happened.
+
+**Not a training problem.** Restating this a third time in this log
+because it keeps coming up: there is no fine-tuning step anywhere in this
+project. Every fix below is either a prompt change (what the classifier is
+told) or a retrieval-logic change (what happens with what it decides) —
+the two levers this architecture actually has.
+
+**Fixes:**
+
+1. `classify.department.md` v1 → v2: explicitly states that
+   `COMPLAINT_PROCEDURE` also covers general "about IMC/Indore" questions
+   (head office, website, wards, mayor, state, city facts), that these
+   should not be marked `isOutOfScope`, and that a tier A department
+   should be preferred over a tier B one whenever a query could plausibly
+   fit either — a tier B department can only ever answer with its bare
+   contact record, never a real answer.
+2. `retrieve.js`: when a department filter is confident enough to apply
+   (`>= 0.6`, unchanged) but the filtered search comes back with **zero**
+   results, retry once with an **unfiltered** search rather than returning
+   nothing. This is the general-purpose fix — it doesn't just cover
+   `COMMISSIONER_OFFICE`, it covers _any_ future case where the classifier
+   confidently names a department that turns out to have no matching
+   content for this particular query (every tier B department, or a tier A
+   department that's momentarily thin on a topic). Same
+   "filtering-on-a-wrong-guess-is-worse-than-not-filtering" principle the
+   confidence threshold itself already encodes, just triggered by an
+   empirical empty result instead of only by low confidence going in.
+   Returns a new `departmentFilterFellBack` flag (surfaced through
+   `generateAnswer.js`'s response) so this is visible/debuggable, not a
+   silent retry.
+
+**Would change my mind:** if this fallback starts returning noisy,
+low-relevance results for genuinely-filtered queries in practice (e.g. a
+PWD query with zero PWD chunks silently answering from REVENUE content
+instead), tighten it to also require a minimum score on the _unfiltered_
+retry, not just "results.length > 0" — not implemented now because the
+concrete case observed here (confident pick into a content-less
+department) is common and clearly worth fixing, while noisy fallback
+matches have not been observed yet.

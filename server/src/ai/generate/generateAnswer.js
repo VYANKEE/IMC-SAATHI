@@ -97,10 +97,13 @@ export function createGenerator({ apiKey, embeddingModel, chatModel, dimensions 
       };
     }
 
-    const { results, departmentFilterApplied } = await retriever.retrieve(query, {
-      departmentId: classification.departmentId ?? undefined,
-      departmentConfidence: classification.confidence ?? 0,
-    });
+    const { results, departmentFilterApplied, departmentFilterFellBack } = await retriever.retrieve(
+      query,
+      {
+        departmentId: classification.departmentId ?? undefined,
+        departmentConfidence: classification.confidence ?? 0,
+      }
+    );
 
     const facts = await lookupFacts({
       departmentCode: classification.departmentId ?? undefined,
@@ -155,6 +158,12 @@ export function createGenerator({ apiKey, embeddingModel, chatModel, dimensions 
         : null,
       classification,
       departmentFilterApplied,
+      // true when the classifier's department pick was confident enough to
+      // filter on, but that department had zero indexed content for this
+      // query and retrieve.js fell back to an unfiltered search instead of
+      // returning nothing (docs/11-decisions.md D20). Surfaced here so this
+      // is visible/debuggable rather than a silent behind-the-scenes retry.
+      departmentFilterFellBack,
       retrievedCount: results.length,
     };
   }

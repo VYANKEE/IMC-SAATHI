@@ -47,14 +47,42 @@ export function createRetriever({ apiKey, model, dimensions }) {
 
     const departmentFilterApplied =
       Boolean(departmentId) && departmentConfidence >= DEPARTMENT_FILTER_CONFIDENCE_THRESHOLD;
-    const results = await vectorSearchKnowledgeChunks({
+    let results = await vectorSearchKnowledgeChunks({
       queryVector,
       departmentId: departmentFilterApplied ? departmentId : undefined,
       limit,
       numCandidates,
     });
 
-    return { results, departmentFilterApplied };
+    // A confident department guess that turns out to have NO indexed
+    // content at all (every tier B department, by design — docs/03-rag.md:
+    // "tier B has only a name and contact, never invent a procedure" — plus
+    // any tier A department that is momentarily content-less, see D17/D19's
+    // own COMPLAINT_PROCEDURE additions) is worse than an unfiltered
+    // search: the citizen's real question might be answerable from a
+    // *different* department's chunks that the classifier just didn't
+    // name, and a strict empty-handed filter throws that possibility away.
+    // Retry once, unfiltered, rather than returning nothing to
+    // generateAnswer.js — same "filtering on a wrong guess is worse than
+    // not filtering" principle this threshold itself already follows, just
+    // applied when the filter empirically found zero content instead of
+    // only when confidence was low going in. See docs/11-decisions.md D20.
+    let departmentFilterFellBack = false;
+    if (departmentFilterApplied && results.length === 0) {
+      results = await vectorSearchKnowledgeChunks({
+        queryVector,
+        departmentId: undefined,
+        limit,
+        numCandidates,
+      });
+      departmentFilterFellBack = true;
+    }
+
+    return {
+      results,
+      departmentFilterApplied: departmentFilterApplied && !departmentFilterFellBack,
+      departmentFilterFellBack,
+    };
   }
 
   return { retrieve };
