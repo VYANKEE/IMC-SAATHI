@@ -1,4 +1,5 @@
 import * as repo from '../repositories/department.repository.js';
+import { countActiveChunksByDepartment } from '../repositories/knowledgeChunk.repository.js';
 import { ApiError } from '../utils/ApiError.js';
 import { getSuggestedQuestions } from './suggestedQuestions.service.js';
 
@@ -9,7 +10,7 @@ import { getSuggestedQuestions } from './suggestedQuestions.service.js';
  */
 const pick = (obj, lang) => (obj ? (obj[lang] ?? obj.en ?? null) : null);
 
-function toListItem(d, lang) {
+function toListItem(d, lang, activeChunkCounts) {
   return {
     id: d._id,
     code: d.code,
@@ -18,6 +19,16 @@ function toListItem(d, lang) {
     description: pick(d.description, lang),
     coverageTier: d.coverageTier,
     isSelectable: d.isSelectable,
+    // True once real ingested content exists for this department. A tier A,
+    // isSelectable department is not guaranteed this -- e.g. HOUSING is
+    // selectable but every one of its source rows is quarantined (register
+    // #6: the only source document describes a DIFFERENT municipality's
+    // procedure). Lets the demo/frontend tell "will actually answer" apart
+    // from "listed as available" instead of finding out only after a
+    // citizen has already picked it and typed a question. See
+    // knowledgeChunk.repository.js's countActiveChunksByDepartment and
+    // docs/11-decisions.md D17.
+    hasVerifiedContent: activeChunkCounts ? (activeChunkCounts.get(d.code) ?? 0) > 0 : null,
   };
 }
 
@@ -29,13 +40,16 @@ function toListItem(d, lang) {
  * assistant to invent a procedure. See docs/00-discovery.md.
  */
 export async function listSelectableDepartments(lang = 'en') {
-  const rows = await repo.findSelectableDepartments();
-  return rows.map((d) => toListItem(d, lang));
+  const [rows, activeChunkCounts] = await Promise.all([
+    repo.findSelectableDepartments(),
+    countActiveChunksByDepartment(),
+  ]);
+  return rows.map((d) => toListItem(d, lang, activeChunkCounts));
 }
 
 export async function listAllDepartments(lang = 'en') {
   const rows = await repo.findAllDepartments();
-  return rows.map((d) => toListItem(d, lang));
+  return rows.map((d) => toListItem(d, lang, null));
 }
 
 export async function getDepartmentBySlug(slug, lang = 'en') {

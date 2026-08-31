@@ -22,8 +22,15 @@
  * ============================================================================
  * GET /api/departments?lang=en
  *   -> { success: true, data: { departments: [{id, code, slug, name,
- *        description, coverageTier, isSelectable}], count } }
+ *        description, coverageTier, isSelectable, hasVerifiedContent}],
+ *        count } }
  *   Only tier-A, citizen-selectable departments (see Department.js).
+ *   hasVerifiedContent is true only once real ingested KB content exists
+ *   for that department -- a tier-A, selectable department can still be
+ *   false (e.g. every source row quarantined for a data-quality reason).
+ *   false means picking it will only ever get the low-confidence fallback
+ *   answer, so the UI should say so up front rather than let the citizen
+ *   find out after typing a question. See docs/11-decisions.md D17.
  *
  * GET /api/departments/:slug/suggested-questions?limit=5
  *   -> { success: true, data: { departmentId, slug, questions: string[] } }
@@ -132,11 +139,17 @@ function renderDepartmentPicker() {
 
   departments.forEach((d) => {
     const btn = document.createElement('button');
-    btn.className = 'dept-card';
+    btn.className = d.hasVerifiedContent === false ? 'dept-card limited' : 'dept-card';
     btn.type = 'button';
     btn.innerHTML = '<div class="dept-name"></div><div class="dept-desc"></div>';
     btn.querySelector('.dept-name').textContent = d.name;
     btn.querySelector('.dept-desc').textContent = d.description || '';
+    if (d.hasVerifiedContent === false) {
+      const flag = document.createElement('div');
+      flag.className = 'dept-flag';
+      flag.textContent = 'Verified jaankari jald aayegi';
+      btn.appendChild(flag);
+    }
     btn.addEventListener('click', () => selectDepartment(d));
     grid.appendChild(btn);
   });
@@ -169,17 +182,36 @@ function renderChatArea() {
     banner.appendChild(changeBtn);
     chatFlowEl.appendChild(banner);
 
-    const label2 = document.createElement('p');
-    label2.className = 'suggested-label';
-    label2.textContent = 'Suggested sawaal';
-    chatFlowEl.appendChild(label2);
+    if (selectedDepartment.hasVerifiedContent === false) {
+      // No point calling suggested-questions -- there is nothing real to
+      // suggest, and offering an empty "no suggestion, type your own" chip
+      // just walks the citizen into the generic low-confidence fallback
+      // with no explanation. Be upfront, and surface the department's real
+      // contact instead so there's still a useful next step.
+      const note = document.createElement('div');
+      note.className = 'limited-note';
+      note.innerHTML =
+        '<strong>Verified jaankari jald aayegi.</strong> Iss vibhaag ke liye humare paas abhi verified procedure details nahi hain — neeche diya gaya contact istemaal karein, ya apna sawaal type karke dekh sakte hain.';
+      chatFlowEl.appendChild(note);
 
-    const chipsWrap = document.createElement('div');
-    chipsWrap.className = 'chips';
-    chipsWrap.id = 'suggested-chips';
-    chipsWrap.innerHTML = '<span class="chip loading">Load ho raha hai…</span>';
-    chatFlowEl.appendChild(chipsWrap);
-    loadSuggestedQuestions(selectedDepartment.slug);
+      const contactWrap = document.createElement('div');
+      contactWrap.id = 'dept-contact';
+      contactWrap.innerHTML = '<span class="chip loading">Contact load ho raha hai…</span>';
+      chatFlowEl.appendChild(contactWrap);
+      loadDepartmentContact(selectedDepartment.slug);
+    } else {
+      const label2 = document.createElement('p');
+      label2.className = 'suggested-label';
+      label2.textContent = 'Suggested sawaal';
+      chatFlowEl.appendChild(label2);
+
+      const chipsWrap = document.createElement('div');
+      chipsWrap.className = 'chips';
+      chipsWrap.id = 'suggested-chips';
+      chipsWrap.innerHTML = '<span class="chip loading">Load ho raha hai…</span>';
+      chatFlowEl.appendChild(chipsWrap);
+      loadSuggestedQuestions(selectedDepartment.slug);
+    }
   } else {
     const backBtn = document.createElement('button');
     backBtn.className = 'chip';
@@ -224,6 +256,32 @@ async function loadSuggestedQuestions(slug) {
     });
   } catch {
     if (wrap) wrap.innerHTML = '<span class="chip loading">Suggestions load nahi ho paaye.</span>';
+  }
+}
+
+/** Real contact for a hasVerifiedContent:false department -- the useful
+ *  next step when there's no procedure content to suggest questions from. */
+async function loadDepartmentContact(slug) {
+  const wrap = document.getElementById('dept-contact');
+  try {
+    const res = await fetch(`/api/departments/${encodeURIComponent(slug)}?lang=en`);
+    const body = await res.json();
+    if (!res.ok || !body.success) throw new Error(body.message || 'Failed to load department');
+    const contact = (body.data.contacts || []).find((c) => c.isPrimary) || body.data.contacts?.[0];
+    if (!wrap) return;
+    if (!contact) {
+      wrap.innerHTML = '';
+      return;
+    }
+    const parts = [contact.name, contact.designation, contact.mobile].filter(Boolean);
+    wrap.innerHTML = '';
+    const row = document.createElement('div');
+    row.className = 'fact-row';
+    row.innerHTML = '<strong>Contact: </strong>';
+    row.appendChild(document.createTextNode(parts.join(' — ')));
+    wrap.appendChild(row);
+  } catch {
+    if (wrap) wrap.innerHTML = '';
   }
 }
 

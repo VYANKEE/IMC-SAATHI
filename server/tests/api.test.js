@@ -23,6 +23,7 @@ vi.mock('../src/repositories/zone.repository.js', () => ({
 }));
 vi.mock('../src/repositories/knowledgeChunk.repository.js', () => ({
   findPrimaryChunksForDepartment: vi.fn(),
+  countActiveChunksByDepartment: vi.fn(),
 }));
 
 const deptRepo = await import('../src/repositories/department.repository.js');

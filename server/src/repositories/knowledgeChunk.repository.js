@@ -51,6 +51,30 @@ export function findPrimaryChunksForDepartment(departmentCode, limit = 40) {
 }
 
 /**
+ * How many real (non-variant, active) chunks each department actually has.
+ * A tier A, isSelectable department can still end up with zero active
+ * chunks -- either every source row for it failed validation/quarantine
+ * (e.g. HOUSING: register #6, its only source describes a DIFFERENT
+ * municipality's procedure and is gated until a human re-sources it), or,
+ * before docs/11-decisions.md D17, an ingestion mislabeling bug (SEWERAGE
+ * had a real department entry but its content was tagged under the wrong
+ * department code). Either way, a department picker built from
+ * Department.isSelectable alone can offer a citizen a department that can
+ * only ever answer with the generic low-confidence fallback -- this lets
+ * callers (department.service.js's listSelectableDepartments) tell the two
+ * apart from a *real* zero-question department and be honest about it in
+ * the UI instead of silently failing after the citizen has already picked
+ * it and typed a question.
+ */
+export async function countActiveChunksByDepartment() {
+  const rows = await KnowledgeChunk.aggregate([
+    { $match: { status: 'active', isVariant: false } },
+    { $group: { _id: '$department', count: { $sum: 1 } } },
+  ]);
+  return new Map(rows.map((r) => [r._id, r.count]));
+}
+
+/**
  * The one retrieval read this whole corpus exists for — docs/03-rag.md's
  * $vectorSearch pipeline. `queryVector` must already be embedded with
  * input_type: 'query' (asymmetric retrieval — see nvidiaEmbedder.js). The
