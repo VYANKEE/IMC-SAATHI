@@ -1,3 +1,5 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -10,6 +12,9 @@ import { notFound } from './middleware/notFound.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { ApiError } from './utils/ApiError.js';
 import routes from './routes/index.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicDir = path.join(__dirname, '..', 'public');
 
 /**
  * Builds the Express app but does NOT listen.
@@ -46,6 +51,14 @@ export function createApp() {
 
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+
+  // The single-page demo (public/demo.html + demo.js) -- NOT the Phase 9
+  // frontend, see that directory's own comment. Served from this same app
+  // (not the client/ workspace) so it needs no separate dev server and no
+  // extra CORS origin beyond what's already allow-listed above. Mounted
+  // before /api so demo.html/demo.js resolve first; falls through to the
+  // API routes and then notFound for anything it doesn't have.
+  app.use(express.static(publicDir));
 
   app.use('/api', routes);
 

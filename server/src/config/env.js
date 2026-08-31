@@ -12,9 +12,14 @@ const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(5000),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']).default('info'),
+  // Includes localhost:5000 (this server's own default PORT) alongside the
+  // Vite client's 5173 -- the single-page demo (public/demo.html) is served
+  // by this same Express app, and browsers send an Origin header even on a
+  // same-origin POST fetch, so the demo's own origin has to be allow-listed
+  // too or its /api/chat calls 403 with CORS_NOT_ALLOWED.
   ALLOWED_ORIGINS: z
     .string()
-    .default('http://localhost:5173')
+    .default('http://localhost:5173,http://localhost:5000')
     .transform((s) =>
       s
         .split(',')
