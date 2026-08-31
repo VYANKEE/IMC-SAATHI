@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import mongoose from 'mongoose';
-import { Department, Zone, Contact } from '../src/models/index.js';
+import { Department, Zone, Contact, KnowledgeChunk } from '../src/models/index.js';
 import '../src/models/ExternalAuthority.js';
 
 /**
@@ -72,6 +72,59 @@ describe('Contact schema', () => {
   });
 });
 
+describe('KnowledgeChunk schema', () => {
+  const valid = {
+    chunkId: 'abc123',
+    parentChunkId: 'abc123',
+    embeddingText:
+      '[Fire Department | fire_noc | what_is_fire_noc]\nQ: What is fire NOC?\nA: A certificate.',
+    text: '[Fire Department | fire_noc | what_is_fire_noc]\nQ: What is fire NOC?\nA: A certificate.',
+    department: 'FIRE',
+    category: 'fire_noc',
+    language: 'en',
+    sourceFile: 'Fire_NOC.csv',
+    sourceRowRef: 'row_0',
+    status: 'active',
+  };
+
+  it('accepts a valid primary chunk', () => {
+    const err = new KnowledgeChunk(valid).validateSync();
+    expect(err).toBeUndefined();
+  });
+
+  it('requires embeddingText separately from text', () => {
+    const { embeddingText: _drop, ...rest } = valid;
+    const err = new KnowledgeChunk(rest).validateSync();
+    expect(err.errors.embeddingText).toBeDefined();
+  });
+
+  it('rejects a language outside en/hi/hinglish', () => {
+    const err = new KnowledgeChunk({ ...valid, language: 'fr' }).validateSync();
+    expect(err.errors.language).toBeDefined();
+  });
+
+  it('rejects status values other than active — quarantined rows never reach this collection', () => {
+    const err = new KnowledgeChunk({ ...valid, status: 'quarantined' }).validateSync();
+    expect(err.errors.status).toBeDefined();
+  });
+
+  it('allows embedding to be unset (before the embed script has run)', () => {
+    const err = new KnowledgeChunk(valid).validateSync();
+    expect(err).toBeUndefined();
+  });
+
+  it('accepts a variant row whose embeddingText differs from its parent text', () => {
+    const variant = {
+      ...valid,
+      chunkId: 'abc123_v1',
+      isVariant: true,
+      embeddingText: 'Fire NOC kaise apply karu?',
+    };
+    const err = new KnowledgeChunk(variant).validateSync();
+    expect(err).toBeUndefined();
+  });
+});
+
 describe('model registry', () => {
   it('registers exactly the models we have defined so far', () => {
     // This test is deliberately strict. When it fails after you add a model,
@@ -81,6 +134,7 @@ describe('model registry', () => {
       'Contact',
       'Department',
       'ExternalAuthority',
+      'KnowledgeChunk',
       'Zone',
     ]);
   });

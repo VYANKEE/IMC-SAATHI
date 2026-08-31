@@ -290,3 +290,91 @@ caught, not swept away.
 **Would change my mind:** a real Node `.numbers` reader appearing and being
 worth the dependency, or Apple changing the format such that the CSV export
 loses information the JSON columns need.
+
+## D15 — Embeddings moved from Gemini to NVIDIA NIM (`llama-3.2-nv-embedqa-1b-v2`)
+
+**Context.** D13 chose Gemini's `gemini-embedding-001` specifically for its documented
+multilingual shared vector space. Setting up billing/access on Google AI Studio
+turned into enough friction that we looked for an alternative before writing a
+single line of retrieval code against it — cheaper to switch now than after
+Phase 5's eval harness is built around one provider's embedding space.
+
+**Decision.** Use NVIDIA's hosted NIM catalog (build.nvidia.com) instead —
+specifically `nvidia/llama-3.2-nv-embedqa-1b-v2`, a retrieval/QA-purpose-built
+embedding model. Two things made it a genuine like-for-like replacement, not
+just "whatever's available":
+
+1. **Language coverage.** It's evaluated across 26 languages including Hindi —
+   the same requirement D13 screened for. (`nemotron-3-embed-1b`, also on the
+   catalog, explicitly evaluates "Hindi" _and_ "Hinglish" as separate named
+   languages and is worth a follow-up eval once Phase 5's golden set exists —
+   but v1 goes with the QA-purpose-built model first.)
+2. **Exact dimension control.** It supports Matryoshka truncation to
+   384/512/768/1024/2048 — an actual API parameter, not a guess. `.env`'s
+   `EMBEDDING_DIMENSIONS=768` stays correct and enforced, which the Gemini
+   path (via `@langchain/google-genai`, which doesn't expose
+   `outputDimensionality` at all — verified by reading its source, see the
+   removed `geminiEmbedder.js`) could not guarantee.
+
+**Architecture impact — smaller than expected.** NVIDIA's NIM endpoints are
+OpenAI-compatible REST APIs; there's no JS LangChain package for them (Python
+has `langchain_nvidia_ai_endpoints`, JS doesn't). Rather than force-fit
+`@langchain/openai` around a client it wasn't built for — NVIDIA's embedding
+API needs an `input_type: "query" | "passage"` parameter LangChain's
+`OpenAIEmbeddings` has no slot for, and getting that wrong would silently
+degrade retrieval quality on an asymmetric-retrieval-tuned model — this uses a
+plain `fetch()` call behind the same `src/ai/embeddings/` adapter interface
+`geminiEmbedder.js` already established. Nothing outside that one file needed
+to change shape. This is, if anything, a point in favor of the adapter
+pattern D13 set up: swapping the vendor underneath it was a same-file change.
+
+**What this does NOT decide.** Phase 6's chat/generation model is still open —
+Gemini, NVIDIA-hosted Llama/Nemotron, or something else entirely. That's a
+separate decision when we get there, not a consequence of this one.
+
+**Would change my mind:** a JS `langchain_nvidia_ai_endpoints` equivalent
+shipping and being worth the dependency, or NVIDIA's free-tier rate limits
+proving too tight for a 200-row embedding batch in practice.
+
+**Addendum (2026-08-31) — `llama-3.2-nv-embedqa-1b-v2` hit end-of-life.** First
+real `npm run embed` against the live NVIDIA API returned `410 Gone`: the
+model "reached its end of life on 2026-05-18" — it was already retired by the
+time D15 was written, something build.nvidia.com's own catalog page didn't
+surface clearly enough to catch beforehand. Switched
+`NVIDIA_EMBEDDING_MODEL` to `nvidia/llama-nemotron-embed-1b-v2`, its direct
+successor: same 1B parameter class, same 26-language eval set (Hindi
+included), same `integrate.api.nvidia.com/v1/embeddings` endpoint and the
+same `input_type: "query" | "passage"` requirement — no code changes needed
+beyond the model name string in `.env`. One open question the public API
+reference doesn't clearly confirm: whether this newer model still honours the
+`dimensions` request field for Matryoshka truncation to 768 (the older model
+did). `nvidiaEmbedder.js` still sends it, and `scripts/embed.js` already
+detects and warns loudly if the returned vector length doesn't match
+`EMBEDDING_DIMENSIONS` — so a real `npm run embed` run is the actual test,
+not the docs.
+
+**Addendum 2 (2026-08-31) — second guess also EOL; asked NVIDIA directly
+instead of guessing a third name.** `llama-nemotron-embed-1b-v2` (Addendum 1)
+also came back `410 Gone` (retired 2026-08-25, six days before we tried it —
+NVIDIA's free-tier catalog is churning faster than search-indexed docs can
+track). Wrote a throwaway diagnostic, `scripts/list-nvidia-models.js`, that
+hits `GET /v1/models` with the real key instead of trusting docs/search
+results again — ground truth beats a third guess. It returned 7
+embedding-capable models this account can currently reach; picked
+**`nvidia/nemotron-3-embed-1b`** (released July 2026, so not stale) because
+its model card is the only one of the seven that evaluates Hindi _and_
+Hinglish as separate named languages, matching the exact requirement D13
+first screened for.
+
+One real architecture consequence: unlike the two deprecated models, this
+one has no `dimensions` request parameter at all — it always returns a
+native 2048-dim vector. NVIDIA's own model card documents Matryoshka
+truncation as something the caller does client-side (slice to N dimensions,
+then re-normalize/L2 the slice — an un-renormalized slice is not a unit
+vector and would subtly corrupt cosine similarity). Added
+`truncateEmbedding()` to `nvidiaEmbedder.js` to do exactly that, covered by
+`tests/nvidiaEmbedder.test.js`, so `EMBEDDING_DIMENSIONS=768` is still
+honoured even though NVIDIA itself never sees that number.
+
+`scripts/list-nvidia-models.js` is a one-off, not wired into `package.json`
+— safe to delete once this model is confirmed working end-to-end.

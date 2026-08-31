@@ -25,6 +25,12 @@ const schema = z.object({
   // Added in later phases. Optional now so Phase 1 boots on an empty .env.
   MONGODB_URI: z.string().optional(),
   GEMINI_API_KEY: z.string().optional(),
+  GEMINI_CHAT_MODEL: z.string().default('gemini-2.5-flash'),
+
+  // Embeddings moved to NVIDIA NIM — docs/11-decisions.md D15.
+  NVIDIA_API_KEY: z.string().optional(),
+  NVIDIA_EMBEDDING_MODEL: z.string().default('nvidia/nemotron-3-embed-1b'),
+  EMBEDDING_DIMENSIONS: z.coerce.number().int().positive().default(768),
 });
 
 const parsed = schema.safeParse(process.env);

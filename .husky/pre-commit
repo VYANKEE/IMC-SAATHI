@@ -1,4 +1,13 @@
-npx lint-staged
+npx lint-staged --no-stash
+
+# --no-stash: lint-staged's default flow stashes unstaged changes before
+# running formatters so it can restore them if something fails. That stash
+# step (`git stash create`/`store`) turned out to be unreliable in at least
+# one dev environment on this project (a FUSE-mounted repo) -- it failed
+# with a generic "git error" even though prettier itself ran fine once the
+# stash step was skipped. We don't rely on partial-hunk staging in this
+# workflow (files are staged whole), so the safety net --no-stash disables
+# isn't something we lean on anyway.
 
 # lint-staged runs prettier per-file, but ESLint's flat config lives inside
 # each workspace (server/eslint.config.js, client/eslint.config.js) — there

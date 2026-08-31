@@ -13,10 +13,13 @@
     "seed": "node scripts/seed.js",
     "seed:check": "node scripts/seed.js --dry-run",
     "ingest": "node scripts/ingest.js",
-    "ingest:check": "node scripts/ingest.js --dry-run"
+    "ingest:check": "node scripts/ingest.js --dry-run",
+    "embed": "node scripts/embed.js",
+    "embed:check": "node scripts/embed.js --dry-run"
   },
   "dependencies": {
     "@langchain/core": "^0.3.26",
+    "@langchain/google-genai": "^0.1.9",
     "@langchain/textsplitters": "^0.1.0",
     "cors": "^2.8.5",
     "csv-parse": "^5.6.0",

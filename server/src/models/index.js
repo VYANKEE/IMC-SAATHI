@@ -9,4 +9,5 @@ export { Department } from './Department.js';
 export { Zone } from './Zone.js';
 export { Contact } from './Contact.js';
 export { ExternalAuthority } from './ExternalAuthority.js';
+export { KnowledgeChunk } from './KnowledgeChunk.js';
 export { localizedString, localizedStringOptional } from './localizedString.js';
