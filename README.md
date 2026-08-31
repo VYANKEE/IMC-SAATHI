@@ -7,8 +7,14 @@ IMC department handles their problem and what to do about it — answering only
 from official IMC source documents, with citations — plus a complaint portal
 that turns that answer into a tracked grievance.
 
-> **Status:** Phase 1 of 14 — repository foundation.
-> Full plan in [`docs/10-roadmap.md`](docs/10-roadmap.md).
+> **Status:** Backend phases 0–7 done — DB + seeds, ingestion pipeline,
+> retrieval, grounded generation, and `POST /api/chat` all work end to end
+> against real MongoDB Atlas + NVIDIA NIM. Phase 8 (auth) is explicitly
+> deferred. Phase 9 (the real frontend) is separate, in-progress work — see
+> [`server/public/demo.html`](server/public/demo.html) below for what the
+> backend currently supports and the exact API shapes to build against.
+> Full plan in [`docs/10-roadmap.md`](docs/10-roadmap.md), what changed
+> along the way in [`docs/11-decisions.md`](docs/11-decisions.md).
 
 ---
 
@@ -38,7 +44,7 @@ Details: [`docs/03-rag.md`](docs/03-rag.md)
 | Backend          | Node + Express 5                         | D4                                                |
 | Database         | MongoDB Atlas                            | D5                                                |
 | Vector search    | Atlas Vector Search                      | D3 — zero extra infrastructure                    |
-| LLM + embeddings | Gemini, behind a provider interface      | D1, D2                                            |
+| LLM + embeddings | NVIDIA NIM (chat + embeddings)           | D1, D2, D15, D16                                  |
 | Auth             | Firebase (phone OTP primary)             | D6                                                |
 | Media            | Cloudinary, authenticated uploads        | D8                                                |
 | Deploy           | Vercel + Render + Atlas                  | D9                                                |
@@ -51,17 +57,29 @@ Details: [`docs/03-rag.md`](docs/03-rag.md)
 # 1. install (npm workspaces installs server + client together)
 npm install
 
-# 2. create your local env file
-cp .env.example .env        # Windows: copy .env.example .env
+# 2. create your local env files — one per workspace, not a shared root one
+cp server/.env.example server/.env    # Windows: copy server\.env.example server\.env
+cp client/.env.example client/.env    # Windows: copy client\.env.example client\.env
+# then fill in server/.env: MONGODB_URI and NVIDIA_API_KEY at minimum —
+# see server/.env.example's own comments for what each variable is for.
 
-# 3. run the API
-npm run dev
+# 3. (first time only, needs the credentials from step 2) build the
+#    knowledge base: turn server/data/raw/* into embedded, searchable
+#    chunks and seed departments/zones/contacts into Mongo.
+npm run ingest --workspace server   # local only, no network/credentials needed
+npm run embed --workspace server    # calls NVIDIA + writes to MongoDB
+npm run seed --workspace server     # writes departments/zones/contacts to MongoDB
 
-# 4. check it
+# 4. run the API
+npm run dev:server
+
+# 5. check it
 curl http://localhost:5000/api/health
+# and see the working reference chat flow at http://localhost:5000/
+# (server/public/demo.html — see "Handover to the frontend team" below)
 ```
 
-Expected response:
+Expected health-check response:
 
 ```json
 { "success": true, "data": { "status": "ok", "service": "imc-saathi-api", "...": "..." } }
@@ -70,6 +88,7 @@ Expected response:
 Other commands:
 
 ```bash
+npm run dev          # API + client together (client is an empty Vite scaffold today)
 npm run dev:server   # API only
 npm run dev:client   # client only
 npm test             # test suites in both workspaces
@@ -78,6 +97,29 @@ npm run format       # prettier, write
 npm run build        # production build of the client
 npm run verify       # lint + test + build — run this before you push
 ```
+
+---
+
+## Handover to the frontend team
+
+The backend (phases 0–7) is done and working against real MongoDB Atlas +
+NVIDIA NIM — `POST /api/chat`, `GET /api/departments`, and
+`GET /api/departments/:slug[/suggested-questions]` are the three endpoints a
+real frontend needs. [`server/public/demo.js`](server/public/demo.js) is a
+deliberately minimal, heavily-commented reference client — no framework, no
+build step — written specifically so it's easy to read the exact request/
+response shapes off of rather than reverse-engineering them from the route
+handlers. Its top-of-file comment block **is** the API contract: every
+route, every field, every response shape for all four chat routes
+(`grounded`/`out_of_scope`/`non_imc`/`non_imc_unresolved`). Start there.
+
+[`docs/05-api.md`](docs/05-api.md) has the original planned contract;
+`demo.js`'s comment block reflects what's actually implemented today, which
+is the more current of the two where they differ.
+
+Auth (Phase 8) is intentionally not built — every route above is open,
+unauthenticated. Do not assume a request is a specific citizen; there is no
+session/user concept yet.
 
 ---
 
@@ -94,11 +136,14 @@ imc-saathi/
 │
 ├── server/               Express API                  → deploys to Render
 │   ├── .env.example      secrets live here, never in client/
+│   ├── public/           demo.html + demo.js — the reference chat client,
+│   │                     see "Handover to the frontend team" above
 │   ├── data/
 │   │   ├── raw/          official IMC source documents (committed)
-│   │   ├── seeds/        departments, zones, contacts, categories
-│   │   └── processed/    ingestion output (git-ignored)
-│   ├── scripts/          ingest · seed · createIndexes · eval
+│   │   ├── seeds/        departments, zones, contacts, external authorities
+│   │   └── processed/    ingestion output (git-ignored, `npm run ingest` writes it)
+│   ├── scripts/          ingest · embed · seed · eval · a few one-off
+│   │                     diagnostic scripts kept for docs/11-decisions.md's record
 │   ├── tests/
 │   └── src/
 │       ├── routes/       path → controller. No logic.
@@ -106,9 +151,11 @@ imc-saathi/
 │       ├── services/     business rules.
 │       ├── repositories/ all database access — nothing else touches Mongo.
 │       ├── models/       mongoose schemas
-│       ├── middleware/   auth · validate · rateLimit · errorHandler
-│       ├── ai/           llm/ · embeddings/ · prompts/ · safety/
-│       └── rag/          ingestion/ · chunking/ · retrieval/ · pipeline/
+│       ├── middleware/   validate · errorHandler · notFound · requestId
+│       │                 (no auth, no rate limiting yet — Phase 8 / Phase 14)
+│       ├── ingestion/    raw files -> chunks: loaders/ · chunkers/ · classifier · validate
+│       └── ai/           the RAG + LLM layer: classify/ · retrieval/ · facts/ ·
+│                         generate/ · llm/ · prompts/ · validate/ · schemas/
 │
 ├── docs/                 architecture, decisions, risks
 └── .github/workflows/    CI

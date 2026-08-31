@@ -27,12 +27,19 @@ const schema = z.object({
         .filter(Boolean)
     ),
 
-  // Added in later phases. Optional now so Phase 1 boots on an empty .env.
+  // Optional so the server still boots on an empty .env (e.g. for a first
+  // `npm run lint`/`npm test` pass with no real credentials yet) — routes
+  // that actually need Mongo/NVIDIA fail loudly at the point of use, not at
+  // boot, so this stays permissive here.
   MONGODB_URI: z.string().optional(),
-  GEMINI_API_KEY: z.string().optional(),
-  GEMINI_CHAT_MODEL: z.string().default('gemini-2.5-flash'),
 
-  // Embeddings moved to NVIDIA NIM — docs/11-decisions.md D15.
+  // Chat AND embeddings both run on NVIDIA NIM (docs/11-decisions.md D15,
+  // D16 + its addenda). An earlier phase planned to use Gemini for chat —
+  // GEMINI_API_KEY/GEMINI_CHAT_MODEL/LLM_PROVIDER are gone from here and
+  // from .env.example because that plan changed and nothing in this
+  // codebase reads them any more; keeping unused-but-present env vars in
+  // the schema is exactly the kind of thing that wastes a new developer's
+  // time wondering "wait, do I need a Gemini key too?".
   NVIDIA_API_KEY: z.string().optional(),
   NVIDIA_EMBEDDING_MODEL: z.string().default('nvidia/nemotron-3-embed-1b'),
   NVIDIA_CHAT_MODEL: z.string().default('openai/gpt-oss-120b'),

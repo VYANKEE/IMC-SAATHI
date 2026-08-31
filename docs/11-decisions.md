@@ -820,3 +820,45 @@ retry, not just "results.length > 0" — not implemented now because the
 concrete case observed here (confident pick into a content-less
 department) is common and clearly worth fixing, while noisy fallback
 matches have not been observed yet.
+
+---
+
+### D21 — Pre-handover cleanup: dead config, stale docs, empty scaffold dirs
+
+Requested explicitly ahead of the frontend handover: verify everything
+works, clean up anything that would confuse someone opening this repo for
+the first time.
+
+- **`GEMINI_API_KEY` / `GEMINI_CHAT_MODEL` / `LLM_PROVIDER`** removed from
+  `env.js`'s schema and `server/.env.example`. These were live in an
+  earlier phase before D15/D16 moved BOTH chat and embeddings to NVIDIA
+  NIM; nothing in `server/src` has read a `GEMINI_*` value in a long time
+  (verified by grep — only `env.js` itself referenced them). Leaving
+  unused-but-present env vars in the example file is exactly the kind of
+  thing that makes a new developer wonder "wait, do I need a Gemini key
+  too?" right when they're trying to get set up.
+- **`server/src/ai/safety/` and `server/src/rag/{chunking,ingestion,pipeline,reranking,retrieval}`**
+  removed — empty directories from early scaffolding (`rag/` in particular
+  matched the README's original, since-superseded planned layout; the real
+  ingestion pipeline lives at `server/src/ingestion/` and the real RAG/LLM
+  layer at `server/src/ai/`). Neither directory had ever held a committed
+  file — confirmed via `git ls-files` before removing — so this deleted
+  nothing from git history, just local clutter.
+- **`README.md`**: status line still said "Phase 1 of 14 — repository
+  foundation" despite phases 0–7 being done; the tech-stack table still
+  said the LLM/embeddings choice was Gemini; the repo-layout diagram still
+  showed the removed `rag/` tree instead of the real `ai/`/`ingestion/`
+  layout; the `.env.example` copy command in "Getting started" pointed at
+  a root-level file that doesn't exist (each workspace has its own). All
+  fixed. Also added a "Handover to the frontend team" section pointing
+  directly at `server/public/demo.js`'s own header comment as the current,
+  accurate API contract — more current than `docs/05-api.md`'s originally
+  _planned_ contract, which the README now says explicitly rather than
+  leaving someone to discover the two disagree on their own.
+
+**Not done, on purpose:** `docs/05-api.md`, `docs/09-repo-structure.md` and
+`docs/10-roadmap.md` were not rewritten to match current reality — the
+roadmap in particular is meant to record the _original_ plan, with this
+decisions log being where deviations get tracked, which is what D1
+through D20 already do. Rewriting the roadmap after the fact would erase
+that record rather than preserve it.
