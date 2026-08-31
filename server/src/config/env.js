@@ -30,6 +30,7 @@ const schema = z.object({
   // Embeddings moved to NVIDIA NIM — docs/11-decisions.md D15.
   NVIDIA_API_KEY: z.string().optional(),
   NVIDIA_EMBEDDING_MODEL: z.string().default('nvidia/nemotron-3-embed-1b'),
+  NVIDIA_CHAT_MODEL: z.string().default('nvidia/llama-3.1-nemotron-70b-instruct'),
   EMBEDDING_DIMENSIONS: z.coerce.number().int().positive().default(768),
 });
 

@@ -378,3 +378,40 @@ honoured even though NVIDIA itself never sees that number.
 
 `scripts/list-nvidia-models.js` is a one-off, not wired into `package.json`
 — safe to delete once this model is confirmed working end-to-end.
+
+## D16 — Phase 6 chat/generation model: NVIDIA `llama-3.1-nemotron-70b-instruct`
+
+**Context.** D15 explicitly left the chat/generation model open — "a separate
+decision when we get there." Phase 5's eval is done and Phase 6 (LLM layer &
+grounded generation) is next.
+
+**Decision.** Stay on NVIDIA NIM (same account, same key already paying for
+embeddings) rather than switching back to Gemini, and use
+`nvidia/llama-3.1-nemotron-70b-instruct` specifically — chosen from a live
+`GET /v1/models` query (`scripts/list-nvidia-chat-models.js`, same
+don't-guess-a-name lesson as D15's addenda) against 41 candidate chat/instruct
+models this account can reach.
+
+Why this one over the newer `nemotron-3-*` nano/super/ultra family (same
+generation as the embedding model, and would have been the "matching" pick):
+
+1. **Deprecation risk.** This model has been generally available and
+   documented for a while, unlike the very recently released Nemotron-3 chat
+   tier. D15's addenda are a live demonstration of what picking the newest
+   NVIDIA model costs when it turns out to already be on a retirement clock.
+2. **JSON-mode reliability.** docs/03-rag.md's generation step needs
+   structured JSON output every time, not most of the time — a
+   well-established instruct model has a longer track record here than a
+   just-shipped one.
+3. **Multilingual instruction-following.** Built on Llama 3.1 (broad
+   multilingual pretraining) with NVIDIA's own instruction/helpfulness
+   tuning on top — a reasonable fit for the en/hi/hinglish generation this
+   project needs, though this is a claim to verify against the golden set's
+   generation-quality metrics once Phase 6's grounded-answer pipeline exists,
+   not just assumed from the model card.
+
+**Would change my mind:** Phase 6's groundedness/refusal-accuracy numbers
+coming in poor on this model specifically (docs/03-rag.md's target: ≥95%
+groundedness, 100% refusal accuracy on the unanswerable slice) — at that
+point trying `nemotron-3-super-120b-a12b` or Gemini would be the next
+experiment, not a first resort.
