@@ -530,3 +530,87 @@ the _old_, vaguer prompt wording comes back correctly shaped anyway (i.e.
 this was some kind of one-off fluke rather than a real property of this
 model/host) — re-test before assuming the fix is still needed if the prompt
 ever gets simplified again.
+
+---
+
+### D17 — `SEWERAGE` had zero ingested chunks despite being a real, selectable, coverageTier A department
+
+**Symptom:** after the department-first demo rework, picking "Sewerage &
+Drainage" from the department picker showed no suggested questions, and a
+plausible real query ("मेरे यहाँ नाली ओवरफ्लो हो रही है" — a drain
+overflowing) came back as the generic low-confidence fallback instead of a
+grounded answer, even though classification correctly identified the
+department both times.
+
+**Root cause:** `server/data/raw/water_supply.csv` was never really a
+single-topic file — its `Section` column has three unrelated sections
+(`A2. Water Supply`, `A3. Roads, Streetlights & Potholes`, `A4. Sewerage &
+Drainage`), but `topicMap.js` mapped the whole file to one department,
+`WATER_WORKS`. `chunkSimpleQaRow` deliberately never reads `Section` for
+department assignment (register #12 — "informational only, never used as
+metadata directly"), so file-level mapping was the only mechanism, and it
+was wrong for 5 of the file's 9 rows. The two `A4. Sewerage & Drainage` rows
+(sewer overflow, monsoon waterlogging) — content that matches `SEWERAGE`'s
+own seeded description almost word for word — were ingested as `WATER_WORKS`
+instead. `SEWERAGE` itself never had a single topicMap entry pointing at it,
+so it sat in `seeds/departments.json` as `coverageTier: "A"`,
+`isSelectable: true`, fully classifiable (the classifier prompt even uses
+"a drainage complaint could be PWD or SEWERAGE" as its own ambiguity
+example) — but with an empty knowledge base behind it. Retrieval filtered by
+`department: SEWERAGE` always returned zero chunks, `sources` came back
+empty, and `validateAnswer.js`'s step 4 (empty-sources forces fallback)
+correctly, unhelpfully, kicked in every time. Confirmed via
+`server/data/processed/knowledgeChunks.json`: 0 rows with
+`department === 'SEWERAGE'` out of 186 total, and `generate-golden-set.js`'s
+own hand-verified ambiguous-query ground truth had silently baked in the
+same bug — its "drain/sewer complaint" examples list `WATER_WORKS` as the
+only real department, because that's what the corpus actually contained at
+the time it was written, not because `SEWERAGE` was ever meant to be
+excluded.
+
+While fixing this, the same file's `A3. Roads, Streetlights & Potholes`
+rows were found to be similarly mistagged as `WATER_WORKS` (a pothole
+complaint and a divider/speed-breaker request that belong to `PWD`, and a
+streetlight-off complaint that belongs to `ELECTRICAL`) — lower-impact
+since `PWD`/`ELECTRICAL` already have real corpora, but wrong for the same
+reason, so fixed in the same pass.
+
+**Fix:** split the one file into four, one per destination department
+(`server/data/raw/water_supply.csv` now holds only the genuine `A2. Water
+Supply` rows; new `sewerage_drainage.csv`, `roads_potholes.csv`,
+`streetlight_routing.csv` hold the rest), and added a `topicMap.js` entry
+per new file (`SEWERAGE` / `sewer_overflow_and_drainage`, `PWD` /
+`roads_potholes`, `ELECTRICAL` / `street_light_and_electrical`). Re-ran
+`npm run ingest`: `SEWERAGE` now has 2 active chunks (both real `Q:`/`A:`
+rows, so `suggestedQuestions.service.js` can extract real suggested
+questions for it), `WATER_WORKS` correctly dropped from 9 to 4, `PWD` and
+`ELECTRICAL` each gained their misplaced row back. Total chunk count
+unchanged (186) — this moved rows between departments, it did not add or
+drop content. `generate-golden-set.js`'s three hardcoded references to the
+old `WATER_WORKS`-tagged sewer-overflow chunk were updated to the new
+`SEWERAGE`-tagged chunk id (chunk ids are `hash(sourceFile#rowIndex)`, so
+moving a row to a new file always changes its id — see `ingestion/index.js`),
+and `golden-set.json` was regenerated from the fixed corpus (79 entries,
+no stale-id warnings). `seeds/departments.json`'s `SEWERAGE.sourceDocuments`
+was corrected from `water_supply.docx` (which never actually fed `SEWERAGE`
+— that filename groups with `water_supply.csv` under one topicKey and the
+CSV always wins on `FORMAT_PRIORITY`, so the docx was always "superseded",
+confirmed byte-identical in content) to `sewerage_drainage.csv`.
+
+**Not yet done — needs a real API/DB run, so left for the next `npm run
+embed` + `npm run eval`:** the live `knowledgechunks` Mongo collection and
+`server/data/eval/eval-report.json` (committed, unlike `golden-set.json`'s
+sibling `processed/` output) still reflect the pre-fix corpus until someone
+runs `npm run embed` (pushes the corrected chunks, and removes the 5 rows
+that no longer exist under their old ids/departments via
+`deleteKnowledgeChunksNotIn`) and, ideally before relying on eval numbers
+again, `npm run eval` against the regenerated golden set.
+
+**Would change my mind:** if a future source document re-introduces
+multi-section CSVs/DOCXs like this one, the real fix is teaching the
+ingestion pipeline to read a per-row/per-section department hint (the
+`Section` column already carries this signal and is already captured as
+`sectionLabel` — register #12 just refuses to trust it blindly, correctly,
+since section headings in this corpus are inconsistently worded) rather
+than hand-splitting files again each time; worth doing if a third file like
+this shows up.

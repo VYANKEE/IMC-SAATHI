@@ -151,10 +151,7 @@
     "isSelectable": true,
     "displayOrder": 40,
     "isActive": true,
-    "sourceDocuments": [
-      "water_supply.docx",
-      "water_supply.csv"
-    ]
+    "sourceDocuments": ["water_supply.docx", "water_supply.csv"]
   },
   {
     "code": "SEWERAGE",
@@ -174,21 +171,13 @@
         "Monsoon waterlogging",
         "Pre-monsoon desilting"
       ],
-      "hi": [
-        "सीवर ओवरफ्लो शिकायत",
-        "नाली अवरोध",
-        "मानसून जलभराव",
-        "मानसून-पूर्व गाद निकासी"
-      ]
+      "hi": ["सीवर ओवरफ्लो शिकायत", "नाली अवरोध", "मानसून जलभराव", "मानसून-पूर्व गाद निकासी"]
     },
     "coverageTier": "A",
     "isSelectable": true,
     "displayOrder": 50,
     "isActive": true,
-    "sourceDocuments": [
-      "water_supply.docx",
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["sewerage_drainage.csv", "Department_Head_Contact_Details.docx"]
   },
   {
     "code": "SANITATION",
@@ -256,11 +245,7 @@
     "isSelectable": true,
     "displayOrder": 70,
     "isActive": true,
-    "sourceDocuments": [
-      "Fire_NOC.docx",
-      "Fire_NOC.csv",
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Fire_NOC.docx", "Fire_NOC.csv", "Department_Head_Contact_Details.docx"]
   },
   {
     "code": "HOUSING",
@@ -293,10 +278,7 @@
     "isSelectable": true,
     "displayOrder": 80,
     "isActive": true,
-    "sourceDocuments": [
-      "Housing_and_Rental.docx",
-      "Housing_and_Rental_(2).csv"
-    ]
+    "sourceDocuments": ["Housing_and_Rental.docx", "Housing_and_Rental_(2).csv"]
   },
   {
     "code": "COMPLAINT_PROCEDURE",
@@ -327,10 +309,7 @@
     "isSelectable": false,
     "displayOrder": 999,
     "isActive": true,
-    "sourceDocuments": [
-      "complaint_procedure.docx",
-      "complaint_procedure.csv"
-    ]
+    "sourceDocuments": ["complaint_procedure.docx", "complaint_procedure.csv"]
   },
   {
     "code": "AICTSL",
@@ -343,9 +322,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "ANIMAL_CONTROL",
@@ -358,9 +335,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "BIRTH_DEATH",
@@ -373,9 +348,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "BUILDING_PERMISSION",
@@ -388,9 +361,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "CENSUS",
@@ -403,9 +374,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "CENTRAL_STORE",
@@ -418,9 +387,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "COMMISSIONER_OFFICE",
@@ -433,9 +400,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "CONTROL_ROOM",
@@ -448,9 +413,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "CTPT",
@@ -463,9 +426,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "ELECTION",
@@ -478,9 +439,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "ENCROACHMENT",
@@ -493,9 +452,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "ESTABLISHMENT",
@@ -508,9 +465,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "GRIEVANCE_NODAL",
@@ -523,9 +478,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "HEALTH",
@@ -538,9 +491,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "IT",
@@ -553,9 +504,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "LAW",
@@ -568,9 +517,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "LEASE",
@@ -583,9 +530,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "MARKET_LICENSE",
@@ -598,9 +543,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "MEAT_UNIT",
@@ -613,9 +556,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "PLANNING",
@@ -628,9 +569,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "PMAY",
@@ -643,9 +582,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "PROTOCOL",
@@ -658,9 +595,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "SECRETARY_PRO",
@@ -673,9 +608,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "SHELTER_KITCHEN",
@@ -688,9 +621,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "STADIUM",
@@ -703,9 +634,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "TRAFFIC",
@@ -718,9 +647,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "TRENCHING_GROUND",
@@ -733,9 +660,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "UPA_NULM",
@@ -748,9 +673,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "VIDHANSABHA",
@@ -763,9 +686,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "WORKSHOP",
@@ -778,9 +699,7 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   },
   {
     "code": "ZOO",
@@ -793,8 +712,6 @@
     "isSelectable": false,
     "displayOrder": 500,
     "isActive": true,
-    "sourceDocuments": [
-      "Department_Head_Contact_Details.docx"
-    ]
+    "sourceDocuments": ["Department_Head_Contact_Details.docx"]
   }
 ]

@@ -80,10 +80,37 @@ export const TOPICS = {
     category: 'complaint_procedure',
   },
 
+  // water_supply.csv originally lumped four unrelated sections (A2 Water
+  // Supply, A3 Roads/Streetlights/Potholes, A4 Sewerage & Drainage) into one
+  // file mapped wholly to WATER_WORKS. That silently gave WATER_WORKS two
+  // other departments' content and left SEWERAGE (a real, coverageTier A,
+  // isSelectable department per seeds/departments.json) with ZERO chunks
+  // ever ingested, despite the classifier being able to route queries to it
+  // by name (see classify.department.md's own drainage example) — see
+  // docs/11-decisions.md D17. Split into one file per destination department;
+  // this file now only holds the genuine A2 Water Supply rows.
   water_supply: {
     kind: 'structured_qa',
     department: 'WATER_WORKS',
     category: 'water_supply',
+  },
+
+  sewerage_drainage: {
+    kind: 'structured_qa',
+    department: 'SEWERAGE',
+    category: 'sewer_overflow_and_drainage',
+  },
+
+  roads_potholes: {
+    kind: 'structured_qa',
+    department: 'PWD',
+    category: 'roads_potholes',
+  },
+
+  streetlight_routing: {
+    kind: 'structured_qa',
+    department: 'ELECTRICAL',
+    category: 'street_light_and_electrical',
   },
 
   imc_pwd_revenue_chatbot_faq_dataset_updated: {

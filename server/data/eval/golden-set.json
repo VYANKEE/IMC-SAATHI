@@ -165,13 +165,40 @@
     "id": "G019",
     "slice": "hinglish",
     "language": "hinglish",
+    "query": "Sadak mein gaddha hai, accident ho sakta hai — turant complaint karni hai",
+    "expectedChunkIds": ["a9c9f68a57b36db4"],
+    "expectedDepartment": "PWD",
+    "notes": null
+  },
+  {
+    "id": "G020",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Sewer overflow ho raha hai, sadak pe behta hai",
+    "expectedChunkIds": ["655cffe75012570e"],
+    "expectedDepartment": "SEWERAGE",
+    "notes": null
+  },
+  {
+    "id": "G021",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "kai din se band hai humari gali mein",
+    "expectedChunkIds": ["5753d7e2965cf015"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": null
+  },
+  {
+    "id": "G022",
+    "slice": "hinglish",
+    "language": "hinglish",
     "query": "Paani ka bill bahut zyada aaya, galat lagta hai — kis department se baat karu?",
     "expectedChunkIds": ["b5d0b19555a450b9"],
     "expectedDepartment": "WATER_WORKS",
     "notes": null
   },
   {
-    "id": "G020",
+    "id": "G023",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "Building permission already mil gayi hai — fire NOC bhi alag se chahiye?",
@@ -180,7 +207,7 @@
     "notes": null
   },
   {
-    "id": "G021",
+    "id": "G024",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "Public toilet gandi hai / lock hai, complaint kaha?",
@@ -189,7 +216,7 @@
     "notes": null
   },
   {
-    "id": "G022",
+    "id": "G025",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "Complaint 2 hafte se pending hai, kuch nahi hua --- ab kya karu?",
@@ -198,7 +225,25 @@
     "notes": null
   },
   {
-    "id": "G023",
+    "id": "G026",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Naya divider/speed breaker chahiye, request kaise karu?",
+    "expectedChunkIds": ["d8f02a1870a2106f"],
+    "expectedDepartment": "PWD",
+    "notes": null
+  },
+  {
+    "id": "G027",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Barsaat mein humari gali mein paani bhar jata hai har saal",
+    "expectedChunkIds": ["923d38064b0642e2"],
+    "expectedDepartment": "SEWERAGE",
+    "notes": null
+  },
+  {
+    "id": "G028",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "New water connection kaise le?",
@@ -207,7 +252,7 @@
     "notes": null
   },
   {
-    "id": "G024",
+    "id": "G029",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "No Objection Certificate) should be renewed or not? (Fire NOC renew karna padta hai kya, ya ek baar milne ke baad hamesha valid hai?",
@@ -216,57 +261,12 @@
     "notes": null
   },
   {
-    "id": "G025",
+    "id": "G030",
     "slice": "hinglish",
     "language": "hinglish",
     "query": "Complaint band ho gayi but kaam nahi hua --- kya karu?",
     "expectedChunkIds": ["bbe370a3c0a82333"],
     "expectedDepartment": "COMPLAINT_PROCEDURE",
-    "notes": null
-  },
-  {
-    "id": "G026",
-    "slice": "hinglish",
-    "language": "hinglish",
-    "query": "Paani ka pressure bahut kam hai sirf humari gali mein",
-    "expectedChunkIds": ["a2f142ec02e254cb"],
-    "expectedDepartment": "WATER_WORKS",
-    "notes": null
-  },
-  {
-    "id": "G027",
-    "slice": "hinglish",
-    "language": "hinglish",
-    "query": "No Objection Certificate)?, (Humari society/commercial building ke paas Fire NOC nahi hai, kya problem ho sakta hai?",
-    "expectedChunkIds": ["a8dae4ffc3cdb7b4"],
-    "expectedDepartment": "FIRE",
-    "notes": null
-  },
-  {
-    "id": "G028",
-    "slice": "hinglish",
-    "language": "hinglish",
-    "query": "Complaint karne ke liye kya paisa lagta hai?",
-    "expectedChunkIds": ["303723b8eb276c7e"],
-    "expectedDepartment": "COMPLAINT_PROCEDURE",
-    "notes": null
-  },
-  {
-    "id": "G029",
-    "slice": "hinglish",
-    "language": "hinglish",
-    "query": "Sadak mein gaddha hai, accident ho sakta hai — turant complaint karni hai",
-    "expectedChunkIds": ["e8786ebf2a76c195"],
-    "expectedDepartment": "WATER_WORKS",
-    "notes": null
-  },
-  {
-    "id": "G030",
-    "slice": "hinglish",
-    "language": "hinglish",
-    "query": "Mall/dukaan mein fire exit block hai — complaint kar sakte hain?",
-    "expectedChunkIds": ["1d1dc7ca918fdcf1"],
-    "expectedDepartment": "FIRE",
     "notes": null
   },
   {
@@ -337,8 +337,8 @@
     "slice": "hindi_devanagari",
     "language": "hi",
     "query": "सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?",
-    "expectedChunkIds": ["b97e91a52f699730"],
-    "expectedDepartment": "WATER_WORKS",
+    "expectedChunkIds": ["655cffe75012570e"],
+    "expectedDepartment": "SEWERAGE",
     "notes": "EN source: Q: To complaint about the sewer overflow on the road."
   },
   {
@@ -391,9 +391,9 @@
     "slice": "ambiguous",
     "language": "hinglish",
     "query": "Mere area mein naali overflow ho rahi hai, kise complain karu?",
-    "expectedChunkIds": ["96b942c2b8e3d67b", "c2718c2583ddb9d8", "b97e91a52f699730"],
+    "expectedChunkIds": ["96b942c2b8e3d67b", "c2718c2583ddb9d8", "655cffe75012570e"],
     "expectedDepartment": "PWD",
-    "notes": "Drain/sewer complaints straddle PWD (physical drain) and Water Works (sewerage) — this is the exact ambiguity docs/03-rag.md flags."
+    "notes": "Drain/sewer complaints straddle PWD (physical drain) and Sewerage & Drainage — this is the exact ambiguity docs/03-rag.md flags. (Was WATER_WORKS before D17 split the mislabeled water_supply.csv content into its own SEWERAGE topic.)"
   },
   {
     "id": "G045",
@@ -418,9 +418,9 @@
     "slice": "ambiguous",
     "language": "hinglish",
     "query": "Naye ghar mein sewer connection lena hai, kis department se baat karu?",
-    "expectedChunkIds": ["b97e91a52f699730"],
-    "expectedDepartment": "WATER_WORKS",
-    "notes": "New sewer connections vs sewer overflow complaints straddle the same two departments as the drainage example above."
+    "expectedChunkIds": ["655cffe75012570e"],
+    "expectedDepartment": "SEWERAGE",
+    "notes": "New sewer connections vs sewer overflow complaints straddle Sewerage & Drainage and PWD (physical digging/road-cut permission)."
   },
   {
     "id": "G048",
@@ -471,22 +471,13 @@
     "id": "G053",
     "slice": "multi_hop",
     "language": "hinglish",
-    "query": "Humare mohalle mein paani ka pressure bahut kam hai, ward 5, kisse baat karu?",
-    "expectedChunkIds": ["0bbf9f8877982ca5"],
-    "expectedDepartment": "WATER_WORKS",
-    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
-  },
-  {
-    "id": "G054",
-    "slice": "multi_hop",
-    "language": "hinglish",
     "query": "Fire NOC ke liye apply karna hai, mera business ward 20 mein hai, process kya hai?",
-    "expectedChunkIds": ["76e7634b3e666d87"],
+    "expectedChunkIds": ["a8dae4ffc3cdb7b4"],
     "expectedDepartment": "FIRE",
     "notes": "Procedure retrieval + ward->zone->contact DB lookup."
   },
   {
-    "id": "G055",
+    "id": "G054",
     "slice": "multi_hop",
     "language": "hinglish",
     "query": "Ward 30 mein sadak ka gaddha bahut bada ho gaya hai, complaint kaise karu?",
@@ -495,7 +486,7 @@
     "notes": "Procedure retrieval + ward->zone->contact DB lookup."
   },
   {
-    "id": "G056",
+    "id": "G055",
     "slice": "multi_hop",
     "language": "hinglish",
     "query": "Ward 8 ke property tax office ka number chahiye, kaise pata karu?",
@@ -504,7 +495,7 @@
     "notes": "Procedure retrieval + ward->zone->contact DB lookup."
   },
   {
-    "id": "G057",
+    "id": "G056",
     "slice": "multi_hop",
     "language": "hinglish",
     "query": "Ward 15 mein safai nahi ho rahi 4 din se, complaint kaise karu?",
@@ -513,7 +504,7 @@
     "notes": "Procedure retrieval + ward->zone->contact DB lookup."
   },
   {
-    "id": "G058",
+    "id": "G057",
     "slice": "multi_hop",
     "language": "hinglish",
     "query": "Ward 3 mein hotel ke fire safety ki complaint karni hai, process bataiye",
@@ -522,7 +513,7 @@
     "notes": "Procedure retrieval + ward->zone->contact DB lookup."
   },
   {
-    "id": "G059",
+    "id": "G058",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "New water connection ki fees kitni hai?",
@@ -531,7 +522,7 @@
     "notes": "REVENUE, most rupee-amount Revenue chunks are quarantined (stale_rate_risk, docs/11-decisions.md/validate.js) — no active chunk should confidently answer a current fee."
   },
   {
-    "id": "G060",
+    "id": "G059",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Property tax ka current rate per square foot kya hai?",
@@ -540,7 +531,7 @@
     "notes": "Same stale-rate quarantine reasoning."
   },
   {
-    "id": "G061",
+    "id": "G060",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Fire NOC ki fees kitni lagti hai?",
@@ -549,7 +540,7 @@
     "notes": "Fee amount not reliably present in the active corpus."
   },
   {
-    "id": "G062",
+    "id": "G061",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Kal raat 11 baje IMC office khula rehta hai kya?",
@@ -558,7 +549,7 @@
     "notes": "Specific after-hours timing not in corpus — correct answer is the documented office-hours fallback, not a guess."
   },
   {
-    "id": "G063",
+    "id": "G062",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "SWM charge is month se kyu badh gaya, exact wajah bataiye",
@@ -567,7 +558,7 @@
     "notes": "Requires a specific billing record this corpus does not contain."
   },
   {
-    "id": "G064",
+    "id": "G063",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Mera complaint number IMC-2026-0004521 ka status kya hai?",
@@ -576,7 +567,7 @@
     "notes": "A specific complaint status is a database lookup (Phase 10), never a RAG answer — no chunk should match this."
   },
   {
-    "id": "G065",
+    "id": "G064",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Housing department ke rental rules kya hain?",
@@ -585,7 +576,7 @@
     "notes": "Housing_and_Rental.docx is entirely quarantined pending human review (register #6) — genuinely zero active chunks exist for this department."
   },
   {
-    "id": "G066",
+    "id": "G065",
     "slice": "missing_information",
     "language": "hinglish",
     "query": "Sewerage connection ka naya rate kya hai iss saal?",
@@ -594,7 +585,7 @@
     "notes": "Rate/fee figures for the current year are exactly what the stale-rate quarantine excludes."
   },
   {
-    "id": "G067",
+    "id": "G066",
     "slice": "out_of_scope",
     "language": "hinglish",
     "query": "Kal cricket match kisne jeeta?",
@@ -603,7 +594,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G068",
+    "id": "G067",
     "slice": "out_of_scope",
     "language": "en",
     "query": "What's the weather like in Indore tomorrow?",
@@ -612,7 +603,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G069",
+    "id": "G068",
     "slice": "out_of_scope",
     "language": "hinglish",
     "query": "Best restaurants in Indore for chaat kaha hai?",
@@ -621,7 +612,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G070",
+    "id": "G069",
     "slice": "out_of_scope",
     "language": "hinglish",
     "query": "Aaj Sensex kitna upar gaya?",
@@ -630,7 +621,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G071",
+    "id": "G070",
     "slice": "out_of_scope",
     "language": "hinglish",
     "query": "Mujhe ek acchi movie recommend karo.",
@@ -639,7 +630,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G072",
+    "id": "G071",
     "slice": "out_of_scope",
     "language": "hinglish",
     "query": "Indore se Mumbai ki train ka time table kya hai?",
@@ -648,7 +639,7 @@
     "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
   },
   {
-    "id": "G073",
+    "id": "G072",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Ghar ki light chali gayi hai, complaint kaha karu?",
@@ -657,7 +648,7 @@
     "notes": "MPPKVVCL / West Discom (1912) handles home electricity supply — NOT the Electrical & Mechanical dept, which only covers municipal street lights."
   },
   {
-    "id": "G074",
+    "id": "G073",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Ration card ke liye apply karna hai, kya karu?",
@@ -666,7 +657,7 @@
     "notes": "MP Food & Civil Supplies / NFSA handles ration cards, not IMC."
   },
   {
-    "id": "G075",
+    "id": "G074",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Ghar mein chori ho gayi hai, kise call karu?",
@@ -675,7 +666,7 @@
     "notes": "Police (100), not IMC."
   },
   {
-    "id": "G076",
+    "id": "G075",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Kisi ko heart attack aaya hai, turant help chahiye",
@@ -684,7 +675,7 @@
     "notes": "Ambulance (108), not IMC."
   },
   {
-    "id": "G077",
+    "id": "G076",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Sadak par ek ghayal kutta pada hai",
@@ -693,7 +684,7 @@
     "notes": "Snake Picker / animal-related line — separate from IMC sanitation procedure content."
   },
   {
-    "id": "G078",
+    "id": "G077",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Mujhe voter list mein apna naam check karna hai",
@@ -702,7 +693,7 @@
     "notes": "Election Helpline (1950), not IMC."
   },
   {
-    "id": "G079",
+    "id": "G078",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Building mein aag lag gayi hai abhi",
@@ -711,7 +702,7 @@
     "notes": "Fire Station emergency line (101) for an active fire — different from the Fire NOC *application* procedure IMC documents."
   },
   {
-    "id": "G080",
+    "id": "G079",
     "slice": "non_imc_routing",
     "language": "hinglish",
     "query": "Senior citizen ke liye koi helpline hai kya",

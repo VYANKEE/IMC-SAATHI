@@ -141,7 +141,7 @@ const hindiSeed = [
   ['5fb75adf5676ee68', 'PWD', 'मेरे इलाके की सड़क टूटी हुई है, किस विभाग से संपर्क करूं?'],
   ['6e9af37555bc6984', 'REVENUE', 'संपत्ति कर क्या होता है?'],
   ['eb8f9ddaabb61896', 'COMPLAINT_PROCEDURE', 'इंदौर 311 ऐप पर शिकायत कैसे दर्ज करें?'],
-  ['b97e91a52f699730', 'WATER_WORKS', 'सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?'],
+  ['655cffe75012570e', 'SEWERAGE', 'सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?'],
   ['b99f4de915151165', 'ELECTRICAL', 'स्ट्रीट लाइट बार-बार टिमटिमा रही है, शिकायत कैसे करें?'],
   ['a8b86fcd4664ec2d', 'REVENUE', 'मैंने नई संपत्ति खरीदी है, नगर निगम रिकॉर्ड कैसे अपडेट करूं?'],
   ['c59447d54a6116d0', 'PWD', 'सड़क पर गड्ढे की शिकायत कौन सुनेगा?'],
@@ -172,9 +172,9 @@ hindiSeed.forEach(([chunkId, dept, query]) => {
 const ambiguousPairs = [
   {
     query: 'Mere area mein naali overflow ho rahi hai, kise complain karu?',
-    ids: ['96b942c2b8e3d67b', 'c2718c2583ddb9d8', 'b97e91a52f699730'],
-    depts: ['PWD', 'WATER_WORKS'],
-    note: 'Drain/sewer complaints straddle PWD (physical drain) and Water Works (sewerage) — this is the exact ambiguity docs/03-rag.md flags.',
+    ids: ['96b942c2b8e3d67b', 'c2718c2583ddb9d8', '655cffe75012570e'],
+    depts: ['PWD', 'SEWERAGE'],
+    note: 'Drain/sewer complaints straddle PWD (physical drain) and Sewerage & Drainage — this is the exact ambiguity docs/03-rag.md flags. (Was WATER_WORKS before D17 split the mislabeled water_supply.csv content into its own SEWERAGE topic.)',
   },
   {
     query: 'Sadak par pani jama ho gaya hai baarish ki wajah se, complaint kaha karu?',
@@ -192,9 +192,9 @@ const extraAmbiguous = [
   },
   {
     query: 'Naye ghar mein sewer connection lena hai, kis department se baat karu?',
-    ids: ['b97e91a52f699730'],
-    depts: ['WATER_WORKS', 'PWD'],
-    note: 'New sewer connections vs sewer overflow complaints straddle the same two departments as the drainage example above.',
+    ids: ['655cffe75012570e'],
+    depts: ['SEWERAGE', 'PWD'],
+    note: 'New sewer connections vs sewer overflow complaints straddle Sewerage & Drainage and PWD (physical digging/road-cut permission).',
   },
 ];
 ambiguousPairs.push(...extraAmbiguous);
