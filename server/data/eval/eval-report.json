@@ -1,0 +1,3141 @@
+{
+  "generatedAt": "2026-08-31T14:59:52.794Z",
+  "embeddingModel": "nvidia/nemotron-3-embed-1b",
+  "totalQuestions": 80,
+  "overallRetrieval": {
+    "n": 58,
+    "recall5": 0.8448275862068966,
+    "recall8": 0.8793103448275862,
+    "precision3": 0.37356321839080453,
+    "mrr": 0.751600985221675
+  },
+  "byLanguageSlice": {
+    "en": {
+      "n": 18,
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.425925925925926,
+      "mrr": 0.8611111111111112
+    },
+    "hinglish": {
+      "n": 27,
+      "recall5": 0.7407407407407407,
+      "recall8": 0.7777777777777778,
+      "precision3": 0.34567901234567905,
+      "mrr": 0.6639329805996472
+    },
+    "hi": {
+      "n": 13,
+      "recall5": 0.8461538461538461,
+      "recall8": 0.9230769230769231,
+      "precision3": 0.3589743589743589,
+      "mrr": 0.7820512820512822
+    }
+  },
+  "bySlice": {
+    "english_factual": {
+      "n": 15,
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.4444444444444446,
+      "mrr": 0.9
+    },
+    "hinglish": {
+      "n": 15,
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.5333333333333333,
+      "mrr": 1
+    },
+    "hindi_devanagari": {
+      "n": 13,
+      "recall5": 0.8461538461538461,
+      "recall8": 0.9230769230769231,
+      "precision3": 0.3589743589743589,
+      "mrr": 0.7820512820512822
+    },
+    "ambiguous": {
+      "n": 7,
+      "recall5": 0.8571428571428571,
+      "recall8": 0.8571428571428571,
+      "precision3": 0.23809523809523808,
+      "mrr": 0.4928571428571429
+    },
+    "multi_hop": {
+      "n": 8,
+      "recall5": 0.25,
+      "recall8": 0.375,
+      "precision3": 0.08333333333333333,
+      "mrr": 0.18452380952380953
+    },
+    "missing_information": {
+      "n": 8,
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0
+    },
+    "out_of_scope": {
+      "n": 6,
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0
+    },
+    "non_imc_routing": {
+      "n": 8,
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0
+    }
+  },
+  "confidenceGate": {
+    "highestRefusalScore": 0.7930507659912109,
+    "lowestAnswerableHitScore": 0.7057009935379028,
+    "separates": false,
+    "suggestedMinScore": null
+  },
+  "perQuestion": [
+    {
+      "id": "G001",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "Which department handles electrical complaints?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8897,
+      "retrievedTop5": [
+        {
+          "chunkId": "258d13fbfc4230d0",
+          "department": "ELECTRICAL",
+          "score": 0.8897
+        },
+        {
+          "chunkId": "28f0ade7f392c759",
+          "department": "PWD",
+          "score": 0.7295
+        },
+        {
+          "chunkId": "8ad283be99bfc01e",
+          "department": "ELECTRICAL",
+          "score": 0.7263
+        },
+        {
+          "chunkId": "9d841f31562d3636",
+          "department": "PWD",
+          "score": 0.7183
+        },
+        {
+          "chunkId": "c2718c2583ddb9d8",
+          "department": "PWD",
+          "score": 0.713
+        }
+      ]
+    },
+    {
+      "id": "G002",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "What information do I need to register a complaint?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.7886,
+      "retrievedTop5": [
+        {
+          "chunkId": "be9f234f62f6c889",
+          "department": "ELECTRICAL",
+          "score": 0.7886
+        },
+        {
+          "chunkId": "1a3ec81e0531545d",
+          "department": "PWD",
+          "score": 0.7582
+        },
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7506
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7423
+        },
+        {
+          "chunkId": "d4421fad07ae87c8",
+          "department": "PWD",
+          "score": 0.7255
+        }
+      ]
+    },
+    {
+      "id": "G003",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "Can I upload a photo of the damaged street light?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8803,
+      "retrievedTop5": [
+        {
+          "chunkId": "a08208b2c5f039c2",
+          "department": "ELECTRICAL",
+          "score": 0.8803
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.7278
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.7233
+        },
+        {
+          "chunkId": "e3f6cea487fafdc7",
+          "department": "ELECTRICAL",
+          "score": 0.7224
+        },
+        {
+          "chunkId": "e48238f5eae16fbf",
+          "department": "ELECTRICAL",
+          "score": 0.7166
+        }
+      ]
+    },
+    {
+      "id": "G004",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "What is fire NOC? Is it important?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8565,
+      "retrievedTop5": [
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.8565
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.7932
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7819
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.7774
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7702
+        }
+      ]
+    },
+    {
+      "id": "G005",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "How to apply for fire NOC?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8652,
+      "retrievedTop5": [
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.8652
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.8465
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.8092
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7972
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7941
+        }
+      ]
+    },
+    {
+      "id": "G006",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "Where should I complain about a damaged road?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.869,
+      "retrievedTop5": [
+        {
+          "chunkId": "832b16f0b60b93f9",
+          "department": "PWD",
+          "score": 0.869
+        },
+        {
+          "chunkId": "63a56f1b8dbb41ea",
+          "department": "PWD",
+          "score": 0.8383
+        },
+        {
+          "chunkId": "8b8121c4b85f7908",
+          "department": "PWD",
+          "score": 0.8258
+        },
+        {
+          "chunkId": "5fb75adf5676ee68",
+          "department": "PWD",
+          "score": 0.7886
+        },
+        {
+          "chunkId": "8758a0367eceee46",
+          "department": "PWD",
+          "score": 0.7782
+        }
+      ]
+    },
+    {
+      "id": "G007",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "How do I report a pothole?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8631,
+      "retrievedTop5": [
+        {
+          "chunkId": "c59447d54a6116d0",
+          "department": "PWD",
+          "score": 0.8631
+        },
+        {
+          "chunkId": "379d1fccc949885f",
+          "department": "PWD",
+          "score": 0.855
+        },
+        {
+          "chunkId": "c23ac448e1c97fe7",
+          "department": "PWD",
+          "score": 0.782
+        },
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.7633
+        },
+        {
+          "chunkId": "2b2691bc98a2af8a",
+          "department": "PWD",
+          "score": 0.7045
+        }
+      ]
+    },
+    {
+      "id": "G008",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "My road is broken. Which department should I contact?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8698,
+      "retrievedTop5": [
+        {
+          "chunkId": "5fb75adf5676ee68",
+          "department": "PWD",
+          "score": 0.8698
+        },
+        {
+          "chunkId": "f080476454594e32",
+          "department": "PWD",
+          "score": 0.8415
+        },
+        {
+          "chunkId": "832b16f0b60b93f9",
+          "department": "PWD",
+          "score": 0.7822
+        },
+        {
+          "chunkId": "8b8121c4b85f7908",
+          "department": "PWD",
+          "score": 0.78
+        },
+        {
+          "chunkId": "9d841f31562d3636",
+          "department": "PWD",
+          "score": 0.7695
+        }
+      ]
+    },
+    {
+      "id": "G009",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "What is property tax?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8225,
+      "retrievedTop5": [
+        {
+          "chunkId": "c9fa95cbd2f245a8",
+          "department": "REVENUE",
+          "score": 0.8225
+        },
+        {
+          "chunkId": "6e9af37555bc6984",
+          "department": "REVENUE",
+          "score": 0.8142
+        },
+        {
+          "chunkId": "77f3c9cfd159836a",
+          "department": "REVENUE",
+          "score": 0.7932
+        },
+        {
+          "chunkId": "7f03e66b3c822aba",
+          "department": "REVENUE",
+          "score": 0.7749
+        },
+        {
+          "chunkId": "ed49baf73ff458f6",
+          "department": "REVENUE",
+          "score": 0.7625
+        }
+      ]
+    },
+    {
+      "id": "G010",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "Who has to pay property tax?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8625,
+      "retrievedTop5": [
+        {
+          "chunkId": "77f3c9cfd159836a",
+          "department": "REVENUE",
+          "score": 0.8625
+        },
+        {
+          "chunkId": "62c7c482a9b17c97",
+          "department": "REVENUE",
+          "score": 0.8174
+        },
+        {
+          "chunkId": "6e9af37555bc6984",
+          "department": "REVENUE",
+          "score": 0.7867
+        },
+        {
+          "chunkId": "c9fa95cbd2f245a8",
+          "department": "REVENUE",
+          "score": 0.7766
+        },
+        {
+          "chunkId": "ed49baf73ff458f6",
+          "department": "REVENUE",
+          "score": 0.7546
+        }
+      ]
+    },
+    {
+      "id": "G011",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "How is property tax calculated?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8563,
+      "retrievedTop5": [
+        {
+          "chunkId": "7f03e66b3c822aba",
+          "department": "REVENUE",
+          "score": 0.8563
+        },
+        {
+          "chunkId": "ed49baf73ff458f6",
+          "department": "REVENUE",
+          "score": 0.8418
+        },
+        {
+          "chunkId": "7c011001f9e50150",
+          "department": "REVENUE",
+          "score": 0.7607
+        },
+        {
+          "chunkId": "09e9abea386b2b41",
+          "department": "REVENUE",
+          "score": 0.7604
+        },
+        {
+          "chunkId": "77f3c9cfd159836a",
+          "department": "REVENUE",
+          "score": 0.7576
+        }
+      ]
+    },
+    {
+      "id": "G012",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "what should I do if the garbage van is not coming in my area",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8702,
+      "retrievedTop5": [
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.8702
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.6996
+        },
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6962
+        },
+        {
+          "chunkId": "f8b4919d91ce7a01",
+          "department": "SANITATION",
+          "score": 0.6876
+        },
+        {
+          "chunkId": "4ad1266856b4b1fc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6552
+        }
+      ]
+    },
+    {
+      "id": "G013",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "How to register a complaint",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8353,
+      "retrievedTop5": [
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8353
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8011
+        },
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7722
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7459
+        },
+        {
+          "chunkId": "4ad1266856b4b1fc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7447
+        }
+      ]
+    },
+    {
+      "id": "G014",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "What happens when the complaint is filed?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8145,
+      "retrievedTop5": [
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8145
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7462
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7391
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.739
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7235
+        }
+      ]
+    },
+    {
+      "id": "G015",
+      "slice": "english_factual",
+      "language": "en",
+      "query": "what should be done if the water supply is cut from 3 days",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8589,
+      "retrievedTop5": [
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.8589
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.6713
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.6649
+        },
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.6531
+        },
+        {
+          "chunkId": "28f0ade7f392c759",
+          "department": "PWD",
+          "score": 0.6504
+        }
+      ]
+    },
+    {
+      "id": "G016",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Fire NOC ke liye kaunse documents chahiye?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8851,
+      "retrievedTop5": [
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.8851
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.8594
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.8048
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.8033
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7959
+        }
+      ]
+    },
+    {
+      "id": "G017",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Kachre wale paise maang rahe hain, ye sahi hai kya?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8422,
+      "retrievedTop5": [
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.8422
+        },
+        {
+          "chunkId": "3130e8797e4ddf87",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6717
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6706
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.6693
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6681
+        }
+      ]
+    },
+    {
+      "id": "G018",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Meri complaint ka status kaise check karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.9051,
+      "retrievedTop5": [
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.9051
+        },
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7854
+        },
+        {
+          "chunkId": "8580edceb4565919",
+          "department": "ELECTRICAL",
+          "score": 0.742
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7383
+        },
+        {
+          "chunkId": "b5c76e39332e2f51",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7364
+        }
+      ]
+    },
+    {
+      "id": "G019",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Paani ka bill bahut zyada aaya, galat lagta hai — kis department se baat karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8735,
+      "retrievedTop5": [
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.8735
+        },
+        {
+          "chunkId": "f0aae63a37155c60",
+          "department": "REVENUE",
+          "score": 0.7899
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.7654
+        },
+        {
+          "chunkId": "f2fb44c7970f23fe",
+          "department": "REVENUE",
+          "score": 0.761
+        },
+        {
+          "chunkId": "955e5d57cdd2257b",
+          "department": "REVENUE",
+          "score": 0.7524
+        }
+      ]
+    },
+    {
+      "id": "G020",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Building permission already mil gayi hai — fire NOC bhi alag se chahiye?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.9024,
+      "retrievedTop5": [
+        {
+          "chunkId": "8700c4f6f5350114",
+          "department": "FIRE",
+          "score": 0.9024
+        },
+        {
+          "chunkId": "8700c4f6f5350114",
+          "department": "FIRE",
+          "score": 0.8669
+        },
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.8351
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.8244
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.8122
+        }
+      ]
+    },
+    {
+      "id": "G021",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Public toilet gandi hai / lock hai, complaint kaha?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.9306,
+      "retrievedTop5": [
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.9306
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.8491
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7291
+        },
+        {
+          "chunkId": "219aa0417e2e6128",
+          "department": "ELECTRICAL",
+          "score": 0.7256
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7245
+        }
+      ]
+    },
+    {
+      "id": "G022",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Complaint 2 hafte se pending hai, kuch nahi hua --- ab kya karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8875,
+      "retrievedTop5": [
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8875
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7637
+        },
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7604
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7501
+        },
+        {
+          "chunkId": "4ad1266856b4b1fc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7447
+        }
+      ]
+    },
+    {
+      "id": "G023",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "New water connection kaise le?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.911,
+      "retrievedTop5": [
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.911
+        },
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.7762
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6822
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.68
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6711
+        }
+      ]
+    },
+    {
+      "id": "G024",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "No Objection Certificate) should be renewed or not? (Fire NOC renew karna padta hai kya, ya ek baar milne ke baad hamesha valid hai?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.9522,
+      "retrievedTop5": [
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.9522
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.8208
+        },
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.7743
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7719
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.7515
+        }
+      ]
+    },
+    {
+      "id": "G025",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Complaint band ho gayi but kaam nahi hua --- kya karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8852,
+      "retrievedTop5": [
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8852
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7813
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7706
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7698
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7586
+        }
+      ]
+    },
+    {
+      "id": "G026",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Paani ka pressure bahut kam hai sirf humari gali mein",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8755,
+      "retrievedTop5": [
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.8755
+        },
+        {
+          "chunkId": "4f5058f30b53aedc",
+          "department": "WATER_WORKS",
+          "score": 0.7022
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6976
+        },
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.696
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.6745
+        }
+      ]
+    },
+    {
+      "id": "G027",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "No Objection Certificate)?, (Humari society/commercial building ke paas Fire NOC nahi hai, kya problem ho sakta hai?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.9324,
+      "retrievedTop5": [
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.9324
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.793
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7862
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.7591
+        },
+        {
+          "chunkId": "8700c4f6f5350114",
+          "department": "FIRE",
+          "score": 0.7572
+        }
+      ]
+    },
+    {
+      "id": "G028",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Complaint karne ke liye kya paisa lagta hai?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8352,
+      "retrievedTop5": [
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8352
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7812
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7527
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7495
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7419
+        }
+      ]
+    },
+    {
+      "id": "G029",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Sadak mein gaddha hai, accident ho sakta hai — turant complaint karni hai",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8915,
+      "retrievedTop5": [
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.8915
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7399
+        },
+        {
+          "chunkId": "a2c28d474f444fad",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.731
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7213
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7213
+        }
+      ]
+    },
+    {
+      "id": "G030",
+      "slice": "hinglish",
+      "language": "hinglish",
+      "query": "Mall/dukaan mein fire exit block hai — complaint kar sakte hain?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.9051,
+      "retrievedTop5": [
+        {
+          "chunkId": "1d1dc7ca918fdcf1",
+          "department": "FIRE",
+          "score": 0.9051
+        },
+        {
+          "chunkId": "1d1dc7ca918fdcf1",
+          "department": "FIRE",
+          "score": 0.8677
+        },
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.7155
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6902
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6813
+        }
+      ]
+    },
+    {
+      "id": "G031",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "मेरे इलाके में स्ट्रीट लाइट खराब है, शिकायत कहाँ करें?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8296,
+      "retrievedTop5": [
+        {
+          "chunkId": "e48238f5eae16fbf",
+          "department": "ELECTRICAL",
+          "score": 0.8296
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.8048
+        },
+        {
+          "chunkId": "361f6ce1356731a7",
+          "department": "ELECTRICAL",
+          "score": 0.7916
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.7816
+        },
+        {
+          "chunkId": "e3f6cea487fafdc7",
+          "department": "ELECTRICAL",
+          "score": 0.7595
+        }
+      ]
+    },
+    {
+      "id": "G032",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "मेरे घर में पानी का प्रेशर बहुत कम है, शिकायत किस विभाग में करूं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.856,
+      "retrievedTop5": [
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.856
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.7484
+        },
+        {
+          "chunkId": "28f0ade7f392c759",
+          "department": "PWD",
+          "score": 0.7401
+        },
+        {
+          "chunkId": "16398bdffe489d64",
+          "department": "PWD",
+          "score": 0.73
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.7259
+        }
+      ]
+    },
+    {
+      "id": "G033",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "हमारी गली में कचरा गाड़ी नहीं आई, क्या करूं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.7903,
+      "retrievedTop5": [
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.7903
+        },
+        {
+          "chunkId": "f8b4919d91ce7a01",
+          "department": "SANITATION",
+          "score": 0.701
+        },
+        {
+          "chunkId": "4ad1266856b4b1fc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6989
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.6959
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.6785
+        }
+      ]
+    },
+    {
+      "id": "G034",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "फायर एनओसी क्या होता है और यह क्यों जरूरी है?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8266,
+      "retrievedTop5": [
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.8266
+        },
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.8001
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7715
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7639
+        },
+        {
+          "chunkId": "8700c4f6f5350114",
+          "department": "FIRE",
+          "score": 0.7548
+        }
+      ]
+    },
+    {
+      "id": "G035",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "मेरे इलाके की सड़क टूटी हुई है, किस विभाग से संपर्क करूं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8594,
+      "retrievedTop5": [
+        {
+          "chunkId": "5fb75adf5676ee68",
+          "department": "PWD",
+          "score": 0.8594
+        },
+        {
+          "chunkId": "f080476454594e32",
+          "department": "PWD",
+          "score": 0.8251
+        },
+        {
+          "chunkId": "8b8121c4b85f7908",
+          "department": "PWD",
+          "score": 0.7905
+        },
+        {
+          "chunkId": "832b16f0b60b93f9",
+          "department": "PWD",
+          "score": 0.7875
+        },
+        {
+          "chunkId": "2b2691bc98a2af8a",
+          "department": "PWD",
+          "score": 0.7692
+        }
+      ]
+    },
+    {
+      "id": "G036",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "संपत्ति कर क्या होता है?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.782,
+      "retrievedTop5": [
+        {
+          "chunkId": "c9fa95cbd2f245a8",
+          "department": "REVENUE",
+          "score": 0.782
+        },
+        {
+          "chunkId": "6e9af37555bc6984",
+          "department": "REVENUE",
+          "score": 0.7713
+        },
+        {
+          "chunkId": "77f3c9cfd159836a",
+          "department": "REVENUE",
+          "score": 0.7476
+        },
+        {
+          "chunkId": "7f03e66b3c822aba",
+          "department": "REVENUE",
+          "score": 0.7361
+        },
+        {
+          "chunkId": "ed49baf73ff458f6",
+          "department": "REVENUE",
+          "score": 0.7313
+        }
+      ]
+    },
+    {
+      "id": "G037",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "इंदौर 311 ऐप पर शिकायत कैसे दर्ज करें?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8176,
+      "retrievedTop5": [
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8176
+        },
+        {
+          "chunkId": "b2375fe04163cd73",
+          "department": "ELECTRICAL",
+          "score": 0.8084
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.7927
+        },
+        {
+          "chunkId": "e3f6cea487fafdc7",
+          "department": "ELECTRICAL",
+          "score": 0.7843
+        },
+        {
+          "chunkId": "be9f234f62f6c889",
+          "department": "ELECTRICAL",
+          "score": 0.7826
+        }
+      ]
+    },
+    {
+      "id": "G038",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8332,
+      "retrievedTop5": [
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.8332
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.7322
+        },
+        {
+          "chunkId": "8758a0367eceee46",
+          "department": "PWD",
+          "score": 0.7306
+        },
+        {
+          "chunkId": "d4421fad07ae87c8",
+          "department": "PWD",
+          "score": 0.7225
+        },
+        {
+          "chunkId": "7a6b4e6466dc9786",
+          "department": "PWD",
+          "score": 0.7205
+        }
+      ]
+    },
+    {
+      "id": "G039",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "स्ट्रीट लाइट बार-बार टिमटिमा रही है, शिकायत कैसे करें?",
+      "recall5": 0,
+      "recall8": 1,
+      "precision3": 0,
+      "mrr": 0.16666666666666666,
+      "topScore": 0.7958,
+      "retrievedTop5": [
+        {
+          "chunkId": "e48238f5eae16fbf",
+          "department": "ELECTRICAL",
+          "score": 0.7958
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.789
+        },
+        {
+          "chunkId": "361f6ce1356731a7",
+          "department": "ELECTRICAL",
+          "score": 0.7814
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.7702
+        },
+        {
+          "chunkId": "e3f6cea487fafdc7",
+          "department": "ELECTRICAL",
+          "score": 0.7656
+        }
+      ]
+    },
+    {
+      "id": "G040",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "मैंने नई संपत्ति खरीदी है, नगर निगम रिकॉर्ड कैसे अपडेट करूं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8293,
+      "retrievedTop5": [
+        {
+          "chunkId": "a8b86fcd4664ec2d",
+          "department": "REVENUE",
+          "score": 0.8293
+        },
+        {
+          "chunkId": "b6f11f2a1be30d53",
+          "department": "REVENUE",
+          "score": 0.7967
+        },
+        {
+          "chunkId": "698122a84338105b",
+          "department": "REVENUE",
+          "score": 0.774
+        },
+        {
+          "chunkId": "4cc3ac6feceb9159",
+          "department": "REVENUE",
+          "score": 0.7598
+        },
+        {
+          "chunkId": "9149231b4de35fca",
+          "department": "REVENUE",
+          "score": 0.7086
+        }
+      ]
+    },
+    {
+      "id": "G041",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "सड़क पर गड्ढे की शिकायत कौन सुनेगा?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7891,
+      "retrievedTop5": [
+        {
+          "chunkId": "2b2691bc98a2af8a",
+          "department": "PWD",
+          "score": 0.7891
+        },
+        {
+          "chunkId": "c23ac448e1c97fe7",
+          "department": "PWD",
+          "score": 0.7782
+        },
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.7728
+        },
+        {
+          "chunkId": "7cb39bf243f0d636",
+          "department": "PWD",
+          "score": 0.768
+        },
+        {
+          "chunkId": "8b8121c4b85f7908",
+          "department": "PWD",
+          "score": 0.7631
+        }
+      ]
+    },
+    {
+      "id": "G042",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "सार्वजनिक शौचालय गंदा है, इसकी सफाई के लिए किसे बताएं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.7859,
+      "retrievedTop5": [
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.7859
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.7219
+        },
+        {
+          "chunkId": "219aa0417e2e6128",
+          "department": "ELECTRICAL",
+          "score": 0.6975
+        },
+        {
+          "chunkId": "f8b4919d91ce7a01",
+          "department": "SANITATION",
+          "score": 0.6921
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.672
+        }
+      ]
+    },
+    {
+      "id": "G043",
+      "slice": "hindi_devanagari",
+      "language": "hi",
+      "query": "शिकायत दर्ज करने के बाद उसका स्टेटस कैसे चेक करूं?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.8361,
+      "retrievedTop5": [
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8361
+        },
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.8309
+        },
+        {
+          "chunkId": "8580edceb4565919",
+          "department": "ELECTRICAL",
+          "score": 0.7815
+        },
+        {
+          "chunkId": "5754e3f257df642b",
+          "department": "PWD",
+          "score": 0.7506
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7498
+        }
+      ]
+    },
+    {
+      "id": "G044",
+      "slice": "ambiguous",
+      "language": "hinglish",
+      "query": "Mere area mein naali overflow ho rahi hai, kise complain karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.6666666666666666,
+      "mrr": 1,
+      "topScore": 0.7598,
+      "retrievedTop5": [
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.7598
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.7564
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.6853
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6844
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.6824
+        }
+      ]
+    },
+    {
+      "id": "G045",
+      "slice": "ambiguous",
+      "language": "hinglish",
+      "query": "Sadak par pani jama ho gaya hai baarish ki wajah se, complaint kaha karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0,
+      "mrr": 0.2,
+      "topScore": 0.7491,
+      "retrievedTop5": [
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7491
+        },
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.7338
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7308
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7263
+        },
+        {
+          "chunkId": "4f5058f30b53aedc",
+          "department": "WATER_WORKS",
+          "score": 0.7207
+        }
+      ]
+    },
+    {
+      "id": "G046",
+      "slice": "ambiguous",
+      "language": "hinglish",
+      "query": "Ghar ke bahar kachra fenka hua hai kai din se, kise batayein?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7162,
+      "retrievedTop5": [
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.7162
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.7096
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.7065
+        },
+        {
+          "chunkId": "4f5058f30b53aedc",
+          "department": "WATER_WORKS",
+          "score": 0.7031
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6875
+        }
+      ]
+    },
+    {
+      "id": "G047",
+      "slice": "ambiguous",
+      "language": "hinglish",
+      "query": "Naye ghar mein sewer connection lena hai, kis department se baat karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0,
+      "mrr": 0.25,
+      "topScore": 0.7454,
+      "retrievedTop5": [
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.7454
+        },
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.7356
+        },
+        {
+          "chunkId": "96b942c2b8e3d67b",
+          "department": "PWD",
+          "score": 0.7031
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6989
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6866
+        }
+      ]
+    },
+    {
+      "id": "G048",
+      "slice": "ambiguous",
+      "language": "en",
+      "query": "What is the Solid Waste Management or door-to-door garbage charge?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8758,
+      "retrievedTop5": [
+        {
+          "chunkId": "8d2225baf79c58c1",
+          "department": "REVENUE",
+          "score": 0.8758
+        },
+        {
+          "chunkId": "4fdc20411f49cf16",
+          "department": "REVENUE",
+          "score": 0.8314
+        },
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.7703
+        },
+        {
+          "chunkId": "aba4bdc3e497e91c",
+          "department": "REVENUE",
+          "score": 0.7558
+        },
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.7343
+        }
+      ]
+    },
+    {
+      "id": "G049",
+      "slice": "ambiguous",
+      "language": "en",
+      "query": "Why is a garbage or SBM charge appearing with my municipal property charges?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.5,
+      "topScore": 0.8515,
+      "retrievedTop5": [
+        {
+          "chunkId": "aba4bdc3e497e91c",
+          "department": "REVENUE",
+          "score": 0.8515
+        },
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.8412
+        },
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.7912
+        },
+        {
+          "chunkId": "4fdc20411f49cf16",
+          "department": "REVENUE",
+          "score": 0.7251
+        },
+        {
+          "chunkId": "8d2225baf79c58c1",
+          "department": "REVENUE",
+          "score": 0.7009
+        }
+      ]
+    },
+    {
+      "id": "G050",
+      "slice": "ambiguous",
+      "language": "en",
+      "query": "SBM ya garbage charge kya hota hai?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.8023,
+      "retrievedTop5": [
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.8023
+        },
+        {
+          "chunkId": "aba4bdc3e497e91c",
+          "department": "REVENUE",
+          "score": 0.7727
+        },
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.7577
+        },
+        {
+          "chunkId": "4fdc20411f49cf16",
+          "department": "REVENUE",
+          "score": 0.716
+        },
+        {
+          "chunkId": "8d2225baf79c58c1",
+          "department": "REVENUE",
+          "score": 0.7082
+        }
+      ]
+    },
+    {
+      "id": "G051",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Ward 47 mein garbage van nahi aa raha, kise contact karun?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "topScore": 0.7172,
+      "retrievedTop5": [
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.7172
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.6779
+        },
+        {
+          "chunkId": "f8b4919d91ce7a01",
+          "department": "SANITATION",
+          "score": 0.6629
+        },
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.6379
+        },
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.637
+        }
+      ]
+    },
+    {
+      "id": "G052",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Meri street light 3 din se band hai, ward 12 mein hai, complaint kaise karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.764,
+      "retrievedTop5": [
+        {
+          "chunkId": "e48238f5eae16fbf",
+          "department": "ELECTRICAL",
+          "score": 0.764
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.7482
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.732
+        },
+        {
+          "chunkId": "361f6ce1356731a7",
+          "department": "ELECTRICAL",
+          "score": 0.7268
+        },
+        {
+          "chunkId": "b99f4de915151165",
+          "department": "ELECTRICAL",
+          "score": 0.7184
+        }
+      ]
+    },
+    {
+      "id": "G053",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Humare mohalle mein paani ka pressure bahut kam hai, ward 5, kisse baat karu?",
+      "recall5": 0,
+      "recall8": 1,
+      "precision3": 0,
+      "mrr": 0.14285714285714285,
+      "topScore": 0.7161,
+      "retrievedTop5": [
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.7161
+        },
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.6945
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6604
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6513
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.6495
+        }
+      ]
+    },
+    {
+      "id": "G054",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Fire NOC ke liye apply karna hai, mera business ward 20 mein hai, process kya hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7729,
+      "retrievedTop5": [
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.7729
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.7525
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7356
+        },
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.7356
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7273
+        }
+      ]
+    },
+    {
+      "id": "G055",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Ward 30 mein sadak ka gaddha bahut bada ho gaya hai, complaint kaise karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7073,
+      "retrievedTop5": [
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.7073
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.68
+        },
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.6746
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6745
+        },
+        {
+          "chunkId": "8b8121c4b85f7908",
+          "department": "PWD",
+          "score": 0.6743
+        }
+      ]
+    },
+    {
+      "id": "G056",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Ward 8 ke property tax office ka number chahiye, kaise pata karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7137,
+      "retrievedTop5": [
+        {
+          "chunkId": "08dab24574a972d9",
+          "department": "REVENUE",
+          "score": 0.7137
+        },
+        {
+          "chunkId": "3b6d3d70b32d600d",
+          "department": "REVENUE",
+          "score": 0.7005
+        },
+        {
+          "chunkId": "6e9af37555bc6984",
+          "department": "REVENUE",
+          "score": 0.694
+        },
+        {
+          "chunkId": "d6e1233f01e1efe8",
+          "department": "REVENUE",
+          "score": 0.6924
+        },
+        {
+          "chunkId": "7c011001f9e50150",
+          "department": "REVENUE",
+          "score": 0.6902
+        }
+      ]
+    },
+    {
+      "id": "G057",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Ward 15 mein safai nahi ho rahi 4 din se, complaint kaise karu?",
+      "recall5": 1,
+      "recall8": 1,
+      "precision3": 0.3333333333333333,
+      "mrr": 1,
+      "topScore": 0.7057,
+      "retrievedTop5": [
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.7057
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.7055
+        },
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6765
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.6744
+        },
+        {
+          "chunkId": "f8b4919d91ce7a01",
+          "department": "SANITATION",
+          "score": 0.6738
+        }
+      ]
+    },
+    {
+      "id": "G058",
+      "slice": "multi_hop",
+      "language": "hinglish",
+      "query": "Ward 3 mein hotel ke fire safety ki complaint karni hai, process bataiye",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6895,
+      "retrievedTop5": [
+        {
+          "chunkId": "1d1dc7ca918fdcf1",
+          "department": "FIRE",
+          "score": 0.6895
+        },
+        {
+          "chunkId": "1d1dc7ca918fdcf1",
+          "department": "FIRE",
+          "score": 0.684
+        },
+        {
+          "chunkId": "76e7634b3e666d87",
+          "department": "FIRE",
+          "score": 0.681
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6781
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.6708
+        }
+      ]
+    },
+    {
+      "id": "G059",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "New water connection ki fees kitni hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7931,
+      "retrievedTop5": [
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.7931
+        },
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.7734
+        },
+        {
+          "chunkId": "303723b8eb276c7e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6538
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6483
+        },
+        {
+          "chunkId": "28f0ade7f392c759",
+          "department": "PWD",
+          "score": 0.6463
+        }
+      ]
+    },
+    {
+      "id": "G060",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Property tax ka current rate per square foot kya hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7532,
+      "retrievedTop5": [
+        {
+          "chunkId": "e527086b1aefbaa8",
+          "department": "REVENUE",
+          "score": 0.7532
+        },
+        {
+          "chunkId": "c6b1dc644a8502d2",
+          "department": "REVENUE",
+          "score": 0.7445
+        },
+        {
+          "chunkId": "7f03e66b3c822aba",
+          "department": "REVENUE",
+          "score": 0.7255
+        },
+        {
+          "chunkId": "77f3c9cfd159836a",
+          "department": "REVENUE",
+          "score": 0.7104
+        },
+        {
+          "chunkId": "ed49baf73ff458f6",
+          "department": "REVENUE",
+          "score": 0.7064
+        }
+      ]
+    },
+    {
+      "id": "G061",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Fire NOC ki fees kitni lagti hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7916,
+      "retrievedTop5": [
+        {
+          "chunkId": "b35940f8ab111077",
+          "department": "FIRE",
+          "score": 0.7916
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.7855
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7765
+        },
+        {
+          "chunkId": "eea08dbb3c085a92",
+          "department": "FIRE",
+          "score": 0.7745
+        },
+        {
+          "chunkId": "9c9e5f76d9d38f11",
+          "department": "FIRE",
+          "score": 0.7736
+        }
+      ]
+    },
+    {
+      "id": "G062",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Kal raat 11 baje IMC office khula rehta hai kya?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6568,
+      "retrievedTop5": [
+        {
+          "chunkId": "d56907267a9585d3",
+          "department": "REVENUE",
+          "score": 0.6568
+        },
+        {
+          "chunkId": "f38f0414730042a8",
+          "department": "REVENUE",
+          "score": 0.6445
+        },
+        {
+          "chunkId": "df8e0be62d899bfc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6438
+        },
+        {
+          "chunkId": "3bfb7356087df9a8",
+          "department": "PWD",
+          "score": 0.6427
+        },
+        {
+          "chunkId": "52741ff5789d5be8",
+          "department": "PWD",
+          "score": 0.6409
+        }
+      ]
+    },
+    {
+      "id": "G063",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "SWM charge is month se kyu badh gaya, exact wajah bataiye",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7176,
+      "retrievedTop5": [
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.7176
+        },
+        {
+          "chunkId": "4fdc20411f49cf16",
+          "department": "REVENUE",
+          "score": 0.6986
+        },
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.6889
+        },
+        {
+          "chunkId": "8d2225baf79c58c1",
+          "department": "REVENUE",
+          "score": 0.6526
+        },
+        {
+          "chunkId": "aba4bdc3e497e91c",
+          "department": "REVENUE",
+          "score": 0.6521
+        }
+      ]
+    },
+    {
+      "id": "G064",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Mera complaint number IMC-2026-0004521 ka status kya hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6562,
+      "retrievedTop5": [
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6562
+        },
+        {
+          "chunkId": "5754e3f257df642b",
+          "department": "PWD",
+          "score": 0.6557
+        },
+        {
+          "chunkId": "df8e0be62d899bfc",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6365
+        },
+        {
+          "chunkId": "c075f577385a5abd",
+          "department": "PWD",
+          "score": 0.6359
+        },
+        {
+          "chunkId": "8580edceb4565919",
+          "department": "ELECTRICAL",
+          "score": 0.6295
+        }
+      ]
+    },
+    {
+      "id": "G065",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Housing department ke rental rules kya hain?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6246,
+      "retrievedTop5": [
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6246
+        },
+        {
+          "chunkId": "51d69c5b7d98ddbb",
+          "department": "REVENUE",
+          "score": 0.6177
+        },
+        {
+          "chunkId": "a80819c3bd181ed7",
+          "department": "REVENUE",
+          "score": 0.6124
+        },
+        {
+          "chunkId": "c78987e01e76436d",
+          "department": "REVENUE",
+          "score": 0.61
+        },
+        {
+          "chunkId": "020c9b1c1645f7e6",
+          "department": "REVENUE",
+          "score": 0.6077
+        }
+      ]
+    },
+    {
+      "id": "G066",
+      "slice": "missing_information",
+      "language": "hinglish",
+      "query": "Sewerage connection ka naya rate kya hai iss saal?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.699,
+      "retrievedTop5": [
+        {
+          "chunkId": "3059a476dc35eb9b",
+          "department": "WATER_WORKS",
+          "score": 0.699
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6827
+        },
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6773
+        },
+        {
+          "chunkId": "8d2225baf79c58c1",
+          "department": "REVENUE",
+          "score": 0.664
+        },
+        {
+          "chunkId": "3d2145cd7bf7ab21",
+          "department": "REVENUE",
+          "score": 0.6628
+        }
+      ]
+    },
+    {
+      "id": "G067",
+      "slice": "out_of_scope",
+      "language": "hinglish",
+      "query": "Kal cricket match kisne jeeta?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6322,
+      "retrievedTop5": [
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6322
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6175
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6131
+        },
+        {
+          "chunkId": "0d85c289181dd250",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6121
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.612
+        }
+      ]
+    },
+    {
+      "id": "G068",
+      "slice": "out_of_scope",
+      "language": "en",
+      "query": "What's the weather like in Indore tomorrow?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6891,
+      "retrievedTop5": [
+        {
+          "chunkId": "60f67f4f5ada8367",
+          "department": "PWD",
+          "score": 0.6891
+        },
+        {
+          "chunkId": "26c959b07c4b5a26",
+          "department": "PWD",
+          "score": 0.6601
+        },
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6554
+        },
+        {
+          "chunkId": "d2069bdb8bc496df",
+          "department": "REVENUE",
+          "score": 0.6516
+        },
+        {
+          "chunkId": "b99f4de915151165",
+          "department": "ELECTRICAL",
+          "score": 0.651
+        }
+      ]
+    },
+    {
+      "id": "G069",
+      "slice": "out_of_scope",
+      "language": "hinglish",
+      "query": "Best restaurants in Indore for chaat kaha hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6809,
+      "retrievedTop5": [
+        {
+          "chunkId": "60f67f4f5ada8367",
+          "department": "PWD",
+          "score": 0.6809
+        },
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6543
+        },
+        {
+          "chunkId": "26c959b07c4b5a26",
+          "department": "PWD",
+          "score": 0.6516
+        },
+        {
+          "chunkId": "0e621d87125ef82c",
+          "department": "PWD",
+          "score": 0.6328
+        },
+        {
+          "chunkId": "1295a05f438ba0bc",
+          "department": "REVENUE",
+          "score": 0.6324
+        }
+      ]
+    },
+    {
+      "id": "G070",
+      "slice": "out_of_scope",
+      "language": "hinglish",
+      "query": "Aaj Sensex kitna upar gaya?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6161,
+      "retrievedTop5": [
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6161
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6143
+        },
+        {
+          "chunkId": "54a82a3e80edeaa9",
+          "department": "WATER_WORKS",
+          "score": 0.61
+        },
+        {
+          "chunkId": "3130e8797e4ddf87",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6061
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6041
+        }
+      ]
+    },
+    {
+      "id": "G071",
+      "slice": "out_of_scope",
+      "language": "hinglish",
+      "query": "Mujhe ek acchi movie recommend karo.",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6361,
+      "retrievedTop5": [
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6361
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.633
+        },
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6289
+        },
+        {
+          "chunkId": "71a6552c66fbd417",
+          "department": "WATER_WORKS",
+          "score": 0.6273
+        },
+        {
+          "chunkId": "3130e8797e4ddf87",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6207
+        }
+      ]
+    },
+    {
+      "id": "G072",
+      "slice": "out_of_scope",
+      "language": "hinglish",
+      "query": "Indore se Mumbai ki train ka time table kya hai?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6314,
+      "retrievedTop5": [
+        {
+          "chunkId": "de35813e1ae23629",
+          "department": "REVENUE",
+          "score": 0.6314
+        },
+        {
+          "chunkId": "60f67f4f5ada8367",
+          "department": "PWD",
+          "score": 0.6301
+        },
+        {
+          "chunkId": "e527086b1aefbaa8",
+          "department": "REVENUE",
+          "score": 0.6278
+        },
+        {
+          "chunkId": "d2069bdb8bc496df",
+          "department": "REVENUE",
+          "score": 0.6256
+        },
+        {
+          "chunkId": "ea25e79bc14b1e9b",
+          "department": "PWD",
+          "score": 0.624
+        }
+      ]
+    },
+    {
+      "id": "G073",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Ghar ki light chali gayi hai, complaint kaha karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.7441,
+      "retrievedTop5": [
+        {
+          "chunkId": "e48238f5eae16fbf",
+          "department": "ELECTRICAL",
+          "score": 0.7441
+        },
+        {
+          "chunkId": "b0cc7f39734638a4",
+          "department": "ELECTRICAL",
+          "score": 0.7342
+        },
+        {
+          "chunkId": "361f6ce1356731a7",
+          "department": "ELECTRICAL",
+          "score": 0.7329
+        },
+        {
+          "chunkId": "219aa0417e2e6128",
+          "department": "ELECTRICAL",
+          "score": 0.7276
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.7236
+        }
+      ]
+    },
+    {
+      "id": "G074",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Ration card ke liye apply karna hai, kya karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6587,
+      "retrievedTop5": [
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6587
+        },
+        {
+          "chunkId": "24fc31d516915804",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.652
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6348
+        },
+        {
+          "chunkId": "b5c76e39332e2f51",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6336
+        },
+        {
+          "chunkId": "a4f16ef718fac89e",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6315
+        }
+      ]
+    },
+    {
+      "id": "G075",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Ghar mein chori ho gayi hai, kise call karu?",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.683,
+      "retrievedTop5": [
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.683
+        },
+        {
+          "chunkId": "41652402a924ed88",
+          "department": "FIRE",
+          "score": 0.6746
+        },
+        {
+          "chunkId": "b5c76e39332e2f51",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6703
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6657
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.6562
+        }
+      ]
+    },
+    {
+      "id": "G076",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Kisi ko heart attack aaya hai, turant help chahiye",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.68,
+      "retrievedTop5": [
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.68
+        },
+        {
+          "chunkId": "e98f852d4ed950d9",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6366
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6361
+        },
+        {
+          "chunkId": "b5d0b19555a450b9",
+          "department": "WATER_WORKS",
+          "score": 0.6336
+        },
+        {
+          "chunkId": "a2f142ec02e254cb",
+          "department": "WATER_WORKS",
+          "score": 0.6327
+        }
+      ]
+    },
+    {
+      "id": "G077",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Sadak par ek ghayal kutta pada hai",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6761,
+      "retrievedTop5": [
+        {
+          "chunkId": "e8786ebf2a76c195",
+          "department": "WATER_WORKS",
+          "score": 0.6761
+        },
+        {
+          "chunkId": "b97e91a52f699730",
+          "department": "WATER_WORKS",
+          "score": 0.6551
+        },
+        {
+          "chunkId": "97409b2b6d562086",
+          "department": "SANITATION",
+          "score": 0.6473
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6381
+        },
+        {
+          "chunkId": "0bbf9f8877982ca5",
+          "department": "WATER_WORKS",
+          "score": 0.6301
+        }
+      ]
+    },
+    {
+      "id": "G078",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Mujhe voter list mein apna naam check karna hai",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6527,
+      "retrievedTop5": [
+        {
+          "chunkId": "eff0ab11e7c7401d",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6527
+        },
+        {
+          "chunkId": "1295a05f438ba0bc",
+          "department": "REVENUE",
+          "score": 0.6185
+        },
+        {
+          "chunkId": "24fc31d516915804",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6132
+        },
+        {
+          "chunkId": "3b6d3d70b32d600d",
+          "department": "REVENUE",
+          "score": 0.6112
+        },
+        {
+          "chunkId": "b5c76e39332e2f51",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6103
+        }
+      ]
+    },
+    {
+      "id": "G079",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Building mein aag lag gayi hai abhi",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6891,
+      "retrievedTop5": [
+        {
+          "chunkId": "8700c4f6f5350114",
+          "department": "FIRE",
+          "score": 0.6891
+        },
+        {
+          "chunkId": "a8dae4ffc3cdb7b4",
+          "department": "FIRE",
+          "score": 0.6802
+        },
+        {
+          "chunkId": "770d717674320d28",
+          "department": "SANITATION",
+          "score": 0.6578
+        },
+        {
+          "chunkId": "49ceb1541d58f016",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6547
+        },
+        {
+          "chunkId": "bbe370a3c0a82333",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.65
+        }
+      ]
+    },
+    {
+      "id": "G080",
+      "slice": "non_imc_routing",
+      "language": "hinglish",
+      "query": "Senior citizen ke liye koi helpline hai kya",
+      "recall5": 0,
+      "recall8": 0,
+      "precision3": 0,
+      "mrr": 0,
+      "topScore": 0.6447,
+      "retrievedTop5": [
+        {
+          "chunkId": "b5c76e39332e2f51",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6447
+        },
+        {
+          "chunkId": "eb8f9ddaabb61896",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6269
+        },
+        {
+          "chunkId": "3130e8797e4ddf87",
+          "department": "COMPLAINT_PROCEDURE",
+          "score": 0.6182
+        },
+        {
+          "chunkId": "0a15bdb25bf56e74",
+          "department": "SANITATION",
+          "score": 0.617
+        },
+        {
+          "chunkId": "0e417b71c336b07f",
+          "department": "REVENUE",
+          "score": 0.6089
+        }
+      ]
+    }
+  ]
+}

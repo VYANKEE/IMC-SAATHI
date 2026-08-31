@@ -322,3 +322,52 @@ _Product_ — p95 latency, failure rate, chat→complaint conversion, fallback r
 The eval script (`npm run eval`) writes a JSON report and prints a table. Run it
 before publishing any knowledge-base change; commit the report so regressions
 are visible in the diff.
+
+---
+
+## Phase 5 eval results (2026-08-31)
+
+First real `npm run eval` run against `nvidia/nemotron-3-embed-1b` + the live
+`vector_index`, 80-question golden set (`server/data/eval/golden-set.json`,
+`server/data/eval/eval-report.json` for the full per-question breakdown):
+
+| Slice               | n   | Recall@5 | Note                                                                |
+| ------------------- | --- | -------- | ------------------------------------------------------------------- |
+| English factual     | 15  | 1.000    | Target ≥ 0.90 — met.                                                |
+| Hinglish            | 15  | 1.000    | Target ≥ 0.80 — met.                                                |
+| Hindi (Devanagari)  | 13  | 0.846    | Target ≥ 0.80 — met. Confirms cross-lingual retrieval (D15) works.  |
+| Ambiguous           | 7   | 0.857    | Expected to be harder by construction.                              |
+| Multi-hop           | 8   | 0.250    | See finding below — not a language problem.                         |
+| Missing information | 8   | n/a      | expectedChunkIds: [] by design — see confidence-gate finding below. |
+| Out of scope        | 6   | n/a      | Same.                                                               |
+| Non-IMC routing     | 8   | n/a      | Same.                                                               |
+
+**Finding 1 — multi-hop's low score is ward-number noise, not a retrieval or
+language failure.** Every multi-hop query embeds a ward number and
+location phrasing alongside the actual procedural question (_"Ward 47 mein
+garbage van nahi aa raha, kise contact karun?"_). That extra text measurably
+pulls the query vector away from the pure-procedure chunk it should match —
+scores are still respectable (0.69–0.77) but often not top-5. **Action for
+Phase 6/7:** strip ward/location mentions from the query before embedding it
+for retrieval (a cheap regex/light extraction step), and resolve the
+ward → zone → contact part as the separate deterministic DB lookup it always
+was meant to be (per this doc's core principle). Do not fold location
+resolution into the embedding call.
+
+**Finding 2 — the confidence gate cannot be a bare similarity threshold.**
+The two highest-scoring "missing information" questions — _"New water
+connection ki fees kitni hai?"_ (0.7931), _"Fire NOC ki fees kitni lagti
+hai?"_ (0.7916) — score HIGHER than several genuinely-answerable multi-hop
+questions (as low as 0.7057). This is not noise: retrieval is correctly
+finding the right procedural chunk for both fee questions, it's just that
+the chunk's fee figure was already redacted by `validate.js`'s
+`stale_rate_risk` rule. Vector similarity alone cannot tell "found the right
+topic, fact present" apart from "found the right topic, fact missing" — that
+distinction is exactly what the post-generation fact validator (this doc's
+"Post-generation validation" section, step 5: strip an unverified rupee
+amount) already exists to catch. **Conclusion: `MIN_SCORE` stays as a coarse
+first-pass gate (calibrate loosely, e.g. ~0.72, once more data exists), and
+the fact validator — not the retrieval score — is what makes missing-fee
+questions refuse correctly.** This was worth measuring rather than assuming;
+docs/03-rag.md's original text said "do not guess this number, measure it,"
+and measuring it revealed the number alone isn't sufficient.
