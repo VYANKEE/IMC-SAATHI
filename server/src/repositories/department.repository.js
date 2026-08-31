@@ -33,3 +33,14 @@ export function findDepartmentBySlug(slug) {
 export function findContactsForDepartment(departmentId) {
   return Contact.find({ departmentId, verified: true }).sort({ isPrimary: -1, name: 1 }).lean();
 }
+
+/**
+ * Lookup by the short code stored on KnowledgeChunk.department (e.g.
+ * 'ELECTRICAL') and on validated classifier output — NOT the same as
+ * `slug` (URL-friendly, used by the department selector API). This is the
+ * join point between "the RAG layer said ELECTRICAL" and "here is that
+ * department's real Mongo _id, so we can look up its verified contacts."
+ */
+export function findDepartmentByCode(code) {
+  return Department.findOne({ code, isActive: true }).lean();
+}
