@@ -1,5 +1,6 @@
 import * as repo from '../repositories/department.repository.js';
 import { ApiError } from '../utils/ApiError.js';
+import { getSuggestedQuestions } from './suggestedQuestions.service.js';
 
 /**
  * Pick the caller's language out of a { en, hi } object.
@@ -55,4 +56,18 @@ export async function getDepartmentBySlug(slug, lang = 'en') {
     })),
     sourceDocuments: d.sourceDocuments ?? [],
   };
+}
+
+/**
+ * Real, corpus-grounded example questions for a department -- what the chat
+ * demo's "suggested questions" step (public/demo.js) shows after a citizen
+ * picks a department. See suggestedQuestions.service.js for why these are
+ * derived from actual KB content rather than hand-written.
+ */
+export async function getSuggestedQuestionsForDepartment(slug, limit = 5) {
+  const d = await repo.findDepartmentBySlug(slug);
+  if (!d) throw ApiError.notFound('Department not found', 'DEPARTMENT_NOT_FOUND');
+
+  const questions = await getSuggestedQuestions(d.code, limit);
+  return { departmentId: d.code, slug: d.slug, questions };
 }

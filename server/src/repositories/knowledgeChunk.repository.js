@@ -37,6 +37,20 @@ export function countKnowledgeChunks() {
 }
 
 /**
+ * Primary (non-variant) chunks for a department -- the source material the
+ * "suggested questions" feature (services/suggestedQuestions.service.js)
+ * derives real, corpus-grounded example questions from, instead of hand-
+ * written placeholder text. Non-variant only: a Hinglish variant row's
+ * `text` is identical to its parent's (see this model's own header
+ * comment), so including variants would just duplicate the same question.
+ */
+export function findPrimaryChunksForDepartment(departmentCode, limit = 40) {
+  return KnowledgeChunk.find({ department: departmentCode, status: 'active', isVariant: false })
+    .limit(limit)
+    .lean();
+}
+
+/**
  * The one retrieval read this whole corpus exists for — docs/03-rag.md's
  * $vectorSearch pipeline. `queryVector` must already be embedded with
  * input_type: 'query' (asymmetric retrieval — see nvidiaEmbedder.js). The

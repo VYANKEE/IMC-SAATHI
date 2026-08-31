@@ -21,9 +21,13 @@ vi.mock('../src/repositories/zone.repository.js', () => ({
   findZoneByNumber: vi.fn(),
   findZoneByWard: vi.fn(),
 }));
+vi.mock('../src/repositories/knowledgeChunk.repository.js', () => ({
+  findPrimaryChunksForDepartment: vi.fn(),
+}));
 
 const deptRepo = await import('../src/repositories/department.repository.js');
 const zoneRepo = await import('../src/repositories/zone.repository.js');
+const chunkRepo = await import('../src/repositories/knowledgeChunk.repository.js');
 const { createApp } = await import('../src/app.js');
 const app = createApp();
 
@@ -32,7 +36,10 @@ const ELECTRICAL = {
   code: 'ELECTRICAL',
   slug: 'electrical-mechanical',
   name: { en: 'Electrical & Mechanical', hi: 'विद्युत एवं यांत्रिकी विभाग' },
-  description: { en: 'Street lights and municipal electrical work.', hi: 'स्ट्रीट लाइट एवं नगरीय विद्युत कार्य।' },
+  description: {
+    en: 'Street lights and municipal electrical work.',
+    hi: 'स्ट्रीट लाइट एवं नगरीय विद्युत कार्य।',
+  },
   responsibilities: { en: ['Street light maintenance'], hi: ['स्ट्रीट लाइट रखरखाव'] },
   coverageTier: 'A',
   isSelectable: true,
@@ -87,7 +94,12 @@ describe('GET /api/departments/:slug', () => {
   it('returns the department with its verified contacts', async () => {
     deptRepo.findDepartmentBySlug.mockResolvedValue(ELECTRICAL);
     deptRepo.findContactsForDepartment.mockResolvedValue([
-      { name: 'Mr. Ashwin Janvade', designation: 'In-Charge Executive Engineer', mobile: '7440440005', isPrimary: true },
+      {
+        name: 'Mr. Ashwin Janvade',
+        designation: 'In-Charge Executive Engineer',
+        mobile: '7440440005',
+        isPrimary: true,
+      },
     ]);
 
     const res = await request(app).get('/api/departments/electrical-mechanical');
@@ -126,7 +138,10 @@ describe('GET /api/zones/by-ward/:wardNumber', () => {
     // Zone 10's landline has a Raipur STD code in the source document.
     // docs/data-quality-register.md #14.
     zoneRepo.findZoneByWard.mockResolvedValue({
-      ...ZONE_9, zoneNumber: 10, officePhone: '0771-2497422', verified: false,
+      ...ZONE_9,
+      zoneNumber: 10,
+      officePhone: '0771-2497422',
+      verified: false,
     });
 
     const res = await request(app).get('/api/zones/by-ward/42');
@@ -153,6 +168,34 @@ describe('GET /api/zones/by-ward/:wardNumber', () => {
     const res = await request(app).get('/api/zones/by-ward/50');
     expect(res.status).toBe(404);
     expect(res.body.code).toBe('WARD_NOT_FOUND');
+  });
+});
+
+describe('GET /api/departments/:slug/suggested-questions', () => {
+  it('returns real, corpus-derived questions for the department', async () => {
+    deptRepo.findDepartmentBySlug.mockResolvedValue(ELECTRICAL);
+    chunkRepo.findPrimaryChunksForDepartment.mockResolvedValue([
+      { text: 'Q: Street light is not working, what do I do?\nA: File via the app.' },
+      { text: 'Q: How do I report a fallen electric pole?\nA: Call the emergency line.' },
+    ]);
+
+    const res = await request(app).get(
+      '/api/departments/electrical-mechanical/suggested-questions'
+    );
+    expect(res.status).toBe(200);
+    expect(res.body.data.departmentId).toBe('ELECTRICAL');
+    expect(res.body.data.questions).toEqual([
+      'Street light is not working, what do I do?',
+      'How do I report a fallen electric pole?',
+    ]);
+  });
+
+  it('404s with a code for an unknown department', async () => {
+    deptRepo.findDepartmentBySlug.mockResolvedValue(null);
+    const res = await request(app).get('/api/departments/does-not-exist/suggested-questions');
+    expect(res.status).toBe(404);
+    expect(res.body.code).toBe('DEPARTMENT_NOT_FOUND');
+    expect(chunkRepo.findPrimaryChunksForDepartment).not.toHaveBeenCalled();
   });
 });
 

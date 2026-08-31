@@ -1,63 +1,261 @@
 /**
  * demo.js
  *
- * Minimal client for the single demo page (public/demo.html). No build
- * step, no framework -- plain DOM, so anything here reads clearly for
- * whoever builds the real Phase 9 frontend and wants to see the contract
- * this backend actually returns before wiring their own UI to it.
+ * Client for the single demo page (public/demo.html). No build step, no
+ * framework -- plain DOM, so this reads clearly for whoever builds the real
+ * Phase 9 frontend and wants to see the intended flow and the exact API
+ * shapes before wiring their own UI to them.
+ *
+ * Flow implemented (department-first, matching the intended product UX):
+ *   1. Citizen picks a department from a grid (or "something else / not
+ *      sure" to skip straight to free-form chat).
+ *   2. Real, corpus-derived suggested questions for that department are
+ *      shown as clickable chips -- picking one asks it verbatim. The free-
+ *      text input at the bottom is ALWAYS available too, so a citizen is
+ *      never limited to the suggestions.
+ *   3. Suggestions + a "change department" control stay visible for the
+ *      rest of the conversation, so asking a second question in the same
+ *      department is always one click away.
  *
  * ============================================================================
- * API CONTRACT -- POST /api/chat
+ * API CONTRACT
  * ============================================================================
- * Request body:  { "query": "<citizen text, 2-1000 chars, en/hi/hinglish>" }
+ * GET /api/departments?lang=en
+ *   -> { success: true, data: { departments: [{id, code, slug, name,
+ *        description, coverageTier, isSelectable}], count } }
+ *   Only tier-A, citizen-selectable departments (see Department.js).
  *
- * Response envelope (always): { "success": boolean, "data"?: {...},
- *   "code"?: string, "message"?: string, "requestId"?: string }
- * On success (HTTP 200) `data.route` is one of:
+ * GET /api/departments/:slug/suggested-questions?limit=5
+ *   -> { success: true, data: { departmentId, slug, questions: string[] } }
+ *   Real questions extracted from that department's actual knowledge base
+ *   content (services/suggestedQuestions.service.js) -- not hand-written.
  *
- *   "grounded" -- a real answer was generated from retrieved knowledge.
- *     {
- *       route, answer, procedureSteps[], requiredDocuments[],
+ * POST /api/chat   body: { "query": "<citizen text, 2-1000 chars>" }
+ *   Response envelope (always): { success: boolean, data?: {...}, code?,
+ *     message?, requestId? }. On success, data.route is one of:
+ *
+ *   "grounded" -- a real answer generated from retrieved knowledge.
+ *     { route, answer, procedureSteps[], requiredDocuments[],
  *       requiredInformation[], officeTiming, fees, escalation,
  *       sources[{chunkId, document, section, url}], suggestedActions[],
  *       confidence: "high"|"medium"|"low", groundingViolations[],
  *       department: {id, name} | null,   // from the DB, not the LLM
  *       contact: {name, designation, phone, office} | null,  // from the DB
- *       classification: {...}, departmentFilterApplied, retrievedCount
- *     }
+ *       classification: {...}, departmentFilterApplied, retrievedCount }
  *
- *   "out_of_scope" -- not a civic/IMC matter at all (e.g. cricket scores).
+ *   "out_of_scope" -- not a civic/IMC matter at all.
  *     { route, answer, sources: [], confidence: "high", classification }
  *
- *   "non_imc" -- a real civic issue, but a different authority handles it
- *   (e.g. household electricity -> the Discom, not IMC Electrical).
+ *   "non_imc" -- a real civic issue, but a different authority handles it.
  *     { route, answer, sources: [], confidence: "high",
  *       externalAuthority: {key, name, phone, altPhone, note, handles[]},
  *       classification }
  *
  *   "non_imc_unresolved" -- classifier said non-IMC but couldn't resolve
  *   which authority; treat like a low-confidence fallback.
- *     { route, answer, sources: [], confidence: "low", classification }
  *
  * Non-2xx (400/500/503): { success: false, code, message, requestId } --
- * `message` is always safe to show a user as-is (see server's errorHandler.js
- * -- internal error detail never reaches this response on purpose).
+ * `message` is always safe to show a user as-is (server's errorHandler.js
+ * never lets internal error detail reach this response).
  * ============================================================================
  */
 
-const messagesEl = document.getElementById('messages');
+const chatFlowEl = document.getElementById('chat-flow');
 const formEl = document.getElementById('chat-form');
 const inputEl = document.getElementById('query-input');
 const sendBtn = document.getElementById('send-btn');
-const chipsEl = document.getElementById('example-chips');
+const coveragePillsEl = document.getElementById('coverage-pills');
+const coverageSubEl = document.getElementById('coverage-sub');
+const statDeptCountEl = document.getElementById('stat-dept-count');
+
+/** @type {Array<{id:string, code:string, slug:string, name:string, description:string|null}>} */
+let departments = [];
+/** Currently selected department, or null (picker screen / general mode). */
+let selectedDepartment = null;
+/** True once the citizen has explicitly chosen "something else / not sure". */
+let generalMode = false;
+
+let messagesEl = null; // created fresh each time renderChatArea() runs
+
+// ---------------------------------------------------------------------------
+// Department loading (powers the hero stat, the coverage section, and the
+// chat picker -- fetched once, reused everywhere).
+// ---------------------------------------------------------------------------
+
+async function loadDepartments() {
+  try {
+    const res = await fetch('/api/departments?lang=en');
+    const body = await res.json();
+    if (!res.ok || !body.success) throw new Error(body.message || 'Failed to load departments');
+    departments = body.data.departments;
+  } catch {
+    departments = [];
+    coverageSubEl.textContent =
+      'Departments abhi load nahi ho paaye. Server chal raha hai ya nahi check karein.';
+  }
+
+  statDeptCountEl.textContent = departments.length || '—';
+  renderCoveragePills();
+  renderDepartmentPicker();
+}
+
+function renderCoveragePills() {
+  if (departments.length === 0) return;
+  coverageSubEl.textContent = `${departments.length} vibhaag, ek jagah — chunein aur seedha sahi jaankari paayein.`;
+  coveragePillsEl.innerHTML = '';
+  departments.forEach((d) => {
+    const span = document.createElement('span');
+    span.className = 'pill';
+    span.textContent = d.name;
+    coveragePillsEl.appendChild(span);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Chat area rendering. Two screens inside #chat-flow:
+//   - picker: no department chosen yet.
+//   - active: a department is selected (or general mode) -- banner (if any)
+//     + suggested-question chips (if a department is selected) + messages.
+// The free-text <form> below #chat-flow is always visible in both screens.
+// ---------------------------------------------------------------------------
+
+function renderDepartmentPicker() {
+  chatFlowEl.innerHTML = '';
+
+  const heading = document.createElement('p');
+  heading.className = 'picker-heading';
+  heading.textContent = 'Aapki dikkat ya sawaal kis vibhaag se sambandhit hai?';
+  chatFlowEl.appendChild(heading);
+
+  const grid = document.createElement('div');
+  grid.className = 'dept-grid';
+
+  departments.forEach((d) => {
+    const btn = document.createElement('button');
+    btn.className = 'dept-card';
+    btn.type = 'button';
+    btn.innerHTML = '<div class="dept-name"></div><div class="dept-desc"></div>';
+    btn.querySelector('.dept-name').textContent = d.name;
+    btn.querySelector('.dept-desc').textContent = d.description || '';
+    btn.addEventListener('click', () => selectDepartment(d));
+    grid.appendChild(btn);
+  });
+
+  const otherBtn = document.createElement('button');
+  otherBtn.className = 'dept-card other';
+  otherBtn.type = 'button';
+  otherBtn.textContent = 'Pata nahi / kuch aur — seedha type karein';
+  otherBtn.addEventListener('click', selectGeneral);
+  grid.appendChild(otherBtn);
+
+  chatFlowEl.appendChild(grid);
+  inputEl.placeholder = 'Pehle upar se apna vibhaag chunein…';
+}
+
+function renderChatArea() {
+  chatFlowEl.innerHTML = '';
+
+  if (selectedDepartment) {
+    const banner = document.createElement('div');
+    banner.className = 'selected-banner';
+    const label = document.createElement('span');
+    label.innerHTML = 'Chuna gaya vibhaag: <strong></strong>';
+    label.querySelector('strong').textContent = selectedDepartment.name;
+    banner.appendChild(label);
+    const changeBtn = document.createElement('button');
+    changeBtn.type = 'button';
+    changeBtn.textContent = 'Vibhaag badlein';
+    changeBtn.addEventListener('click', resetToPicker);
+    banner.appendChild(changeBtn);
+    chatFlowEl.appendChild(banner);
+
+    const label2 = document.createElement('p');
+    label2.className = 'suggested-label';
+    label2.textContent = 'Suggested sawaal';
+    chatFlowEl.appendChild(label2);
+
+    const chipsWrap = document.createElement('div');
+    chipsWrap.className = 'chips';
+    chipsWrap.id = 'suggested-chips';
+    chipsWrap.innerHTML = '<span class="chip loading">Load ho raha hai…</span>';
+    chatFlowEl.appendChild(chipsWrap);
+    loadSuggestedQuestions(selectedDepartment.slug);
+  } else {
+    const backBtn = document.createElement('button');
+    backBtn.className = 'chip';
+    backBtn.type = 'button';
+    backBtn.textContent = '← Vibhaag chunein';
+    backBtn.addEventListener('click', resetToPicker);
+    chatFlowEl.appendChild(backBtn);
+  }
+
+  messagesEl = document.createElement('div');
+  messagesEl.id = 'messages';
+  messagesEl.innerHTML =
+    '<p class="empty-state">Ek suggested sawaal chunein ya neeche apna sawaal type karein.</p>';
+  chatFlowEl.appendChild(messagesEl);
+
+  inputEl.placeholder = 'Apna sawaal yahan likhein… (English / हिंदी / Hinglish)';
+}
+
+async function loadSuggestedQuestions(slug) {
+  const wrap = document.getElementById('suggested-chips');
+  try {
+    const res = await fetch(
+      `/api/departments/${encodeURIComponent(slug)}/suggested-questions?limit=5`
+    );
+    const body = await res.json();
+    if (!res.ok || !body.success) throw new Error(body.message || 'Failed to load suggestions');
+    const questions = body.data.questions;
+    if (!wrap) return; // user may have navigated away before this resolved
+    wrap.innerHTML = '';
+    if (questions.length === 0) {
+      wrap.innerHTML =
+        '<span class="chip loading">Iss vibhaag ke liye abhi koi suggestion nahi — apna sawaal type karein.</span>';
+      return;
+    }
+    questions.forEach((q) => {
+      const chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.type = 'button';
+      chip.textContent = q;
+      chip.addEventListener('click', () => sendQuery(q));
+      wrap.appendChild(chip);
+    });
+  } catch {
+    if (wrap) wrap.innerHTML = '<span class="chip loading">Suggestions load nahi ho paaye.</span>';
+  }
+}
+
+function selectDepartment(dept) {
+  selectedDepartment = dept;
+  generalMode = false;
+  renderChatArea();
+}
+
+function selectGeneral() {
+  selectedDepartment = null;
+  generalMode = true;
+  renderChatArea();
+}
+
+function resetToPicker() {
+  selectedDepartment = null;
+  generalMode = false;
+  renderDepartmentPicker();
+}
+
+// ---------------------------------------------------------------------------
+// Messaging
+// ---------------------------------------------------------------------------
 
 function clearEmptyState() {
-  const empty = messagesEl.querySelector('.empty-state');
+  const empty = messagesEl && messagesEl.querySelector('.empty-state');
   if (empty) empty.remove();
 }
 
 function scrollToBottom() {
-  messagesEl.scrollTop = messagesEl.scrollHeight;
+  if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
 function addUserMessage(text) {
@@ -73,7 +271,6 @@ function addUserMessage(text) {
 function addTypingIndicator() {
   const wrap = document.createElement('div');
   wrap.className = 'msg bot';
-  wrap.dataset.typing = 'true';
   wrap.innerHTML =
     '<div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
   messagesEl.appendChild(wrap);
@@ -178,6 +375,13 @@ function renderBotError(message) {
 }
 
 async function sendQuery(query) {
+  // Typing before a department has ever been picked (or "something else")
+  // still works -- it just starts in general mode implicitly.
+  if (!selectedDepartment && !generalMode) {
+    generalMode = true;
+    renderChatArea();
+  }
+
   addUserMessage(query);
   sendBtn.disabled = true;
   const typingEl = addTypingIndicator();
@@ -212,8 +416,4 @@ formEl.addEventListener('submit', (e) => {
   sendQuery(query);
 });
 
-chipsEl.addEventListener('click', (e) => {
-  const btn = e.target.closest('.chip');
-  if (!btn) return;
-  sendQuery(btn.dataset.query);
-});
+loadDepartments();

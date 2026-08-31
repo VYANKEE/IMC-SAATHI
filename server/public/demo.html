@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IMC Saathi — Demo</title>
+<title>IMC Saathi</title>
 <style>
   /*
-    Minimal demo styling only. This is NOT the Phase 9 frontend -- it's a
-    single static page proving the backend end-to-end (POST /api/chat) so
-    the real frontend developer has something working to point at and
-    replace, not something they have to reverse-engineer from route code.
-    Keep it simple; do not invest more design time here than the demo needs.
+    Preview build of the IMC Saathi frontend -- static HTML/CSS/JS, no
+    framework, so the eventual React/Vite frontend (client/ workspace) has a
+    working reference for exact API shapes and UX flow, not a spec doc to
+    reverse-engineer. Copy/behaviour here is meant to read like the real
+    product, not a project writeup.
   */
   :root {
     --imc-blue: #0b4f8a;
     --imc-blue-dark: #073a66;
+    --imc-blue-light: #eaf2f9;
+    --accent: #d97706;
     --bg: #f4f6f8;
     --card: #ffffff;
     --border: #e0e4e8;
@@ -28,69 +30,166 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.55; }
+  a { color: inherit; }
+
+  /* ---------- nav ---------- */
+  nav.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+  nav.topnav .brand { font-weight: 700; color: var(--imc-blue-dark); font-size: 1.05rem; }
+  nav.topnav .links { display: flex; gap: 1.3rem; font-size: 0.88rem; }
+  nav.topnav .links a { text-decoration: none; color: var(--muted); }
+  nav.topnav .links a:hover { color: var(--imc-blue); }
+  nav.topnav .cta {
+    background: var(--imc-blue);
+    color: #fff;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  @media (max-width: 640px) { nav.topnav .links { display: none; } }
+
+  /* ---------- hero ---------- */
   header.hero {
     background: linear-gradient(135deg, var(--imc-blue), var(--imc-blue-dark));
     color: #fff;
-    padding: 2.5rem 1.5rem 3rem;
+    padding: 3.5rem 1.5rem 4.5rem;
     text-align: center;
   }
-  header.hero h1 { margin: 0 0 0.25rem; font-size: 1.9rem; }
-  header.hero p.tagline { margin: 0; opacity: 0.9; font-size: 1rem; }
-  header.hero p.badge {
-    display: inline-block;
-    margin-top: 0.9rem;
-    font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
+  header.hero h1 { margin: 0 0 0.4rem; font-size: 2.3rem; letter-spacing: -0.01em; }
+  header.hero p.tagline { margin: 0 auto; max-width: 40rem; opacity: 0.92; font-size: 1.05rem; }
+  header.hero .cta-row { margin-top: 1.6rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  header.hero .btn-primary {
+    background: #fff;
+    color: var(--imc-blue-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
   }
+  header.hero .btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .stats-row {
+    max-width: 640px;
+    margin: 2.2rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .stats-row .stat { background: rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 0.8rem 0.5rem; }
+  .stats-row .stat .num { font-size: 1.35rem; font-weight: 700; }
+  .stats-row .stat .label { font-size: 0.72rem; opacity: 0.85; margin-top: 0.15rem; }
 
-  main { max-width: 880px; margin: -1.75rem auto 3rem; padding: 0 1.25rem; }
+  main { max-width: 960px; margin: -2rem auto 3rem; padding: 0 1.25rem; }
 
   section.card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: 14px;
+    padding: 1.9rem;
+    margin-bottom: 1.75rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    scroll-margin-top: 4.5rem;
   }
+  section.card h2 { margin-top: 0; font-size: 1.35rem; }
+  section.card p.section-sub { color: var(--muted); margin-top: -0.4rem; font-size: 0.95rem; }
 
-  section.how h2 { margin-top: 0; font-size: 1.15rem; }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  .step {
-    background: var(--bg);
-    border-radius: 10px;
-    padding: 1rem;
-  }
+  /* ---------- how it works ---------- */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+  .step { background: var(--bg); border-radius: 10px; padding: 1rem; }
   .step .num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    background: var(--imc-blue);
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: var(--imc-blue); color: #fff; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;
   }
   .step p { margin: 0; font-size: 0.88rem; color: var(--muted); }
 
-  section.chat h2 { margin-top: 0; font-size: 1.15rem; }
-  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 1.1rem; }
+  /* ---------- why / features ---------- */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+  .feature { border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+  .feature h3 { margin: 0 0 0.3rem; font-size: 0.98rem; }
+  .feature p { margin: 0; font-size: 0.86rem; color: var(--muted); }
+
+  /* ---------- coverage pills ---------- */
+  .pill-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+  .pill {
+    background: var(--imc-blue-light);
+    color: var(--imc-blue-dark);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- chat section: department picker ---------- */
+  .picker-heading { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.9rem; }
+  .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
+  .dept-card {
+    text-align: left;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    font: inherit;
+  }
+  .dept-card:hover { border-color: var(--imc-blue); background: var(--imc-blue-light); }
+  .dept-card .dept-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.2rem; }
+  .dept-card .dept-desc { font-size: 0.8rem; color: var(--muted); }
+  .dept-card.other {
+    border-style: dashed;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+  }
+  .dept-card.other:hover { color: var(--imc-blue); }
+
+  .selected-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--imc-blue-light);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+  }
+  .selected-banner strong { color: var(--imc-blue-dark); }
+  .selected-banner button {
+    background: none;
+    border: 1px solid var(--imc-blue);
+    color: var(--imc-blue);
+    border-radius: 8px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .selected-banner button:hover { background: var(--imc-blue); color: #fff; }
+
+  .suggested-label { font-size: 0.8rem; color: var(--muted); margin: 0.9rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
   .chip {
     border: 1px solid var(--border);
     background: #fff;
@@ -99,30 +198,22 @@
     padding: 0.4rem 0.85rem;
     font-size: 0.82rem;
     cursor: pointer;
+    font: inherit;
   }
   .chip:hover { background: var(--bg); }
+  .chip.loading { color: var(--muted); cursor: default; }
 
+  /* ---------- messages ---------- */
   #messages {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    min-height: 140px;
-    max-height: 55vh;
-    overflow-y: auto;
-    padding: 0.25rem 0.1rem;
-    margin-bottom: 1rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    min-height: 100px; max-height: 55vh; overflow-y: auto;
+    padding: 0.25rem 0.1rem; margin: 1rem 0;
   }
-  .empty-state { color: var(--muted); font-size: 0.9rem; text-align: center; padding: 1.5rem 0; }
-
+  .empty-state { color: var(--muted); font-size: 0.9rem; text-align: center; padding: 1rem 0; }
   .msg { max-width: 85%; }
   .msg.user { align-self: flex-end; }
   .msg.bot { align-self: flex-start; }
-  .bubble {
-    border-radius: 14px;
-    padding: 0.7rem 0.95rem;
-    font-size: 0.92rem;
-    white-space: pre-wrap;
-  }
+  .bubble { border-radius: 14px; padding: 0.7rem 0.95rem; font-size: 0.92rem; white-space: pre-wrap; }
   .msg.user .bubble { background: var(--user-bubble); color: #fff; border-bottom-right-radius: 4px; }
   .msg.bot .bubble { background: var(--bot-bubble); color: var(--text); border-bottom-left-radius: 4px; }
   .msg.bot .bubble.error { background: #fbeae9; color: var(--danger); }
@@ -143,80 +234,111 @@
 
   form#chat-form { display: flex; gap: 0.6rem; }
   #query-input {
-    flex: 1;
-    padding: 0.7rem 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 0.92rem;
+    flex: 1; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 0.92rem;
   }
   #query-input:focus { outline: 2px solid var(--imc-blue); outline-offset: 1px; }
-  button#send-btn {
-    background: var(--imc-blue);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 0 1.3rem;
-    font-size: 0.92rem;
-    cursor: pointer;
+  button.btn-send {
+    background: var(--imc-blue); color: #fff; border: none; border-radius: 10px;
+    padding: 0 1.3rem; font-size: 0.92rem; cursor: pointer;
   }
-  button#send-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-  button#send-btn:not(:disabled):hover { background: var(--imc-blue-dark); }
+  button.btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+  button.btn-send:not(:disabled):hover { background: var(--imc-blue-dark); }
 
   .typing { display: flex; gap: 3px; padding: 0.3rem 0; }
-  .typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--muted);
-    animation: blink 1.2s infinite ease-in-out;
-  }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite ease-in-out; }
   .typing span:nth-child(2) { animation-delay: 0.2s; }
   .typing span:nth-child(3) { animation-delay: 0.4s; }
   @keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
 
-  footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding-bottom: 2rem; }
+  footer { text-align: center; color: var(--muted); font-size: 0.82rem; padding: 2rem 1rem 3rem; }
+  footer .foot-links { display: flex; gap: 1rem; justify-content: center; margin-bottom: 0.6rem; font-size: 0.82rem; }
+  footer .foot-links a { text-decoration: none; color: var(--imc-blue); }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<nav class="topnav">
+  <span class="brand">IMC Saathi</span>
+  <div class="links">
+    <a href="#how">How it works</a>
+    <a href="#why">Why IMC Saathi</a>
+    <a href="#coverage">Departments</a>
+  </div>
+  <a class="cta" href="#chat">Try the assistant</a>
+</nav>
+
+<header class="hero" id="top">
   <h1>IMC Saathi</h1>
-  <p class="tagline">Indore Municipal Corporation ke liye AI se chalne wala citizen assistant</p>
-  <p class="badge">Internship demo build — backend + minimal preview</p>
+  <p class="tagline">Aapka civic assistant — Indore Municipal Corporation ki seva, shikayat aur jaankari, ek hi jagah, aapki bhasha mein.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="#chat">Ab try karein</a>
+    <a class="btn-secondary" href="#how">Kaise kaam karta hai</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="num" id="stat-dept-count">—</div><div class="label">Departments covered</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Bhashayein — EN / HI / Hinglish</div></div>
+    <div class="stat"><div class="num">24×7</div><div class="label">Available</div></div>
+  </div>
 </header>
 
 <main>
-  <section class="card how">
+  <section class="card how" id="how">
     <h2>Ye kaise kaam karta hai</h2>
+    <p class="section-sub">Chaar seedhe steps mein aapki shikayat ya sawaal sahi jagah pahunchta hai.</p>
     <div class="steps">
       <div class="step">
         <span class="num">1</span>
-        <p>Apna sawaal English, Hindi ya Hinglish mein type karein — jaisa aap bolte hain.</p>
+        <p>Apna vibhaag (department) chunein, ya seedha apna sawaal likh dein — English, Hindi ya Hinglish, jaisa aap bolte hain.</p>
       </div>
       <div class="step">
         <span class="num">2</span>
-        <p>AI sawaal ko sahi IMC department se match karta hai, ya batata hai ki ye IMC ka mamla hai hi nahi.</p>
+        <p>IMC Saathi aapke sawaal ko sahi department se match karta hai — ya batata hai ki ye IMC ka mamla hai hi nahi.</p>
       </div>
       <div class="step">
         <span class="num">3</span>
-        <p>Jawaab sirf verified knowledge base aur database se banta hai — phone number ya fees kabhi invent nahi kiye jaate.</p>
+        <p>Jawaab sirf verified knowledge base aur database se banta hai — phone number, fees ya procedure kabhi invent nahi kiye jaate.</p>
       </div>
       <div class="step">
         <span class="num">4</span>
-        <p>Agar mamla IMC ka nahi (jaise ghar ki bijli), to sahi authority aur unka number seedha bata diya jaata hai.</p>
+        <p>Agar mamla IMC ka nahi hai (jaise ghar ki bijli), to sahi authority aur unka number seedha bata diya jaata hai.</p>
       </div>
     </div>
   </section>
 
-  <section class="card chat">
-    <h2>Try karke dekhein</h2>
-    <div class="chips" id="example-chips">
-      <button class="chip" type="button" data-query="Street light nahi jal raha hai, complaint kaise karu?">Street light complaint</button>
-      <button class="chip" type="button" data-query="मेरे घर की बिजली चली गई है">घर की बिजली (non-IMC)</button>
-      <button class="chip" type="button" data-query="Property tax online kaise pay karu?">Property tax</button>
-      <button class="chip" type="button" data-query="Who won yesterday's cricket match?">Out-of-scope example</button>
+  <section class="card why" id="why">
+    <h2>Why IMC Saathi</h2>
+    <p class="section-sub">Ek assistant jo sirf wahi batata hai jo verify ho sake.</p>
+    <div class="features">
+      <div class="feature">
+        <h3>Verified facts only</h3>
+        <p>Phone number, fees, office timing — sab database se aate hain, AI kabhi khud se nahi banata.</p>
+      </div>
+      <div class="feature">
+        <h3>Teen bhashaon mein baat</h3>
+        <p>English, Hindi ya Hinglish — jaisa aap type karein, wahi samjha jaata hai.</p>
+      </div>
+      <div class="feature">
+        <h3>Smart routing</h3>
+        <p>Har civic sawaal IMC ka nahi hota — jab zarurat ho, sahi authority (jaise bijli company) seedha bata diya jaata hai.</p>
+      </div>
+      <div class="feature">
+        <h3>Saaf refusal, jhoothi jaankari nahi</h3>
+        <p>Agar pakki jaankari nahi hai, to assistant seedha keh deta hai — kabhi andaza nahi lagata.</p>
+      </div>
     </div>
+  </section>
 
-    <div id="messages">
-      <p class="empty-state">Koi bhi sawaal type karein ya upar diye gaye example try karein.</p>
-    </div>
+  <section class="card coverage" id="coverage">
+    <h2>Hum inn vibhaagon mein madad karte hain</h2>
+    <p class="section-sub" id="coverage-sub">Load ho raha hai…</p>
+    <div class="pill-cloud" id="coverage-pills"></div>
+  </section>
+
+  <section class="card chat" id="chat">
+    <h2>Try karke dekhein</h2>
+    <p class="section-sub">Pehle apna vibhaag chunein — ya seedha neeche type karein.</p>
+
+    <div id="chat-flow"><!-- department picker / suggestions / messages render here --></div>
 
     <form id="chat-form" autocomplete="off">
       <input
@@ -226,13 +348,19 @@
         maxlength="1000"
         required
       />
-      <button id="send-btn" type="submit">Bhejein</button>
+      <button class="btn-send" id="send-btn" type="submit">Bhejein</button>
     </form>
   </section>
 </main>
 
 <footer>
-  IMC Saathi — internship project. Ye ek chota demo hai; poora frontend alag se banega.
+  <div class="foot-links">
+    <a href="#top">Home</a>
+    <a href="#how">How it works</a>
+    <a href="#coverage">Departments</a>
+    <a href="#chat">Chatbot</a>
+  </div>
+  IMC Saathi — Indore Municipal Corporation ka digital sahayak.
 </footer>
 
 <script src="/demo.js" defer></script>

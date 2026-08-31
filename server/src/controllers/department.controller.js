@@ -14,3 +14,9 @@ export async function getDepartment(req, res) {
   const data = await service.getDepartmentBySlug(req.params.slug, req.query.lang);
   return ok(res, data);
 }
+
+export async function getSuggestedQuestions(req, res) {
+  const limit = Number(req.query.limit) || 5;
+  const data = await service.getSuggestedQuestionsForDepartment(req.params.slug, limit);
+  return ok(res, data);
+}
