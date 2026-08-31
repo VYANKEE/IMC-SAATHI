@@ -187,7 +187,7 @@ rate table live until verified — present, tracked, not served.
   tokenCount, createdAt }
 ```
 
-Atlas Search index `knowledge_vector_index`:
+Atlas Search index `vector_index`:
 
 ```json
 {
@@ -300,5 +300,5 @@ alone.
 | Complaint timeline                             | `{complaintId:1, createdAt:1}`                                      |
 | SLA sweep job                                  | `{status:1, slaDueAt:1}`                                            |
 | Ward → zone → contact                          | `zones.{wards:1}` multikey                                          |
-| Semantic retrieval, department-filtered        | Atlas `knowledge_vector_index`                                      |
+| Semantic retrieval, department-filtered        | Atlas `vector_index`                                                |
 | Admin analytics by department/status           | `{departmentId:1, status:1, createdAt:-1}` (covers the aggregation) |

@@ -149,7 +149,7 @@ _Indore 311_ or reformats a phone number has broken the answer.
 [
   {
     $vectorSearch: {
-      index: 'knowledge_vector_index',
+      index: 'vector_index',
       path: 'embedding',
       queryVector,
       numCandidates: 150,
