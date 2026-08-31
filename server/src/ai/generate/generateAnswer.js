@@ -137,6 +137,22 @@ export function createGenerator({ apiKey, embeddingModel, chatModel, dimensions 
     return {
       route: 'grounded',
       ...validated,
+      // department/contact are NOT part of GROUNDED_ANSWER_SCHEMA and never
+      // come from the LLM -- see docs/11-decisions.md D16 Addendum 2. Both
+      // are deterministic facts already fetched above; attaching them here
+      // (not asking the model to reproduce them) is what actually fixed the
+      // malformed department/contact shape the first real call produced.
+      department: facts.department
+        ? { id: facts.department.code, name: facts.department.name?.en ?? facts.department.code }
+        : null,
+      contact: facts.contacts?.[0]
+        ? {
+            name: facts.contacts[0].name,
+            designation: facts.contacts[0].designation ?? null,
+            phone: facts.contacts[0].mobile || facts.contacts[0].officePhone || null,
+            office: facts.contacts[0].officeAddress ?? null,
+          }
+        : null,
       classification,
       departmentFilterApplied,
       retrievedCount: results.length,

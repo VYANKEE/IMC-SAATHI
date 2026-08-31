@@ -9,13 +9,21 @@
  * Hand-written fetch(), same reasoning as nvidiaEmbedder.js: no JS
  * LangChain package for NVIDIA's endpoints.
  *
- * Structured JSON output uses NVIDIA NIM's `nvext.guided_json` extension,
- * NOT the plain OpenAI `response_format: {type: "json_object"}` — NVIDIA's
- * own docs warn that plain json_object mode "permits the model to produce
- * any valid JSON, including empty objects," which is exactly the failure
- * mode docs/03-rag.md's grounding rules are trying to prevent.
- * `guided_json` constrains generation to an actual JSON Schema. Verified
- * gpt-oss-120b honours it correctly (see Addendum 1).
+ * Structured JSON output is requested via NVIDIA NIM's `nvext.guided_json`
+ * extension (kept over plain OpenAI `response_format: {type: "json_object"}`
+ * per NVIDIA's own warning that plain json_object mode "permits the model
+ * to produce any valid JSON, including empty objects"). BUT: on this hosted
+ * gpt-oss-120b function, `guided_json` does NOT reliably enforce the schema
+ * shape — verified directly (docs/11-decisions.md D16 Addendum 2): a
+ * complex nested schema came back with different field names entirely,
+ * while the same request with a schema-less prompt also produced its own
+ * invented shape. The one thing that reliably worked was a prompt that
+ * spells out every field name and type in prose (see classify.department.md
+ * and answer.grounded.md's closing instructions) — `guided_json` is sent on
+ * every call because it can only help, never hurt, but nothing downstream
+ * may assume the response actually matches `jsonSchema`'s shape. Prompts
+ * are the real contract here; schemas are the JSON.parse-ability net and
+ * the source of truth `docs/03-rag.md`'s tables describe from.
  *
  * gpt-oss-120b is a *reasoning* model: it writes a hidden chain-of-thought
  * into `message.reasoning_content` before writing the final answer into
@@ -24,6 +32,16 @@
  * written, which reads as an empty response, not a JSON-parse error. That
  * is why `maxTokens` below defaults higher than a non-reasoning model would
  * need — see Addendum 1 for how this was actually observed happening.
+ *
+ * `reasoning_effort` (top-level request field, NOT inside `nvext` — per
+ * https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b-infer)
+ * controls how much of that chain-of-thought the model writes: low/medium
+ * (NVIDIA's default)/high. Our calls are template-bound classification and
+ * grounded generation against a fixed schema, not open-ended reasoning, so
+ * `low` is the default here — first real end-to-end call measured 42s at
+ * the (undocumented, effectively 'medium') default; this exists to cut
+ * that down without silently truncating output the way a smaller
+ * `max_tokens` would.
  */
 const NVIDIA_CHAT_URL = 'https://integrate.api.nvidia.com/v1/chat/completions';
 const MAX_RETRIES = 3;
@@ -43,7 +61,11 @@ export function createNvidiaChat({ apiKey, model }) {
    * @param {object} [opts]
    * @returns {Promise<object>} the parsed JSON response body.
    */
-  async function completeJson(messages, jsonSchema, { temperature = 0.2, maxTokens = 2048 } = {}) {
+  async function completeJson(
+    messages,
+    jsonSchema,
+    { temperature = 0.2, maxTokens = 2048, reasoningEffort = 'low' } = {}
+  ) {
     let attempt = 0;
     for (;;) {
       attempt += 1;
@@ -55,6 +77,7 @@ export function createNvidiaChat({ apiKey, model }) {
           messages,
           temperature,
           max_tokens: maxTokens,
+          reasoning_effort: reasoningEffort,
           nvext: { guided_json: jsonSchema },
         }),
       });

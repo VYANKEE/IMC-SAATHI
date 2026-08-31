@@ -38,6 +38,13 @@ export const CLARIFY_SCHEMA = {
   required: ['question'],
 };
 
+// department and contact are DELIBERATELY not part of this schema. Both are
+// 100% deterministic facts already available from facts/lookupFacts.js (the
+// database), and asking the LLM to reproduce them was exactly what broke —
+// see docs/11-decisions.md D16 Addendum 2: on this hosted model, guided_json
+// does not reliably enforce nested-object shape, and department/contact
+// came back as an invented, differently-shaped string/object. generateAnswer.js
+// attaches both directly from `facts` after generation, never from the LLM.
 export const GROUNDED_ANSWER_SCHEMA = {
   type: 'object',
   properties: {
@@ -45,20 +52,6 @@ export const GROUNDED_ANSWER_SCHEMA = {
     procedureSteps: { type: 'array', items: { type: 'string' } },
     requiredDocuments: { type: 'array', items: { type: 'string' } },
     requiredInformation: { type: 'array', items: { type: 'string' } },
-    department: {
-      type: 'object',
-      properties: { id: { type: 'string' }, name: { type: 'string' } },
-      required: ['id', 'name'],
-    },
-    contact: {
-      type: 'object',
-      properties: {
-        name: { type: 'string' },
-        designation: { type: 'string' },
-        phone: { type: 'string' },
-        office: { type: 'string' },
-      },
-    },
     officeTiming: { type: ['string', 'null'] },
     fees: { type: ['string', 'null'] },
     escalation: { type: ['string', 'null'] },

@@ -118,18 +118,11 @@ export function validateAnswer(
       return text;
     });
   }
-  // ...and contact.phone / contact.office specifically (structured fields,
-  // not free prose -- an unverified one is blanked outright rather than
-  // partially redacted mid-sentence).
-  if (result.contact) {
-    if (result.contact.phone && !phoneAllowed(result.contact.phone)) {
-      markPhone();
-      result.contact.phone = undefined;
-    }
-    if (result.contact.office) {
-      result.contact.office = redactField(result.contact.office, URL_PATTERN, urlAllowed, markUrl);
-    }
-  }
+  // No contact.phone / contact.office check here: `contact` is not part of
+  // GROUNDED_ANSWER_SCHEMA and is never produced by the LLM -- it is
+  // attached by generateAnswer.js directly from facts/lookupFacts.js
+  // (already-trusted DB data) after this validator runs. See
+  // docs/11-decisions.md D16 Addendum 2.
 
   // Step 3 -- drop any cited chunkId that was not actually retrieved this
   // turn (models do fabricate these).

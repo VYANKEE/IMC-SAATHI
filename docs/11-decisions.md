@@ -476,3 +476,57 @@ functions enabled) and a Nemotron-family model becomes invokable, re-run
 `scripts/test-nvidia-chat-models.js` before assuming the situation is still
 the same — this is exactly the kind of thing that silently changes, per
 D15's two embedding deprecations.
+
+---
+
+### D16 Addendum 2 — `guided_json` does not reliably enforce schema shape on this model; prompts are the real contract
+
+The first real `/api/chat` call returned a 200 with a plausible-looking
+answer, but the JSON shape did not match `GROUNDED_ANSWER_SCHEMA` at all:
+`procedure` (a single string) instead of `procedureSteps` (an array),
+`department` as a plain string instead of `{id, name}`, `contact.position`
+instead of `contact.designation`. `CLASSIFY_SCHEMA` had matched perfectly
+moments earlier in the same run, so this wasn't an account/model problem —
+Addendum 1 already ruled that out.
+
+`scripts/inspect-grounded-schema.js` isolated it: sending five different
+requests (the full `GROUNDED_ANSWER_SCHEMA`, a flat-fields-only schema, a
+schema with one nested object, a schema with an array-of-objects, and
+`CLASSIFY_SCHEMA` as a control) — but with a short test prompt that did
+**not** spell out field names — produced the model's own invented shape
+**every time**, including for `CLASSIFY_SCHEMA` (`{"category": "..."}`,
+nothing like its real properties). The nested-vs-flat structure of the
+schema made no difference at all. The one variable that mattered: whether
+the prompt's own prose enumerated every field by name. `classify.department.md`
+already does this in detail ("departmentId: ..., categoryId: ..., confidence:
+..."), which is the real reason its output has always come back correctly —
+not `guided_json`. `answer.grounded.md` originally just said "match the
+required schema," and the model filled that gap with its own conventions.
+
+**Conclusion: on this hosted `gpt-oss-120b` function, `guided_json` cannot be
+trusted as the enforcement mechanism for output shape.** It is still sent on
+every call (it can only help, never hurt), but the prompt text is the actual
+contract now, not the schema parameter.
+
+**Changes made:**
+
+1. `answer.grounded.md` rewritten (v1 → v2) to enumerate every
+   `GROUNDED_ANSWER_SCHEMA` field by name, type and meaning — the same
+   pattern `classify.department.md` already used successfully.
+2. `department` and `contact` removed from `GROUNDED_ANSWER_SCHEMA`
+   entirely, not just re-worded. Both are deterministic facts already
+   available from `facts/lookupFacts.js` (the database) — there was never a
+   reason to ask the LLM to reproduce them, and they were exactly the two
+   fields that came back malformed. `generateAnswer.js` now attaches both
+   directly from `facts` after generation. This is a strictly better design
+   independent of the `guided_json` bug: one fewer thing the model can get
+   wrong, and it matches this project's core principle even more literally
+   — "the database supplies the facts."
+3. `validate/validateAnswer.js`'s dead `contact.phone`/`contact.office`
+   check removed (contact never reaches it from the LLM anymore).
+
+**Would change my mind:** if a future request against this same model with
+the _old_, vaguer prompt wording comes back correctly shaped anyway (i.e.
+this was some kind of one-off fluke rather than a real property of this
+model/host) — re-test before assuming the fix is still needed if the prompt
+ever gets simplified again.
