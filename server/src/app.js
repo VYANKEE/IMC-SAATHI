@@ -58,7 +58,11 @@ export function createApp() {
   // extra CORS origin beyond what's already allow-listed above. Mounted
   // before /api so demo.html/demo.js resolve first; falls through to the
   // API routes and then notFound for anything it doesn't have.
-  app.use(express.static(publicDir));
+  // `index: 'demo.html'` (not the express.static default of 'index.html')
+  // -- the filename stays demo.html on purpose, as a signal to anyone
+  // browsing public/ that this is the throwaway demo, not a real index; this
+  // option is what still makes GET / resolve to it.
+  app.use(express.static(publicDir, { index: 'demo.html' }));
 
   app.use('/api', routes);
 
