@@ -2,7 +2,10 @@
  * nvidiaChat.js
  *
  * The one place any code calls NVIDIA's chat completions API
- * (docs/11-decisions.md D16 — nvidia/llama-3.1-nemotron-70b-instruct).
+ * (docs/11-decisions.md D16 + Addendum 1 — openai/gpt-oss-120b; the
+ * nemotron-family instruct models D16 originally picked all 404 "Function
+ * not found for account" on this NVIDIA account despite being listed in
+ * /v1/models — see the addendum for the full diagnosis).
  * Hand-written fetch(), same reasoning as nvidiaEmbedder.js: no JS
  * LangChain package for NVIDIA's endpoints.
  *
@@ -11,7 +14,16 @@
  * own docs warn that plain json_object mode "permits the model to produce
  * any valid JSON, including empty objects," which is exactly the failure
  * mode docs/03-rag.md's grounding rules are trying to prevent.
- * `guided_json` constrains generation to an actual JSON Schema.
+ * `guided_json` constrains generation to an actual JSON Schema. Verified
+ * gpt-oss-120b honours it correctly (see Addendum 1).
+ *
+ * gpt-oss-120b is a *reasoning* model: it writes a hidden chain-of-thought
+ * into `message.reasoning_content` before writing the final answer into
+ * `message.content` — both draw from the same `max_tokens` budget. Too low
+ * a budget truncates generation mid-reasoning, before any `content` is ever
+ * written, which reads as an empty response, not a JSON-parse error. That
+ * is why `maxTokens` below defaults higher than a non-reasoning model would
+ * need — see Addendum 1 for how this was actually observed happening.
  */
 const NVIDIA_CHAT_URL = 'https://integrate.api.nvidia.com/v1/chat/completions';
 const MAX_RETRIES = 3;
@@ -31,7 +43,7 @@ export function createNvidiaChat({ apiKey, model }) {
    * @param {object} [opts]
    * @returns {Promise<object>} the parsed JSON response body.
    */
-  async function completeJson(messages, jsonSchema, { temperature = 0.2, maxTokens = 1024 } = {}) {
+  async function completeJson(messages, jsonSchema, { temperature = 0.2, maxTokens = 2048 } = {}) {
     let attempt = 0;
     for (;;) {
       attempt += 1;

@@ -415,3 +415,64 @@ coming in poor on this model specifically (docs/03-rag.md's target: ≥95%
 groundedness, 100% refusal accuracy on the unanswerable slice) — at that
 point trying `nemotron-3-super-120b-a12b` or Gemini would be the next
 experiment, not a first resort.
+
+---
+
+### D16 Addendum 1 — `nemotron-70b-instruct` unusable on this account; switched to `openai/gpt-oss-120b`
+
+First real `/api/chat` call after Phase 6 landed failed immediately:
+
+```
+NVIDIA chat completion failed (404): {"status":404,"title":"Not Found",
+"detail":"Function '9b96341b-...': Not found for account '...'"}
+```
+
+Unlike D15's two embedding deprecations, `nvidia/llama-3.1-nemotron-70b-instruct`
+was still present in `/v1/models` — this is a different failure mode: being
+_listed_ does not mean this account's key can _invoke_ it. Some NVIDIA-hosted
+chat functions are access-gated per account separately from catalog listing.
+
+Wrote `scripts/test-nvidia-chat-models.js` to test 7 candidates against the
+real API with this key in one run, rather than guessing one at a time:
+
+| Model                                         | Result                                                                                                               |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `nvidia/llama-3.1-nemotron-70b-instruct`      | 404 — Function not found for account                                                                                 |
+| `nvidia/llama-3.1-nemotron-51b-instruct`      | 404 — Function not found for account                                                                                 |
+| `nvidia/nemotron-3-super-120b-a12b`           | 400 — accessible, but rejects `nvext.guided_json` as an unknown field (different extra-params contract than assumed) |
+| `nvidia/mistral-nemo-minitron-8b-8k-instruct` | 404 — Function not found for account                                                                                 |
+| `mistralai/mistral-7b-instruct-v0.3`          | 404 — Function not found for account                                                                                 |
+| `meta/llama2-70b`                             | 404 — Function not found for account                                                                                 |
+| `openai/gpt-oss-120b`                         | **200 — works**                                                                                                      |
+
+Only one of seven candidates is actually invokable on this account today —
+this reads as an account-level entitlement limitation (most NVIDIA-hosted
+functions are not enabled for this key), not a model-quality decision.
+
+A follow-up call to `gpt-oss-120b` with `max_tokens: 32` came back with an
+empty `message.content`, which looked like another dead end — but the raw
+response (`scripts/inspect-gpt-oss.js`) showed why: `gpt-oss-120b` is a
+**reasoning model**. It writes a hidden chain-of-thought into
+`message.reasoning_content` before writing the final answer into
+`message.content`, and both draw from the same `max_tokens` budget. At 32
+tokens, generation was cut off mid-reasoning, before any `content` was ever
+written — not a JSON error, an empty-but-200 response. With a larger budget
+it produced correct output under all three tested modes: plain prompt,
+`nvext.guided_json`, and OpenAI-standard `response_format: json_object`.
+`guided_json` is kept as the structured-output mechanism (consistent with
+D16's original reasoning); `nvidiaChat.js`'s default `maxTokens` was raised
+from 1024 to 2048 to give the reasoning phase enough room, and its header
+comment now explains why an empty `content` on this model usually means
+"truncated mid-thought," not "the model returned nothing."
+
+**Decision.** Switch `NVIDIA_CHAT_MODEL` to `openai/gpt-oss-120b`. D16's
+original criteria (JSON-mode reliability, deprecation risk, multilingual
+instruction-following) still apply as things to verify against the golden
+set's generation-quality metrics once real chat traffic exists — this
+addendum only replaces "which model," not the standard it has to meet.
+
+**Would change my mind:** if this account's NVIDIA entitlements change (more
+functions enabled) and a Nemotron-family model becomes invokable, re-run
+`scripts/test-nvidia-chat-models.js` before assuming the situation is still
+the same — this is exactly the kind of thing that silently changes, per
+D15's two embedding deprecations.
