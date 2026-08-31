@@ -122,23 +122,35 @@ hinglishPicked.forEach((c) => {
 
 // ---- Hindi/Devanagari (12) — hand-translated queries against real chunks ----
 const hindiSeed = [
-  ['ELECTRICAL', 'मेरे इलाके में स्ट्रीट लाइट खराब है, शिकायत कहाँ करें?'],
-  ['WATER_WORKS', 'मेरे घर में पानी नहीं आ रहा है, शिकायत किस विभाग में करूं?'],
-  ['SANITATION', 'हमारी गली में कचरा गाड़ी नहीं आई, क्या करूं?'],
-  ['FIRE', 'फायर एनओसी क्या होता है और यह क्यों जरूरी है?'],
-  ['PWD', 'मेरे इलाके की सड़क टूटी हुई है, किस विभाग से संपर्क करूं?'],
-  ['REVENUE', 'संपत्ति कर का भुगतान ऑनलाइन कैसे करें?'],
-  ['COMPLAINT_PROCEDURE', 'इंदौर 311 ऐप पर शिकायत कैसे दर्ज करें?'],
-  ['WATER_WORKS', 'सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?'],
-  ['ELECTRICAL', 'स्ट्रीट लाइट बार-बार टिमटिमा रही है, शिकायत कैसे करें?'],
-  ['REVENUE', 'नया संपत्ति कर खाता कैसे खुलवाएं?'],
-  ['PWD', 'सड़क पर गड्ढे की शिकायत कौन सुनेगा?'],
-  ['SANITATION', 'सार्वजनिक शौचालय गंदा है, इसकी सफाई के लिए किसे बताएं?'],
+  // Each entry is [chunkId, department, query] -- the chunkId is hand-verified
+  // by keyword search against the real corpus (see git history of this file
+  // for the search), NOT auto-picked by department alone. An earlier version
+  // of this script picked "first unused chunk in department X", which
+  // produced topically mismatched ground truth (e.g. a street-light query
+  // paired with a "how do I track my complaint" chunk) -- that bug is what
+  // made the first real eval run's Hindi Recall@5 look artificially bad.
+  // Verify topical fit again if this list is ever regenerated.
+  ['b0cc7f39734638a4', 'ELECTRICAL', 'मेरे इलाके में स्ट्रीट लाइट खराब है, शिकायत कहाँ करें?'],
+  [
+    'a2f142ec02e254cb',
+    'WATER_WORKS',
+    'मेरे घर में पानी का प्रेशर बहुत कम है, शिकायत किस विभाग में करूं?',
+  ],
+  ['0a15bdb25bf56e74', 'SANITATION', 'हमारी गली में कचरा गाड़ी नहीं आई, क्या करूं?'],
+  ['eea08dbb3c085a92', 'FIRE', 'फायर एनओसी क्या होता है और यह क्यों जरूरी है?'],
+  ['5fb75adf5676ee68', 'PWD', 'मेरे इलाके की सड़क टूटी हुई है, किस विभाग से संपर्क करूं?'],
+  ['6e9af37555bc6984', 'REVENUE', 'संपत्ति कर क्या होता है?'],
+  ['eb8f9ddaabb61896', 'COMPLAINT_PROCEDURE', 'इंदौर 311 ऐप पर शिकायत कैसे दर्ज करें?'],
+  ['b97e91a52f699730', 'WATER_WORKS', 'सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?'],
+  ['b99f4de915151165', 'ELECTRICAL', 'स्ट्रीट लाइट बार-बार टिमटिमा रही है, शिकायत कैसे करें?'],
+  ['a8b86fcd4664ec2d', 'REVENUE', 'मैंने नई संपत्ति खरीदी है, नगर निगम रिकॉर्ड कैसे अपडेट करूं?'],
+  ['c59447d54a6116d0', 'PWD', 'सड़क पर गड्ढे की शिकायत कौन सुनेगा?'],
+  ['770d717674320d28', 'SANITATION', 'सार्वजनिक शौचालय गंदा है, इसकी सफाई के लिए किसे बताएं?'],
+  ['eff0ab11e7c7401d', 'COMPLAINT_PROCEDURE', 'शिकायत दर्ज करने के बाद उसका स्टेटस कैसे चेक करूं?'],
 ];
-hindiSeed.push(['COMPLAINT_PROCEDURE', 'शिकायत दर्ज करने के बाद उसका status kaise check karein?']);
-hindiSeed.forEach(([dept, query]) => {
-  const candidates = withQ.filter((c) => c.department === dept && !used.has(c.chunkId));
-  const match = candidates[0] ?? withQ.find((c) => c.department === dept);
+const chunkById = new Map(active.map((c) => [c.chunkId, c]));
+hindiSeed.forEach(([chunkId, dept, query]) => {
+  const match = chunkById.get(chunkId);
   if (match) {
     used.add(match.chunkId);
     add(
@@ -147,7 +159,11 @@ hindiSeed.forEach(([dept, query]) => {
       query,
       [match.chunkId],
       dept,
-      `EN source: ${match.extractedQuestion}`
+      `EN source: ${match.extractedQuestion ?? match.text.split('\n')[1]?.slice(0, 80)}`
+    );
+  } else {
+    console.error(
+      `WARNING: hindiSeed chunkId ${chunkId} not found among active QA chunks — check it's still real.`
     );
   }
 });

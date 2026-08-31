@@ -52,7 +52,20 @@ function scoreOne(expectedChunkIds, results) {
     }
   }
 
-  return { recall5, recall8, precision3, mrr, topScore: results[0]?.score ?? 0 };
+  return {
+    recall5,
+    recall8,
+    precision3,
+    mrr,
+    topScore: results[0]?.score ?? 0,
+    retrievedTop5: results
+      .slice(0, 5)
+      .map((r) => ({
+        chunkId: r.parentChunkId ?? r.chunkId,
+        department: r.department,
+        score: Number(r.score.toFixed(4)),
+      })),
+  };
 }
 
 function aggregate(rows) {
@@ -147,6 +160,7 @@ async function main() {
       precision3: r.precision3,
       mrr: r.mrr,
       topScore: Number(r.topScore.toFixed(4)),
+      retrievedTop5: r.retrievedTop5,
     })),
   };
   fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2) + '\n');
