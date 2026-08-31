@@ -113,6 +113,22 @@ export const TOPICS = {
     category: 'street_light_and_electrical',
   },
 
+  // Genuinely-general facts (head office location, official website) that
+  // don't belong to any specific complaint department. COMPLAINT_PROCEDURE
+  // is the right home: tier A (real content), the classifier already
+  // routes broad/ambiguous queries there (docs/11-decisions.md D18), and it
+  // already carries other chatbot-meta content ("what can this bot do").
+  // Not marked needsReview -- the address is corroborated across
+  // independent public sources (see contacts.json's matching Contact row
+  // and its verificationNote) rather than describing the wrong city/entity
+  // outright, which is what needsReview quarantine is actually for
+  // (contrast with housing_and_rental below).
+  general_info: {
+    kind: 'structured_qa',
+    department: 'COMPLAINT_PROCEDURE',
+    category: 'general_info',
+  },
+
   imc_pwd_revenue_chatbot_faq_dataset_updated: {
     kind: 'wide_dataset',
     // department/category come from each row's own columns, not from here.

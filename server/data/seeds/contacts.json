@@ -602,5 +602,17 @@
     "verified": false,
     "verificationNote": "No mobile number listed in the source document",
     "sourceDocument": "Department_Head_Contact_Details.docx"
+  },
+  {
+    "departmentCode": "COMPLAINT_PROCEDURE",
+    "scope": "office",
+    "name": "Indore Municipal Corporation — Head Office",
+    "designation": "Head Office (general)",
+    "officeAddress": "Nagar Nigam Square, Rajwada area, Indore, Madhya Pradesh – 452007",
+    "isPrimary": true,
+    "verified": false,
+    "verificationNote": "Address compiled from third-party directories (indiacustomercare.com, Justdial) and corroborated on pincode 452007 via the India Post pincode directory -- imcindore.mp.gov.in's own contact page is JavaScript-rendered and could not be fetched directly to confirm. Re-verify against the official site before treating as authoritative. Deliberately no phone number added here -- could not independently corroborate one beyond a single third-party aggregator, and this project treats an unverified phone number as a worse failure than no phone number at all.",
+    "sourceDocument": "Web research (indiacustomercare.com, Justdial, India Post pincode directory) -- 2026-08-31, see docs/11-decisions.md D18",
+    "lastVerified": "2026-08-31"
   }
 ]

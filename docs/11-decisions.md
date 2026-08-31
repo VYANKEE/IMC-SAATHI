@@ -614,3 +614,63 @@ ingestion pipeline to read a per-row/per-section department hint (the
 since section headings in this corpus are inconsistently worded) rather
 than hand-splitting files again each time; worth doing if a third file like
 this shows up.
+
+---
+
+### D18 — Added a small, honestly-sourced "general information" fact set (head office, website)
+
+**Trigger:** a real demo test ("nagar nigam indore kaha par hai" — where is IMC located)
+correctly hit the low-confidence fallback, because this corpus genuinely had
+no address anywhere — not one Contact record across all 59 (now 60) rows
+has an `officeAddress`, only mobile numbers. That's the system working as
+designed (never invent a location), but a citizen-facing assistant that
+can't say where the office is looks broken, and "general facts about IMC"
+is a reasonable thing citizens actually ask.
+
+**This is explicitly not an LLM fine-tuning problem** — "train the LLM" was
+the original ask, but this project has no training step at all; the model
+only ever answers from what `facts/lookupFacts.js` and retrieval hand it.
+The fix has to be adding real, sourced facts, same as every other fix in
+this log.
+
+**Sourcing:** `imcindore.mp.gov.in`'s own contact/about pages are
+JavaScript-rendered and returned no extractable body content via WebFetch.
+Fell back to corroborating across independent secondary sources: the
+address (Nagar Nigam Square, Rajwada, Indore — 452007) is asserted by
+indiacustomercare.com's contact aggregation and Justdial's listing (which
+independently names the Rajwada Chowk area), and the pincode 452007 is
+separately confirmed by India Post's own pincode directory. Three
+independent sources agreeing on the same pincode/area is enough to be
+useful to a citizen, but is not the same as the primary source — so this
+is seeded `verified: false` with a full `verificationNote`, exactly the
+pattern already used for the 15 other contacts this corpus couldn't fully
+confirm. A toll-free number surfaced in the same aggregator search
+(0731-407 1717 / 1800-233-5522) was deliberately **not** added — one
+uncorroborated third-party number is exactly the `known_bad_helpline`
+failure mode this corpus already has 66 flagged instances of, and a wrong
+phone number is a worse outcome than no phone number. The existing
+COMPLAINT_PROCEDURE content already correctly points citizens to the
+Indore 311 app / toll-free helpline without stating a specific digit
+string — left that as-is.
+
+**Changes:**
+
+1. `contacts.json`: one new `office`-scope Contact under
+   `COMPLAINT_PROCEDURE` — `officeAddress` only, no `mobile`/`officePhone`,
+   `verified: false` with the sourcing note above.
+2. `data/raw/general_info.csv` (new) + a `general_info` topicMap.js entry →
+   `COMPLAINT_PROCEDURE`, category `general_info`. Two Q/A rows: head office
+   location, official website. Deliberately **not** `needsReview` — unlike
+   HOUSING (D-register #6: content describes a _different municipality's_
+   procedure outright), this content is about the right city and entity,
+   just secondary-sourced; the uncertainty is disclosed in the answer text
+   itself rather than gated behind quarantine.
+3. Not touched: `knownUrls.js`'s `OFFICIAL_PORTAL_URLS` already listed
+   `https://imcindore.mp.gov.in/`, so the website fact needed no validator
+   changes.
+
+**Would change my mind:** if the official site's contact page ever becomes
+fetchable (e.g. a static/SSR version, or someone visits in person and
+confirms), replace the Contact row's `verified: false` /
+`verificationNote` with a real confirmation and `sourceDocument` update —
+this is meant to be provisional, not a permanent shrug.
