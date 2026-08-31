@@ -1,0 +1,704 @@
+[
+  {
+    "id": "G001",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "Which department handles electrical complaints?",
+    "expectedChunkIds": ["258d13fbfc4230d0"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": null
+  },
+  {
+    "id": "G002",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "What information do I need to register a complaint?",
+    "expectedChunkIds": ["be9f234f62f6c889"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": null
+  },
+  {
+    "id": "G003",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "Can I upload a photo of the damaged street light?",
+    "expectedChunkIds": ["a08208b2c5f039c2"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": null
+  },
+  {
+    "id": "G004",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "What is fire NOC? Is it important?",
+    "expectedChunkIds": ["eea08dbb3c085a92"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G005",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "How to apply for fire NOC?",
+    "expectedChunkIds": ["41652402a924ed88"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G006",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "Where should I complain about a damaged road?",
+    "expectedChunkIds": ["832b16f0b60b93f9"],
+    "expectedDepartment": "PWD",
+    "notes": null
+  },
+  {
+    "id": "G007",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "How do I report a pothole?",
+    "expectedChunkIds": ["c59447d54a6116d0"],
+    "expectedDepartment": "PWD",
+    "notes": null
+  },
+  {
+    "id": "G008",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "My road is broken. Which department should I contact?",
+    "expectedChunkIds": ["5fb75adf5676ee68"],
+    "expectedDepartment": "PWD",
+    "notes": null
+  },
+  {
+    "id": "G009",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "What is property tax?",
+    "expectedChunkIds": ["6e9af37555bc6984"],
+    "expectedDepartment": "REVENUE",
+    "notes": null
+  },
+  {
+    "id": "G010",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "Who has to pay property tax?",
+    "expectedChunkIds": ["62c7c482a9b17c97"],
+    "expectedDepartment": "REVENUE",
+    "notes": null
+  },
+  {
+    "id": "G011",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "How is property tax calculated?",
+    "expectedChunkIds": ["ed49baf73ff458f6"],
+    "expectedDepartment": "REVENUE",
+    "notes": null
+  },
+  {
+    "id": "G012",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "what should I do if the garbage van is not coming in my area",
+    "expectedChunkIds": ["0a15bdb25bf56e74"],
+    "expectedDepartment": "SANITATION",
+    "notes": null
+  },
+  {
+    "id": "G013",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "How to register a complaint",
+    "expectedChunkIds": ["eb8f9ddaabb61896"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G014",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "What happens when the complaint is filed?",
+    "expectedChunkIds": ["a2c28d474f444fad"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G015",
+    "slice": "english_factual",
+    "language": "en",
+    "query": "what should be done if the water supply is cut from 3 days",
+    "expectedChunkIds": ["54a82a3e80edeaa9"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": null
+  },
+  {
+    "id": "G016",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Fire NOC ke liye kaunse documents chahiye?",
+    "expectedChunkIds": ["b35940f8ab111077"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G017",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Kachre wale paise maang rahe hain, ye sahi hai kya?",
+    "expectedChunkIds": ["97409b2b6d562086"],
+    "expectedDepartment": "SANITATION",
+    "notes": null
+  },
+  {
+    "id": "G018",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Meri complaint ka status kaise check karu?",
+    "expectedChunkIds": ["eff0ab11e7c7401d"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G019",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Paani ka bill bahut zyada aaya, galat lagta hai — kis department se baat karu?",
+    "expectedChunkIds": ["b5d0b19555a450b9"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": null
+  },
+  {
+    "id": "G020",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Building permission already mil gayi hai — fire NOC bhi alag se chahiye?",
+    "expectedChunkIds": ["8700c4f6f5350114"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G021",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Public toilet gandi hai / lock hai, complaint kaha?",
+    "expectedChunkIds": ["770d717674320d28"],
+    "expectedDepartment": "SANITATION",
+    "notes": null
+  },
+  {
+    "id": "G022",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Complaint 2 hafte se pending hai, kuch nahi hua --- ab kya karu?",
+    "expectedChunkIds": ["49ceb1541d58f016"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G023",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "New water connection kaise le?",
+    "expectedChunkIds": ["3059a476dc35eb9b"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": null
+  },
+  {
+    "id": "G024",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "No Objection Certificate) should be renewed or not? (Fire NOC renew karna padta hai kya, ya ek baar milne ke baad hamesha valid hai?",
+    "expectedChunkIds": ["9c9e5f76d9d38f11"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G025",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Complaint band ho gayi but kaam nahi hua --- kya karu?",
+    "expectedChunkIds": ["bbe370a3c0a82333"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G026",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Paani ka pressure bahut kam hai sirf humari gali mein",
+    "expectedChunkIds": ["a2f142ec02e254cb"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": null
+  },
+  {
+    "id": "G027",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "No Objection Certificate)?, (Humari society/commercial building ke paas Fire NOC nahi hai, kya problem ho sakta hai?",
+    "expectedChunkIds": ["a8dae4ffc3cdb7b4"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G028",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Complaint karne ke liye kya paisa lagta hai?",
+    "expectedChunkIds": ["303723b8eb276c7e"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": null
+  },
+  {
+    "id": "G029",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Sadak mein gaddha hai, accident ho sakta hai — turant complaint karni hai",
+    "expectedChunkIds": ["e8786ebf2a76c195"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": null
+  },
+  {
+    "id": "G030",
+    "slice": "hinglish",
+    "language": "hinglish",
+    "query": "Mall/dukaan mein fire exit block hai — complaint kar sakte hain?",
+    "expectedChunkIds": ["1d1dc7ca918fdcf1"],
+    "expectedDepartment": "FIRE",
+    "notes": null
+  },
+  {
+    "id": "G031",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "मेरे इलाके में स्ट्रीट लाइट खराब है, शिकायत कहाँ करें?",
+    "expectedChunkIds": ["8580edceb4565919"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": "EN source: How can I track my complaint?"
+  },
+  {
+    "id": "G032",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "मेरे घर में पानी नहीं आ रहा है, शिकायत किस विभाग में करूं?",
+    "expectedChunkIds": ["0bbf9f8877982ca5"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": "EN source: The streetlight in our street has been off for many days"
+  },
+  {
+    "id": "G033",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "हमारी गली में कचरा गाड़ी नहीं आई, क्या करूं?",
+    "expectedChunkIds": ["f8b4919d91ce7a01"],
+    "expectedDepartment": "SANITATION",
+    "notes": "EN source: My street has an open garbage dump that's been there for weeks - who handles it?"
+  },
+  {
+    "id": "G034",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "फायर एनओसी क्या होता है और यह क्यों जरूरी है?",
+    "expectedChunkIds": ["76e7634b3e666d87"],
+    "expectedDepartment": "FIRE",
+    "notes": "EN source: Hazardous materials are being stored in a factory/warehouse without proper safety measures"
+  },
+  {
+    "id": "G035",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "मेरे इलाके की सड़क टूटी हुई है, किस विभाग से संपर्क करूं?",
+    "expectedChunkIds": ["eb85940306871135"],
+    "expectedDepartment": "PWD",
+    "notes": "EN source: Who handles road construction in IMC?"
+  },
+  {
+    "id": "G036",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "संपत्ति कर का भुगतान ऑनलाइन कैसे करें?",
+    "expectedChunkIds": ["9e85840a61dd2006"],
+    "expectedDepartment": "REVENUE",
+    "notes": "EN source: What is a property-tax rate zone?"
+  },
+  {
+    "id": "G037",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "इंदौर 311 ऐप पर शिकायत कैसे दर्ज करें?",
+    "expectedChunkIds": ["2b3984024c03a90d"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": "EN source: Complaint anonymous kar sakte hain kya?"
+  },
+  {
+    "id": "G038",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "सड़क पर सीवर ओवरफ्लो हो रहा है, इसकी शिकायत कहां करें?",
+    "expectedChunkIds": ["71a6552c66fbd417"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": "EN source: To request about the new divider/ speed breaker in the my area"
+  },
+  {
+    "id": "G039",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "स्ट्रीट लाइट बार-बार टिमटिमा रही है, शिकायत कैसे करें?",
+    "expectedChunkIds": ["361f6ce1356731a7"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": "EN source: The complaint is still unresolved. What should I do?"
+  },
+  {
+    "id": "G040",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "नया संपत्ति कर खाता कैसे खुलवाएं?",
+    "expectedChunkIds": ["52ec7adfba9306ad"],
+    "expectedDepartment": "REVENUE",
+    "notes": "EN source: Can I pay property tax online?"
+  },
+  {
+    "id": "G041",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "सड़क पर गड्ढे की शिकायत कौन सुनेगा?",
+    "expectedChunkIds": ["5b23febd2c3e78e3"],
+    "expectedDepartment": "PWD",
+    "notes": "EN source: Can I complain about incomplete road construction?"
+  },
+  {
+    "id": "G042",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "सार्वजनिक शौचालय गंदा है, इसकी सफाई के लिए किसे बताएं?",
+    "expectedChunkIds": ["0a15bdb25bf56e74"],
+    "expectedDepartment": "SANITATION",
+    "notes": "EN source: what should I do if the garbage van is not coming in my area"
+  },
+  {
+    "id": "G043",
+    "slice": "hindi_devanagari",
+    "language": "hi",
+    "query": "शिकायत दर्ज करने के बाद उसका status kaise check karein?",
+    "expectedChunkIds": ["e98f852d4ed950d9"],
+    "expectedDepartment": "COMPLAINT_PROCEDURE",
+    "notes": "EN source: I do not know the correct department for my issue."
+  },
+  {
+    "id": "G044",
+    "slice": "ambiguous",
+    "language": "hinglish",
+    "query": "Mere area mein naali overflow ho rahi hai, kise complain karu?",
+    "expectedChunkIds": ["96b942c2b8e3d67b", "c2718c2583ddb9d8", "b97e91a52f699730"],
+    "expectedDepartment": "PWD",
+    "notes": "Drain/sewer complaints straddle PWD (physical drain) and Water Works (sewerage) — this is the exact ambiguity docs/03-rag.md flags."
+  },
+  {
+    "id": "G045",
+    "slice": "ambiguous",
+    "language": "hinglish",
+    "query": "Sadak par pani jama ho gaya hai baarish ki wajah se, complaint kaha karu?",
+    "expectedChunkIds": ["4f5058f30b53aedc"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": "Waterlogging: drainage capacity (Water Works) vs road condition (PWD)."
+  },
+  {
+    "id": "G046",
+    "slice": "ambiguous",
+    "language": "hinglish",
+    "query": "Ghar ke bahar kachra fenka hua hai kai din se, kise batayein?",
+    "expectedChunkIds": ["4fdc20411f49cf16"],
+    "expectedDepartment": "SANITATION",
+    "notes": "Garbage collection service (Sanitation) vs the SWM charge on the property bill (Revenue) — citizens conflate the two constantly."
+  },
+  {
+    "id": "G047",
+    "slice": "ambiguous",
+    "language": "hinglish",
+    "query": "Naye ghar mein sewer connection lena hai, kis department se baat karu?",
+    "expectedChunkIds": ["b97e91a52f699730"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": "New sewer connections vs sewer overflow complaints straddle the same two departments as the drainage example above."
+  },
+  {
+    "id": "G048",
+    "slice": "ambiguous",
+    "language": "en",
+    "query": "What is the Solid Waste Management or door-to-door garbage charge?",
+    "expectedChunkIds": ["4fdc20411f49cf16"],
+    "expectedDepartment": "REVENUE",
+    "notes": "Garbage/SWM charge questions straddle Sanitation (the service) and Revenue (the billing) — real users ask this of either."
+  },
+  {
+    "id": "G049",
+    "slice": "ambiguous",
+    "language": "en",
+    "query": "Why is a garbage or SBM charge appearing with my municipal property charges?",
+    "expectedChunkIds": ["de35813e1ae23629"],
+    "expectedDepartment": "REVENUE",
+    "notes": "Garbage/SWM charge questions straddle Sanitation (the service) and Revenue (the billing) — real users ask this of either."
+  },
+  {
+    "id": "G050",
+    "slice": "ambiguous",
+    "language": "en",
+    "query": "SBM ya garbage charge kya hota hai?",
+    "expectedChunkIds": ["3d2145cd7bf7ab21"],
+    "expectedDepartment": "REVENUE",
+    "notes": "Garbage/SWM charge questions straddle Sanitation (the service) and Revenue (the billing) — real users ask this of either."
+  },
+  {
+    "id": "G051",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Meri street light 3 din se band hai, ward 12 mein hai, complaint kaise karu?",
+    "expectedChunkIds": ["b0cc7f39734638a4"],
+    "expectedDepartment": "ELECTRICAL",
+    "notes": "Same pattern: procedure retrieval + a separate ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G052",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Humare mohalle mein paani ka pressure bahut kam hai, ward 5, kisse baat karu?",
+    "expectedChunkIds": ["b97e91a52f699730"],
+    "expectedDepartment": "WATER_WORKS",
+    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G053",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Ward 30 mein sadak ka gaddha bahut bada ho gaya hai, complaint kaise karu?",
+    "expectedChunkIds": ["d79112ab4194e9f6"],
+    "expectedDepartment": "PWD",
+    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G054",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Ward 8 ke property tax office ka number chahiye, kaise pata karu?",
+    "expectedChunkIds": ["3b6d3d70b32d600d"],
+    "expectedDepartment": "REVENUE",
+    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G055",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Ward 15 mein safai nahi ho rahi 4 din se, complaint kaise karu?",
+    "expectedChunkIds": ["0a15bdb25bf56e74"],
+    "expectedDepartment": "SANITATION",
+    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G056",
+    "slice": "multi_hop",
+    "language": "hinglish",
+    "query": "Ward 3 mein hotel ke fire safety ki complaint karni hai, process bataiye",
+    "expectedChunkIds": ["eea08dbb3c085a92"],
+    "expectedDepartment": "FIRE",
+    "notes": "Procedure retrieval + ward->zone->contact DB lookup."
+  },
+  {
+    "id": "G057",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "New water connection ki fees kitni hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "REVENUE, most rupee-amount Revenue chunks are quarantined (stale_rate_risk, docs/11-decisions.md/validate.js) — no active chunk should confidently answer a current fee."
+  },
+  {
+    "id": "G058",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Property tax ka current rate per square foot kya hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Same stale-rate quarantine reasoning."
+  },
+  {
+    "id": "G059",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Fire NOC ki fees kitni lagti hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Fee amount not reliably present in the active corpus."
+  },
+  {
+    "id": "G060",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Kal raat 11 baje IMC office khula rehta hai kya?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Specific after-hours timing not in corpus — correct answer is the documented office-hours fallback, not a guess."
+  },
+  {
+    "id": "G061",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "SWM charge is month se kyu badh gaya, exact wajah bataiye",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Requires a specific billing record this corpus does not contain."
+  },
+  {
+    "id": "G062",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Mera complaint number IMC-2026-0004521 ka status kya hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "A specific complaint status is a database lookup (Phase 10), never a RAG answer — no chunk should match this."
+  },
+  {
+    "id": "G063",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Housing department ke rental rules kya hain?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Housing_and_Rental.docx is entirely quarantined pending human review (register #6) — genuinely zero active chunks exist for this department."
+  },
+  {
+    "id": "G064",
+    "slice": "missing_information",
+    "language": "hinglish",
+    "query": "Sewerage connection ka naya rate kya hai iss saal?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Rate/fee figures for the current year are exactly what the stale-rate quarantine excludes."
+  },
+  {
+    "id": "G065",
+    "slice": "out_of_scope",
+    "language": "hinglish",
+    "query": "Kal cricket match kisne jeeta?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G066",
+    "slice": "out_of_scope",
+    "language": "en",
+    "query": "What's the weather like in Indore tomorrow?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G067",
+    "slice": "out_of_scope",
+    "language": "hinglish",
+    "query": "Best restaurants in Indore for chaat kaha hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G068",
+    "slice": "out_of_scope",
+    "language": "hinglish",
+    "query": "Aaj Sensex kitna upar gaya?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G069",
+    "slice": "out_of_scope",
+    "language": "hinglish",
+    "query": "Mujhe ek acchi movie recommend karo.",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G070",
+    "slice": "out_of_scope",
+    "language": "hinglish",
+    "query": "Indore se Mumbai ki train ka time table kya hai?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Not an IMC matter at all — correct behaviour is a polite out-of-scope refusal, not a RAG answer."
+  },
+  {
+    "id": "G071",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Ghar ki light chali gayi hai, complaint kaha karu?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "MPPKVVCL / West Discom (1912) handles home electricity supply — NOT the Electrical & Mechanical dept, which only covers municipal street lights."
+  },
+  {
+    "id": "G072",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Ration card ke liye apply karna hai, kya karu?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "MP Food & Civil Supplies / NFSA handles ration cards, not IMC."
+  },
+  {
+    "id": "G073",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Ghar mein chori ho gayi hai, kise call karu?",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Police (100), not IMC."
+  },
+  {
+    "id": "G074",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Kisi ko heart attack aaya hai, turant help chahiye",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Ambulance (108), not IMC."
+  },
+  {
+    "id": "G075",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Sadak par ek ghayal kutta pada hai",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Snake Picker / animal-related line — separate from IMC sanitation procedure content."
+  },
+  {
+    "id": "G076",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Mujhe voter list mein apna naam check karna hai",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Election Helpline (1950), not IMC."
+  },
+  {
+    "id": "G077",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Building mein aag lag gayi hai abhi",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Fire Station emergency line (101) for an active fire — different from the Fire NOC *application* procedure IMC documents."
+  },
+  {
+    "id": "G078",
+    "slice": "non_imc_routing",
+    "language": "hinglish",
+    "query": "Senior citizen ke liye koi helpline hai kya",
+    "expectedChunkIds": [],
+    "expectedDepartment": null,
+    "notes": "Senior Citizen Helpline, not an IMC department."
+  }
+]

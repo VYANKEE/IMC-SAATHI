@@ -2,54 +2,33 @@
 /**
  * scripts/test-retrieval.js
  *
- * Phase 4 close-out smoke test (docs/03-rag.md's retrieval shape) — embeds
- * one query, runs $vectorSearch against the real `vector_index`, prints the
- * top hits. Not the real Phase 5 retrieval module (no confidence gate, no
- * coverageTier logic) — just proof the embedding -> index -> search chain
- * actually works end to end.
+ * Phase 4/5 smoke test — runs one query through the real
+ * src/ai/retrieval/retrieve.js module against the live `vector_index`.
+ * Not the eval harness (scripts/eval.js) — just a quick manual sanity
+ * check, e.g. after touching the embedder or the index.
  *
  * Usage: node scripts/test-retrieval.js "street light nahi jal raha"
  */
 import { env } from '../src/config/env.js';
 import { connectDatabase, disconnectDatabase } from '../src/config/db.js';
-import { createNvidiaEmbedder } from '../src/ai/embeddings/nvidiaEmbedder.js';
-import { KnowledgeChunk } from '../src/models/index.js';
+import { createRetriever } from '../src/ai/retrieval/retrieve.js';
 
 const query = process.argv[2];
 if (!query) {
   throw new Error('Usage: node scripts/test-retrieval.js "your query here"');
 }
 
-const embedder = createNvidiaEmbedder({
+const retriever = createRetriever({
   apiKey: env.NVIDIA_API_KEY,
   model: env.NVIDIA_EMBEDDING_MODEL,
   dimensions: env.EMBEDDING_DIMENSIONS,
 });
 
-// 'query' mode, NOT 'passage' — a citizen's live question, the asymmetric
-// counterpart to how the corpus itself was embedded (docs/11-decisions.md D15).
-const [queryVector] = await embedder.embedTexts([query], { inputType: 'query' });
-
 await connectDatabase();
-
-const results = await KnowledgeChunk.aggregate([
-  {
-    $vectorSearch: {
-      index: 'vector_index',
-      path: 'embedding',
-      queryVector,
-      numCandidates: 150,
-      limit: 8,
-      filter: { status: 'active' },
-    },
-  },
-  { $addFields: { score: { $meta: 'vectorSearchScore' } } },
-  { $project: { text: 1, department: 1, category: 1, isVariant: 1, score: 1 } },
-]);
-
+const { results, departmentFilterApplied } = await retriever.retrieve(query);
 await disconnectDatabase();
 
-console.log(`\nQuery: "${query}"\n`);
+console.log(`\nQuery: "${query}" (department filter applied: ${departmentFilterApplied})\n`);
 if (results.length === 0) {
   console.log('No results — check the index status is "Active" in Atlas, not still building.\n');
 } else {

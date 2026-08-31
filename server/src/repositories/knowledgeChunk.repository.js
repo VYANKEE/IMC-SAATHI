@@ -35,3 +35,49 @@ export function deleteKnowledgeChunksNotIn(chunkIds) {
 export function countKnowledgeChunks() {
   return KnowledgeChunk.countDocuments();
 }
+
+/**
+ * The one retrieval read this whole corpus exists for — docs/03-rag.md's
+ * $vectorSearch pipeline. `queryVector` must already be embedded with
+ * input_type: 'query' (asymmetric retrieval — see nvidiaEmbedder.js). The
+ * department filter is applied only when the caller passes a departmentId;
+ * src/ai/retrieval/retrieve.js is what decides whether confidence clears the
+ * >= 0.6 bar documented in docs/03-rag.md before ever calling this with one.
+ */
+export function vectorSearchKnowledgeChunks({
+  queryVector,
+  departmentId,
+  limit = 8,
+  numCandidates = 150,
+}) {
+  const filter = departmentId
+    ? { department: departmentId, status: 'active' }
+    : { status: 'active' };
+  return KnowledgeChunk.aggregate([
+    {
+      $vectorSearch: {
+        index: 'vector_index',
+        path: 'embedding',
+        queryVector,
+        numCandidates,
+        limit,
+        filter,
+      },
+    },
+    { $addFields: { score: { $meta: 'vectorSearchScore' } } },
+    {
+      $project: {
+        chunkId: 1,
+        parentChunkId: 1,
+        isVariant: 1,
+        text: 1,
+        department: 1,
+        category: 1,
+        intent: 1,
+        language: 1,
+        sourceFile: 1,
+        score: 1,
+      },
+    },
+  ]);
+}

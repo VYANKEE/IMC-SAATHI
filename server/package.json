@@ -15,7 +15,8 @@
     "ingest": "node scripts/ingest.js",
     "ingest:check": "node scripts/ingest.js --dry-run",
     "embed": "node scripts/embed.js",
-    "embed:check": "node scripts/embed.js --dry-run"
+    "embed:check": "node scripts/embed.js --dry-run",
+    "eval": "node scripts/eval.js"
   },
   "dependencies": {
     "@langchain/core": "^0.3.26",
