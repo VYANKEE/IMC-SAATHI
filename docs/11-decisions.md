@@ -262,3 +262,31 @@ looping to clarify. Revisit then.
 **Would change my mind again:** LangChain.js introducing a breaking change that
 costs more time than it saves, or its Atlas/Gemini integrations lagging behind
 the underlying services.
+
+## D14 — .numbers source files are converted to CSV once, outside the Node ingestion pipeline
+
+**Context.** `IMC_PWD_Revenue_Chatbot_FAQ_Dataset_Updated.numbers` (the 66-row
+enriched FAQ dataset, 24 columns) is Apple Numbers' proprietary bundle format.
+There is no maintained Node.js parser for it — the only real option
+(`numbers-parser`) is Python-only.
+
+**Decision.** Convert both `.numbers` files to CSV once, by hand (Python,
+`numbers-parser`), and check the resulting CSVs into `server/data/raw/`
+alongside the originals-in-spirit. `src/ingestion/loaders/` only ever has to
+know csv/docx/pdf. This is the same judgement call a working engineer makes
+constantly: don't write and maintain a bespoke parser for a proprietary
+spreadsheet format inside a production pipeline when "export to CSV" is a
+30-second, one-time step.
+
+**What this bought for free.** The two `.numbers` files were byte-identical
+except for filename (data-quality-register.md #2 — `dcd9cf1490891034087592b88f2cc443`).
+Converting both independently and letting the pipeline's own classifier
+(`src/ingestion/classifier.js`) content-hash and collapse them is a better
+test of the dedup logic than hand-picking one file and pretending the
+duplicate never existed — the duplicate is real, checked-in, and the
+ingestion report (`data/processed/ingestion-report.json`) shows it being
+caught, not swept away.
+
+**Would change my mind:** a real Node `.numbers` reader appearing and being
+worth the dependency, or Apple changing the format such that the CSV export
+loses information the JSON columns need.

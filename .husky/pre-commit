@@ -1,1 +1,9 @@
 npx lint-staged
+
+# lint-staged runs prettier per-file, but ESLint's flat config lives inside
+# each workspace (server/eslint.config.js, client/eslint.config.js) — there
+# is no root eslint.config.js, so running `eslint` on a repo-root-relative
+# path fails to find a config. Lint each workspace properly instead of
+# trying to make lint-staged's per-file eslint invocation workspace-aware.
+npm run lint --workspace server
+npm run lint --workspace client
