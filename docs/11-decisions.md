@@ -862,3 +862,40 @@ roadmap in particular is meant to record the _original_ plan, with this
 decisions log being where deviations get tracked, which is what D1
 through D20 already do. Rewriting the roadmap after the fact would erase
 that record rather than preserve it.
+
+---
+
+### D22 — CI-only test failure: `chat.test.js` implicitly depended on a real `server/.env`
+
+**What broke.** The very first real GitHub Actions run against a synced
+lockfile (after D21's dependency fix) failed `npm test` — `tests/chat.test.js`
+got `503 CHAT_UNAVAILABLE` on tests that expected `200` and `500`. All 119
+tests had passed locally minutes earlier.
+
+**Why.** `chat.service.js`'s `getGenerator()` checks `env.NVIDIA_API_KEY`
+and throws a `503` _before_ ever calling the generator — by design, so a
+missing key fails per-request with a clean error instead of at server boot
+(see that file's own comment). `tests/chat.test.js` mocks the generator
+itself (`src/ai/generate/generateAnswer.js`) but never mocked `env.js`, so
+it relied on whatever `NVIDIA_API_KEY` happened to be in `process.env` at
+test time. Locally, `env.js`'s `import 'dotenv/config'` picks up the
+developer's real `server/.env` — a real key, so the `503` gate silently
+never triggers. `npm ci` in CI has no `.env` file and no repository
+secret for this key, so the same gate fires on every request, and every
+test in the file got `503` regardless of what it was actually trying to
+exercise. This is exactly the scenario `tests/chatUnconfigured.test.js`
+already tests on purpose — `chat.test.js` was accidentally relying on the
+opposite (configured) case without ever asserting it.
+
+**Fix.** Mock `../src/config/env.js` in `chat.test.js` too, the same way
+`chatUnconfigured.test.js` does, with a truthy dummy `NVIDIA_API_KEY`. The
+dummy value never reaches a real NVIDIA call — the generator is mocked
+separately — it only exists to satisfy `getGenerator()`'s gate so the rest
+of the file's mocking takes effect, on any machine, with or without a real
+`.env`.
+
+**Lesson for whoever adds the next route-level test here:** if the route
+sits behind `chat.service.js`'s (or any future service's) env-based
+availability gate, mock `env.js` explicitly rather than relying on
+whatever `.env` happens to exist on the machine running the suite —
+GitHub Actions has none, and that's the case that matters.

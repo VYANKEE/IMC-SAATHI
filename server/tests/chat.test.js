@@ -8,6 +8,33 @@ import request from 'supertest';
  * middleware, controller, service and error handler without a real NVIDIA
  * or MongoDB call.
  */
+vi.mock('../src/config/env.js', () => ({
+  env: {
+    NODE_ENV: 'test',
+    PORT: 5000,
+    LOG_LEVEL: 'silent',
+    ALLOWED_ORIGINS: ['http://localhost:5173'],
+    MONGODB_URI: undefined,
+    // Truthy on purpose. This file mocks the generator itself
+    // (src/ai/generate/generateAnswer.js, below), so this value never
+    // reaches a real NVIDIA call -- but chat.service.js's getGenerator()
+    // checks env.NVIDIA_API_KEY BEFORE calling the (mocked) generator and
+    // throws a 503 CHAT_UNAVAILABLE if it's falsy. A developer's real
+    // server/.env supplies a real key, so that check silently passed on a
+    // dev machine -- but a CI run (npm ci, no .env, no secrets) has none,
+    // so every test below got 503 instead of the status it expected to
+    // see. Mocking env.js here -- the same way tests/chatUnconfigured.test.js
+    // already does for the genuinely-unset case -- makes this file's
+    // assumption explicit instead of accidentally depending on whoever's
+    // machine happens to run it.
+    NVIDIA_API_KEY: 'test-nvidia-key',
+    NVIDIA_EMBEDDING_MODEL: 'nvidia/nemotron-3-embed-1b',
+    NVIDIA_CHAT_MODEL: 'nvidia/llama-3.1-nemotron-70b-instruct',
+    EMBEDDING_DIMENSIONS: 768,
+  },
+  isProd: false,
+}));
+
 const mockGenerateAnswer = vi.fn();
 vi.mock('../src/ai/generate/generateAnswer.js', () => ({
   createGenerator: () => ({ generateAnswer: mockGenerateAnswer }),
